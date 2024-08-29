@@ -1,0 +1,112 @@
+.entry-page{
+  margin: 20px 24px;
+
+  .content-btn {
+    box-sizing: border-box;
+    border: 1.5px solid #0800EE;
+    border-radius: 12px;
+    padding: 7px 19px;
+    font-weight: 700;
+    color: #0800EE;
+    width: 121px;
+    height: 40px;
+    transition: 0.2s ease;
+
+    &:hover{
+      color:white;
+      background-color: #0800EE;
+    }
+
+  }
+  .active{
+    color:white;
+    background-color: #0800EE;
+}
+
+  .show-btn{
+    width: 72px;
+    height: 41px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.2s ease;
+
+    &:nth-child(1){
+      background-image: url('../images/EntryImages/ImageList.png');
+      &:hover{
+          background-image: url('../images/EntryImages/ImageListHover.png');
+      }
+  }
+  
+  &:nth-child(2){
+      background-image: url('../images/EntryImages/ContentList.png');
+      &:hover{
+          background-image: url('../images/EntryImages/ContentListHover.png');
+      }
+  }
+  }
+
+  .image-box{
+    width: 335px;
+    height: 220px;
+    border: 1.5px solid #0800EE;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+
+    .image-num{
+      display: inline-block;
+      padding: 0.5px 6.5px;
+      box-sizing: border-box;
+      background-color: #0800EE;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+  }
+
+  .empty-box{
+    width: 168px;
+    height: 220px;
+    border: 1.5px solid #0800EE;
+    border-radius: 12px;
+  }
+}
+
+
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+    .modal-content {
+        display: flex;
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+      }
+      
+      .modal-content img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover; 
+      }
+      .close {
+        position: absolute;
+        font-size: 24px;
+        cursor: pointer;
+        right: 5px;
+      }
+  }
+  
+  
+  
+  
