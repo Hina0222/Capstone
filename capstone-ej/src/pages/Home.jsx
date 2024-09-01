@@ -5,7 +5,7 @@ import "./Home.scss";
 import Title from '../images/HomeImages/Title.png'
 
 function Model(props) {
-    const { scene } = useGLTF('Three/scene.gltf');
+    const { scene } = useGLTF('scene.gltf');
     return <primitive object={scene} {...props} />;
 }
 
