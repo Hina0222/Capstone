@@ -4,10 +4,10 @@ import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import "./Home.scss";
 import Title from '../images/HomeImages/Title.png'
 
-function Model(props) {
-    const { scene } = useGLTF('scene.gltf');
-    return <primitive object={scene} {...props} />;
-}
+// function Model(props) {
+//     const { scene } = useGLTF('scene.gltf');
+//     return <primitive object={scene} {...props} />;
+// }
 
 const Three = () => {
     return (
@@ -27,7 +27,7 @@ const Three = () => {
                 주거지로서의 가치 향상까지는 미치지 못하여
                 기존의 골목 성격을 잃은 골목 상실의 시대가 도래했다.
             </p>
-            <Canvas>
+            {/* <Canvas>
                 <PerspectiveCamera
                     makeDefault
                     position={[0, 10, 0]}  // 카메라 위치 조정
@@ -44,7 +44,7 @@ const Three = () => {
                     minPolarAngle={Math.PI / 2.2}
                     maxPolarAngle={Math.PI / 2.2}
                 />
-            </Canvas>
+            </Canvas> */}
         </div>
     );
 };
