@@ -15,6 +15,8 @@ const Images = () => {
 
     const openModal = (imageSrc) => {
         setIsOpen(true);
+
+
         setModalImage(imageSrc);
     }
 
@@ -29,6 +31,13 @@ const Images = () => {
 
     const sortContent = (e) => {
         setSortContentBtn(e)
+    }
+
+    const MoveTop = () =>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
     }
 
     return (
@@ -51,23 +60,38 @@ const Images = () => {
                 </div>
                 <div className='flex flex-col'>
                     <button className='show-btn' style={{ backgroundImage: showBtn === "Image" ? `url(${ImageListHover})` : `` }} onClick={() => { changeList("Image") }} ></button>
-                    <button className='show-btn' style={{ backgroundImage: showBtn === "Content" ? `url(${ContentListHover})` : `` }} onClick={() => { changeList("Content") }} ></button>
+                    <button className='show-btn' style={{ backgroundImage: showBtn === "List" ? `url(${ContentListHover})` : `` }} onClick={() => { changeList("Content") }} ></button>
                 </div>
             </div>
             <div className='flex mt-4 flex-wrap justify-center'>
-                {imageList.map((image, index) => {
-                    const adjustedIndex = index % 9;
+                {showBtn==="Image"?
+                    imageList.map((num, index) => {
+                        const adjustedIndex = index % 9;
+                        return (
+                            <>
+                                <div className={`image-content`}>
+                                    <div className='image-num'>{num}</div>
+                                    <div>그림</div>
+                                </div>
+                                {((adjustedIndex + 1) % 5 === 0 || (adjustedIndex + 1) % 9 === 0) && <div className="empty-box"></div>}
+                            </>
+                        );
+                    })
+                :
+                imageList.map((num, index) => {
                     return (
                         <>
-                            <div className={`image-box`}>
-                                <div className='image-num'>{image}</div>
-                                <div>그림</div>
+                            <div className='list-content'>
+                                <div>{num}</div>
+                                <div>어쩌구저쩌구 내용</div>
                             </div>
-                            {((adjustedIndex + 1) % 5 === 0 || (adjustedIndex + 1) % 9 === 0) && <div className="empty-box"></div>}
                         </>
                     );
-                })}
+                })
+                }
+                
             </div>
+            <div className='top-btn' onClick={MoveTop}></div>
 
             {/* {imageList.map((image) => (
                 <img className='image' src={image} alt=""

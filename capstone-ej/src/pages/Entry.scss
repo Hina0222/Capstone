@@ -21,7 +21,7 @@
   .active{
     color:white;
     background-color: #0800EE;
-}
+  }
 
   .show-btn{
     width: 72px;
@@ -45,7 +45,7 @@
   }
   }
 
-  .image-box{
+  .image-content{
     width: 335px;
     height: 220px;
     border: 1.5px solid #0800EE;
@@ -64,12 +64,37 @@
       border-radius: 4px;
     }
   }
+  .list-content{
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1.5px solid #0800EE;
+    display: flex;
+    width: 100%;
+    padding: 18.5px 24px;
+    color: #0800EE;
+    font-size: 24px;
+    font-weight: 600;
+  }
 
   .empty-box{
     width: 168px;
     height: 220px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
+  }
+
+  .top-btn {
+    position: fixed;
+    background-image: url(../images/EntryImages/TopBtn.png);
+    background-size: cover;
+    width: 120px;
+    height: 80px;
+    right: 48px;
+    bottom: 48px;
+
+    &:hover{
+      background-image: url(../images/EntryImages/TopBtnHover.png);
+    }
   }
 }
 
