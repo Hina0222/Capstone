@@ -1,13 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "pretendard/dist/web/static/pretendard.css";
 
 body {
-  margin: 0;
   background-color: #E8E8E8;
-}
+  font-family: "pretendard", sans-serif;}
 
 p{
   color:#0034EE;
-  margin: 0;
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
-import "./Home.scss";
+import "../styles/Home.scss";
 import Title from '../images/HomeImages/Title.png'
 
 // function Model(props) {

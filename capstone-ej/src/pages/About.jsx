@@ -8,7 +8,7 @@ import Frame2 from '../images/AboutImages/Frame2.png'
 import Image1 from '../images/AboutImages/Image1.png'
 import Image2 from '../images/AboutImages/Image2.png'
 import Image3 from '../images/AboutImages/Image3.png'
-import "./About.scss";
+import "../styles/About.scss";
 
 const About = () => {
     const [imageIndex, setImageIndex] = useState([1]);

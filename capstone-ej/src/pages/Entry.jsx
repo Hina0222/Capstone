@@ -1,23 +1,74 @@
 import { Link } from 'react-router-dom';
-import "./Entry.scss";
-import React, { useState } from 'react';
+import "../styles/Entry.scss";
+import React, { useEffect, useState } from 'react';
 import HomeImage from '../images/AboutImages/HomeImage.svg'
 import ImageListHover from '../images/EntryImages/ImageListHover.png'
 import ContentListHover from '../images/EntryImages/ContentListHover.png'
+import ImageContent from '../components/ImageContent.jsx';
+import test2 from '../images/EntryImages/test2.png'
 
-const Images = () => {
+const backgroundColor = {
+    "tobacco": "#E0FFBF",
+    "trash": "#F7DCFF",
+    "smoke": "#FCFFBF",
+    "theft": "#D1F3FF",
+    "noise": "#FFE2BF",
+    "pee": "#BFFFCD",
+    "park": "",
+    "excrement": "",
+    "noEntry": "",
+    "": "",
+}
+
+const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [modalImage, setModalImage] = useState(null);
     const [showBtn, setShowBtn] = useState("Image");
     const [sortContentBtn, setSortContentBtn] = useState("");
+    const [imageList, setImageList] = useState([
+        { "num": "001", "type": "tobacco", "imgSrc": test2 },
+        { "num": "002", "type": "noise", "imgSrc": "img" },
+        { "num": "003", "type": "noise", "imgSrc": "img" },
+        { "num": "004", "type": "trash", "imgSrc": "img" },
+        { "num": "005", "type": "trash", "imgSrc": "img" },
+        { "num": "006", "type": "pee", "imgSrc": "img" },
+        { "num": "007", "type": "park", "imgSrc": "img" },
+        { "num": "008", "type": "smoke", "imgSrc": "img" },
+        { "num": "009", "type": "excrement", "imgSrc": "img" },
+        { "num": "010", "type": "tobacco", "imgSrc": "img" },
+        { "num": "011", "type": "theft", "imgSrc": "img" },
+        { "num": "012", "type": "theft", "imgSrc": "img" },
+        { "num": "013", "type": "noEntry", "imgSrc": "img" },
+        { "num": "014", "type": "theft", "imgSrc": "img" },
+        { "num": "015", "type": "trash", "imgSrc": "img" },
+        { "num": "016", "type": "smoke", "imgSrc": "img" },
+        { "num": "017", "type": "noEntry", "imgSrc": "img" },
+        { "num": "018", "type": "park", "imgSrc": "img" },
+    ]);
+    const [filterList, setFilterList] = useState([]);
+    // 여기서 리스트 api
 
-    const imageList = ["001", "002", "003", "004", "005", "6", "7", "8", "9", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    // 타입별 정렬 기능 
+    useEffect(() => {
+        let filteredList = imageList.filter(content =>
+            content.type.includes(sortContentBtn)
+        );
 
-    const openModal = (imageSrc) => {
+        setFilterList(filteredList);
+    }, [sortContentBtn, imageList]);
+
+    const changeList = (e) => {
+        setShowBtn(e)
+    }
+    // type을 변경, backgroundColor 변경
+    const sortContent = (e) => {
+        setSortContentBtn(e)
+        document.body.style.backgroundColor = backgroundColor[e];
+    }
+
+    const openModal = (imgSrc) => {
         setIsOpen(true);
-
-
-        setModalImage(imageSrc);
+        setModalImage(imgSrc);
     }
 
     const closeModal = () => {
@@ -25,19 +76,11 @@ const Images = () => {
         setModalImage(null);
     }
 
-    const changeList = (e) => {
-        setShowBtn(e)
-    }
-
-    const sortContent = (e) => {
-        setSortContentBtn(e)
-    }
-
-    const MoveTop = () =>{
+    const MoveTop = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
-          });
+        });
     }
 
     return (
@@ -60,55 +103,41 @@ const Images = () => {
                 </div>
                 <div className='flex flex-col'>
                     <button className='show-btn' style={{ backgroundImage: showBtn === "Image" ? `url(${ImageListHover})` : `` }} onClick={() => { changeList("Image") }} ></button>
-                    <button className='show-btn' style={{ backgroundImage: showBtn === "List" ? `url(${ContentListHover})` : `` }} onClick={() => { changeList("Content") }} ></button>
+                    <button className='show-btn' style={{ backgroundImage: showBtn === "List" ? `url(${ContentListHover})` : `` }} onClick={() => { changeList("List") }} ></button>
                 </div>
             </div>
             <div className='flex mt-4 flex-wrap justify-center'>
-                {showBtn==="Image"?
-                    imageList.map((num, index) => {
-                        const adjustedIndex = index % 9;
+                {showBtn === "Image" ?
+                    filterList.map((content, idx) => (
+                        <ImageContent content={content} idx={idx} openModal={openModal} />
+                    ))
+                    :
+                    filterList.map((content, idx) => {
                         return (
                             <>
-                                <div className={`image-content`}>
-                                    <div className='image-num'>{num}</div>
-                                    <div>그림</div>
+                                <div className='list-content'>
+                                    <div>{content.num}</div>
+                                    <div>어쩌구저쩌구 내용</div>
                                 </div>
-                                {((adjustedIndex + 1) % 5 === 0 || (adjustedIndex + 1) % 9 === 0) && <div className="empty-box"></div>}
                             </>
                         );
                     })
-                :
-                imageList.map((num, index) => {
-                    return (
-                        <>
-                            <div className='list-content'>
-                                <div>{num}</div>
-                                <div>어쩌구저쩌구 내용</div>
-                            </div>
-                        </>
-                    );
-                })
                 }
-                
+
             </div>
             <div className='top-btn' onClick={MoveTop}></div>
 
-            {/* {imageList.map((image) => (
-                <img className='image' src={image} alt=""
-                    onClick={(e) => { openModal(image) }} />
-            ))} */}
-
-            {/* {isOpen && (
+            {isOpen && (
                 <div className='modal' onClick={closeModal}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <span className="close" onClick={closeModal}>X</span>
                         <img src={modalImage} alt="" />
                     </div>
                 </div>
-            )} */}
+            )}
 
         </div>
     );
 };
 
-export default Images;
+export default Entry;
