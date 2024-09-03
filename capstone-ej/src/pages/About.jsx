@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import HomeImage from '../images/AboutImages/HomeImage.svg'
+import HomeImage from '../images/AboutImages/Home.svg'
 import Rectangle from '../images/AboutImages/Rectangle.png'
 import Rectangle1 from '../images/AboutImages/Rectangle1.png'
 import Frame1 from '../images/AboutImages/Frame1.png'

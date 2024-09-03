@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import "../styles/Entry.scss";
 import React, { useEffect, useState } from 'react';
-import HomeImage from '../images/AboutImages/HomeImage.svg'
 import ImageListHover from '../images/EntryImages/ImageListHover.png'
 import ContentListHover from '../images/EntryImages/ContentListHover.png'
 import ImageContent from '../components/ImageContent.jsx';
@@ -86,7 +85,9 @@ const Entry = () => {
     return (
         <div className='entry-page'>
             <div className='flex justify-between'>
-                <Link className='w-1/6' to="/"><img style={{ maxWidth: '72px' }} src={HomeImage} alt="" /></Link>
+                <div className='w-1/6'>
+                    <Link className='home-btn' to="/" onClick={() => { sortContent("") }}></Link>
+                </div>
                 <div className='text-center flex w-1/2 justify-around'>
                     <div>
                         <button className={`content-btn ${sortContentBtn === "tobacco" ? "active" : ""}`} onClick={() => { sortContent("tobacco") }}>담배꽁초</button>

@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import Back1 from '../images/EntryImages/Back1.svg';
 import Back2 from '../images/EntryImages/Back2.svg';
-import test1 from '../images/EntryImages/test1.svg';
+import { ReactComponent as Test1 } from '../images/EntryImages/test1.svg';
 
-const ImageContent = React.memo(({ content, idx, openModal }) => {
+const ImageContent = ({ content, idx, openModal }) => {
     const adjustedIndex = idx % 9;
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
@@ -44,7 +44,6 @@ const ImageContent = React.memo(({ content, idx, openModal }) => {
         return {};
     }, [idx]);
 
-    console.log(isMouseOver)
     return (
         <>
             <div
@@ -58,17 +57,17 @@ const ImageContent = React.memo(({ content, idx, openModal }) => {
                 onMouseLeave={MouseLeave}
             >
                 <div className="image-num">{content.num}</div>
-                {/* Received vector image */}
-                <img src={test1} alt="" />
+                <Test1 fill={isMouseOver ? "white" : "#0800EE"} />
                 {isMouseOver && (
                     <img
-                        src={test1}
+                        src={content.imgSrc}
                         alt=""
                         style={{
                             position: 'absolute',
                             left: `${mousePosition.x}px`,
                             top: `${mousePosition.y}px`,
                             pointerEvents: 'none',
+                            zIndex: '2',
                         }}
                     />
                 )}
@@ -78,6 +77,6 @@ const ImageContent = React.memo(({ content, idx, openModal }) => {
             )}
         </>
     );
-});
+};
 
 export default ImageContent;

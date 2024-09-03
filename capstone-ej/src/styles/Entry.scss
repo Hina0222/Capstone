@@ -1,6 +1,19 @@
 .entry-page{
   margin: 20px 24px;
 
+  .home-btn {
+    display: inline-block;
+    width: 72px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.2s ease;
+    background-image: url('../images/AboutImages/Home.svg');
+    
+      &:hover{
+          background-image: url('../images/AboutImages/HomeHover.svg');
+      }
+  }
   .content-btn {
     border: 1.5px solid #0800EE;
     border-radius: 12px;
@@ -52,7 +65,14 @@
     padding: 20px;
     cursor: pointer;
     position: relative;
-
+    &:hover{
+      background-color: #0800EE;
+      color: white;
+      .image-num{
+        background-color: white;
+        color: #0800EE;
+      }
+      }
     .image-num{
       padding: 0.5px 5px;
       background-color: #0800EE;
@@ -63,12 +83,7 @@
       position: absolute;
       left: 20px;
       top: 20px;
-      z-index: 1;
-    }
-    img{
-      max-width: 100%;
-      max-height: 100%;
-
+      
     }
   }
   .list-content{
