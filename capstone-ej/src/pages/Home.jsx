@@ -6,6 +6,7 @@ import Title1 from '../images/HomeImages/Title1.svg';
 import Title2 from '../images/HomeImages/Title2.svg';
 import Block from '../images/HomeImages/Block.svg';
 import Block2 from '../images/HomeImages/Block2.svg';
+import { ReactComponent as Arrow } from '../images/HomeImages/Arrow.svg'
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -49,6 +50,7 @@ const Three = () => {
                     maxPolarAngle={Math.PI / 2.2}
                 />
             </Canvas>
+            <Arrow className="absolute w-full bottom-56" />
             <p className='text-center font-bold text-xl absolute bottom-8 inset-x-0'>
                 도로변으로 개발이 옮겨가면서 골목이 외면받았을 당시,
                 다시 골목길을 보존하고 골목 문화를 활성화하자는
