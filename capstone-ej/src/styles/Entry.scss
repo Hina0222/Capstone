@@ -1,5 +1,6 @@
 .entry-page{
   margin: 20px 24px;
+  overflow-x: hidden;
 
   .home-btn {
     display: inline-block;
@@ -25,13 +26,13 @@
     transition: 0.2s ease;
 
     &:hover{
-      color:white;
+      color:#E8E8E8;
       background-color: #0800EE;
     }
 
   }
   .active{
-    color:white;
+    color:#E8E8E8;
     background-color: #0800EE;
   }
 
@@ -58,25 +59,28 @@
   }
 
   .image-content{
-    width: 334px;
-    height: 220px;
+    width: 370px;
+    height: 245px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
     padding: 20px;
     cursor: pointer;
     position: relative;
+    justify-content: center;
+
     &:hover{
       background-color: #0800EE;
-      color: white;
+      color: #E8E8E8;
       .image-num{
-        background-color: white;
+        background-color: #E8E8E8;
         color: #0800EE;
       }
-      }
+    }
+
     .image-num{
       padding: 0.5px 5px;
       background-color: #0800EE;
-      color: white;
+      color: #E8E8E8;
       font-size: 18px;
       font-weight: 600;
       border-radius: 4px;
@@ -84,8 +88,10 @@
       left: 20px;
       top: 20px;
     }
-    img{
-      height: 100%;
+
+    img {
+      height: 70%;
+      width: 70%;
     }
   }
   .list-content{
@@ -101,8 +107,8 @@
   }
 
   .empty-box{
-    width: 168px;
-    height: 220px;
+    width: 185px;
+    height: 245px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
   }
@@ -110,15 +116,13 @@
   .top-btn {
     position: fixed;
     background-image: url(../images/EntryImages/TopBtn.svg);
-    background-size: cover;
-    width: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 85px;
     height: 80px;
     right: 48px;
     bottom: 48px;
-
-    &:hover{
-      background-image: url(../images/EntryImages/TopBtnHover.png);
-    }
+    cursor: pointer;
   }
 }
 

@@ -55,7 +55,7 @@ const Entry = () => {
     // type을 변경, backgroundColor 변경
     const sortContent = (e) => {
         setSortContentBtn(e)
-        document.body.style.backgroundColor = backgroundColor[e];
+        // document.body.style.backgroundColor = backgroundColor[e];
     }
 
     const openModal = (imgSrc) => {
@@ -83,7 +83,7 @@ const Entry = () => {
                 </div>
                 <div className='text-center flex w-1/2 justify-around'>
                     <div>
-                        <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }}>담배꽁초</button>
+                        <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }} >담배꽁초</button>
                         <button className={`content-btn ${sortContentBtn === "쓰레기" ? "active" : ""}`} onClick={() => { sortContent("쓰레기") }}>쓰레기</button>
                         <button className={`content-btn ${sortContentBtn === "흡연" ? "active" : ""}`} onClick={() => { sortContent("흡연") }}>흡연</button>
                         <button className={`content-btn ${sortContentBtn === "도난" ? "active" : ""}`} onClick={() => { sortContent("도난") }}>도난</button><br />
@@ -100,7 +100,7 @@ const Entry = () => {
                     <button className='show-btn' style={{ backgroundImage: showBtn === "List" ? `url(${ContentListHover})` : `` }} onClick={() => { changeList("List") }} ></button>
                 </div>
             </div>
-            <div className='flex mt-4 flex-wrap justify-center'>
+            <div className='flex mt-4 flex-wrap'>
                 {showBtn === "Image" ?
                     filterList?.map((content, idx) => (
                         <ImageContent content={content} idx={idx} openModal={openModal} />

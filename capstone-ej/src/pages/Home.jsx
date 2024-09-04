@@ -26,9 +26,9 @@ const Three = () => {
                     <img className='title-img mb-2' src={Title1} alt="title" />
                     <img className='title-img' src={Title2} alt="title" />
                 </div>
-                <div className="w-1/4 flex flex-col items-center">
+                <div className="w-1/4 flex flex-col">
                     {/* <img className="btn-img ml-auto translate-x-40" src={Block} alt="" /> */}
-                    <Link className='btn-img entry-btn mt-4' to="/entry"></Link>
+                    <Link className='btn-img entry-btn' to="/entry"></Link>
                     {/* <img className="" src={Block2} alt="" /> */}
                 </div>
             </div>

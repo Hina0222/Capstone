@@ -19,6 +19,8 @@
     }
     
     .entry-btn{
+        margin-left: auto;
+        margin-right: 52px;
         background-image: url('../images/HomeImages/EntryBtn.svg');
         &:hover{
            background-image: url('../images/HomeImages/EntryBtnHover.svg');
