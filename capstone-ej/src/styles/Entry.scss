@@ -134,7 +134,8 @@
     left: 0;
     z-index: 2;
     width: 100%;
-    
+    overflow: hidden;
+
     .modal-content {
         position: relative;
       }

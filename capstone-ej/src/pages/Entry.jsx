@@ -27,6 +27,7 @@ const Entry = () => {
     const [sortContentBtn, setSortContentBtn] = useState("");
     const [imageList, setImageList] = useState([]);
     const [filterList, setFilterList] = useState([]);
+    const [modalPosition, setModalPosition] = useState({ y: 0 });
 
     useEffect(() => {
         const getImageList = async () => {
@@ -58,9 +59,10 @@ const Entry = () => {
         // document.body.style.backgroundColor = backgroundColor[e];
     }
 
-    const openModal = (imgSrc) => {
+    const openModal = (imgSrc, position) => {
         setIsOpen(true);
         setModalImage(imgSrc);
+        setModalPosition(position);
     }
 
     const closeModal = () => {
@@ -74,7 +76,7 @@ const Entry = () => {
             behavior: "smooth",
         });
     }
-
+    console.log(modalPosition);
     return (
         <div className='entry-page'>
             <div className='flex justify-between'>
@@ -120,7 +122,7 @@ const Entry = () => {
 
             </div>
             <div className='top-btn' onClick={MoveTop}></div>
-            {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} />}
+            {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} position={modalPosition} />}
 
         </div>
     );

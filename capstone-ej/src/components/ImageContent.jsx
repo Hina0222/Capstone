@@ -22,6 +22,11 @@ const ImageContent = ({ content, idx, openModal }) => {
     const MouseLeave = useCallback(() => {
         setIsMouseOver(false);
     }, []);
+    // 모달 위치 계산
+    const handleClick = (e) => {
+        const y = e.clientY;
+        openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`, { y });
+    };
 
     const backgroundStyle = useMemo(() => {
         const random = Math.random();
@@ -48,9 +53,7 @@ const ImageContent = ({ content, idx, openModal }) => {
             <div
                 className="image-content flex justify-center items-center relative"
                 style={backgroundStyle}
-                onClick={() => {
-                    openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`);
-                }}
+                onClick={handleClick}
                 onMouseMove={MouseMove}
                 onMouseEnter={MouseEnter}
                 onMouseLeave={MouseLeave}
