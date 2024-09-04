@@ -16,30 +16,30 @@ function Model(props) {
 const Three = () => {
     return (
         <div className='main-page h-screen'>
-            <div className='flex justify-evenly mt-8'>
+            <div className='flex justify-between mt-8'>
                 <div className="w-1/4 flex flex-col">
                     <Link className='btn-img about-btn' to="/about"></Link>
-                    <img className="btn-img ml-auto" src={Block} alt="" />
-                    <img className="btn-img -translate-x-12" src={Block} alt="" />
+                    {/* <img className="btn-img ml-auto" src={Block} alt="" /> */}
+                    {/* <img className="btn-img -translate-x-12" src={Block} alt="" /> */}
                 </div>
                 <div className="flex flex-col items-center">
                     <img className='title-img mb-2' src={Title1} alt="title" />
                     <img className='title-img' src={Title2} alt="title" />
                 </div>
                 <div className="w-1/4 flex flex-col items-center">
-                    <img className="btn-img ml-auto translate-x-40" src={Block} alt="" />
+                    {/* <img className="btn-img ml-auto translate-x-40" src={Block} alt="" /> */}
                     <Link className='btn-img entry-btn mt-4' to="/entry"></Link>
-                    <img className="" src={Block2} alt="" />
+                    {/* <img className="" src={Block2} alt="" /> */}
                 </div>
             </div>
             <Canvas>
                 <PerspectiveCamera
                     makeDefault
-                    position={[0, 0, 11]}  // 카메라 위치 조정
+                    position={[0, 0, 10]}  // 카메라 위치 조정
                     fov={25}                // 시야각 조정 (기본값은 50 정도입니다)
                 />
 
-                <ambientLight intensity={3.0} />
+                <ambientLight intensity={2.0} />
                 <pointLight position={[10, 10, 10]} intensity={2.0} />
 
                 <Model position={[0, -0.9, 0]} scale={7.0} />

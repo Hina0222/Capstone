@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import Back1 from '../images/EntryImages/Back1.svg';
 import Back2 from '../images/EntryImages/Back2.svg';
-import { ReactComponent as Test1 } from '../images/EntryImages/test1.svg';
 
 const ImageContent = ({ content, idx, openModal }) => {
     const adjustedIndex = idx % 9;
@@ -50,17 +49,18 @@ const ImageContent = ({ content, idx, openModal }) => {
                 className="image-content flex justify-center items-center relative"
                 style={backgroundStyle}
                 onClick={() => {
-                    openModal(content.imgSrc);
+                    openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`);
                 }}
                 onMouseMove={MouseMove}
                 onMouseEnter={MouseEnter}
                 onMouseLeave={MouseLeave}
             >
-                <div className="image-num">{content.num}</div>
-                <Test1 fill={isMouseOver ? "white" : "#0800EE"} />
+                <div className="image-num">{String(content.id).padStart(3, '0')}</div>
+                {!isMouseOver ? <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/deactive/${content.category}/${content.id}.svg`} alt="" /> :
+                    <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/active/${content.category}/${content.id}.svg`} alt="" />}
                 {isMouseOver && (
                     <img
-                        src={content.imgSrc}
+                        src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/hover/${content.category}/${content.id}.png`}
                         alt=""
                         style={{
                             position: 'absolute',

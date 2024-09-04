@@ -83,7 +83,9 @@
       position: absolute;
       left: 20px;
       top: 20px;
-      
+    }
+    img{
+      height: 100%;
     }
   }
   .list-content{
@@ -140,9 +142,10 @@
 
       .close {
         position: absolute;
-        font-size: 24px;
         cursor: pointer;
-        right: 5px;
+        bottom: 47px;
+        right: 50%;
+        transform: translate(50%);
       }
   }
   
