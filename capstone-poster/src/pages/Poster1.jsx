@@ -11,7 +11,7 @@ const Poster1 = () => {
                 <div className='poster1-date'>7 In July</div>
                 <div className='poster1-year'>2023</div>
             </header>
-            <main className='flex-1 relative'>
+            <main className='flex-1 flex flex-col'>
                 <div className='poster1-title'>
                     <p>Random texts in the gallery</p>
                     <p>2023년 7월 사진첩 속 무작위 텍스트</p>
