@@ -48,6 +48,10 @@ const ImageContent = ({ content, idx, openModal }) => {
         return {};
     }, [idx]);
 
+    const moveImage = useMemo(()=>{
+        return `https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/hover/${content.category}/${content.id}.png`;
+    },[]);
+    
     return (
         <>
             <div
@@ -63,7 +67,7 @@ const ImageContent = ({ content, idx, openModal }) => {
                     <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/active/${content.category}/${content.id}.svg`} alt="" />}
                 {isMouseOver && (
                     <img
-                        src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/hover/${content.category}/${content.id}.png`}
+                        src={moveImage}
                         alt=""
                         style={{
                             position: 'absolute',
