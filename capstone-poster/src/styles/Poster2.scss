@@ -1,170 +1,254 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-.poster2-page {
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .font-Poiret {
-        font-family: 'Poiret One', sans-serif;
+html, body {
+  height: 100%;
+}
+
+.flexbox-619 {
+  display: flex;
+  min-height: 180px;
+  margin-top: 20px;
+}
+
+.desktop-grid {
+  display: block;
+  height: 100%;
+}
+
+.mobile-flex {
+  display: none;
+}
+
+.width-33 {
+  width: 230px;
+}
+.font-Poiret {
+    font-family: 'Poiret One', sans-serif;
+}
+.font-Cooper{
+    font-weight: 900;
+    font-family: 'Cooper', sans-serif;
+}
+.poster2-page {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, calc(25vh - 44px));
+    grid-template-areas:
+      'a a a a a d'
+      'b b b b b d'
+      'b b b b b d'
+      'c c c c c d';
+    gap: 18px;
+    height: 100%;
+    width: 100%;
+
+    .num {
+      font-size: 24vh;
+      color: white;
+      background-color: black;
+      padding: 0px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
     }
+
+    div {
+      background-size: cover;
+      background-position: bottom;
+    }
+
+    .section-1 {
+      grid-area: a;
+      display: flex;
+
+    }
+    .image-1 {
+      background-image: url(../images/poster2/Image1.png);
+      width: 50%;
+    }
+
+    .image-2 {
+      background-image: url(../images/poster2/Image2.png);
+      width: 50%;
+    }
+
+    .section-2 {
+      grid-area: b;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas:
+        'e e f f g'
+        'h j f f g';
+
+    }
+    .image-3 {
+      background-image: url(../images/poster2/Image3.png);
+      grid-area: e;
+    }
+
+    .image-4 {
+      background-image: url(../images/poster2/Image4.png);
+      grid-area: h;
+    }
+
+    .image-5 {
+      background-image: url(../images/poster2/Image5.png);
+      grid-area: j;
+    }
+
+    .image-6 {
+      background-image: url(../images/poster2/Image6.png);
+      grid-area: f;
+    }
+
+    .image-7 {
+      background-image: url(../images/poster2/Image7.png);
+      grid-area: g;
+    }
+
+    .section-3 {
+      grid-area: c;
+      display: flex;
+
+    }
+    .image-8 {
+      background-image: url(../images/poster2/Image8.png);
+      width: 20%;
+    }
+
+    .image-9 {
+      background-image: url(../images/poster2/Image9.png);
+      width: 20%;
+    }
+
+    .image-10 {
+      background-image: url(../images/poster2/Image10.png);
+      width: 25%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .title {
+      grid-area: d;
+      font-size: 84px;
+      color: white;
+      background-color: black;
+      writing-mode: vertical-rl;
+      padding: 24px 0px;
+      line-height: 90px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .poster2-footer {
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 38px;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 1279px) {
+  .poster2-page {
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+
+      .num {
+        margin-right: 0px;
+        max-height: 240px;
+      }
+
+      .title {
+        margin-top: 20px;
+        writing-mode: horizontal-tb;
+        padding: 24px;
+      }
+
+      .section-1 {
+        height: 25%;
+      }
+
+      .section-2 {
+        grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1.5fr;
+        height: 45%;
+      }
+
+      .section-3 {
+        margin-top: 20px;
+        height: 25%;
+
+        .image-10 {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 619px) {
+  .desktop-grid {
+    display: none;
+  }
+
+  .mobile-flex {
+    display: flex;
+  }
+
+  .poster2-page {
+    height: auto;
+    padding: 0px 20px 24px 20px;
 
     .grid-container {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(4, calc(25vh - 44px));
-        grid-template-areas:
-            'a a a a a d'
-            'b b b b b d'
-            'b b b b b d'
-            'c c c c c d';
-        gap: 20px;
-        height: 100%;
-
-        .num {
-            font-size: 240px;
-            color: white;
-            background-color: black;
-            padding: 0px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-        }
-        div {
-            background-size: cover;
-            background-position: bottom;
-        }
-
-        .section-1 { 
-            grid-area: a;
-            display: flex;
-
-            .image-1{
-                background-image: url(../images/poster2/Image1.png);
-                width: 50%;
-            }
-            .image-2{
-                background-image: url(../images/poster2/Image2.png);
-                width: 50%;
-            }
-         }
-        .section-2 { 
-            grid-area: b;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-template-areas:
-            'e e f f g'
-            'h j f f g';
-
-            .image-3{
-                background-image: url(../images/poster2/Image3.png);
-                grid-area: e;
-            }
-            .image-4{
-                background-image: url(../images/poster2/Image4.png);
-                grid-area: h;
-            }
-            .image-5{
-                background-image: url(../images/poster2/Image5.png);
-                grid-area: j;
-            }
-            .image-6{
-                background-image: url(../images/poster2/Image6.png);
-                grid-area: f;
-            }
-            .image-7{
-                background-image: url(../images/poster2/Image7.png);
-                grid-area: g;
-            }
-         }
-        .section-3 { 
-            grid-area: c;
-            display: flex;
-            .image-8{
-                background-image: url(../images/poster2/Image8.png);
-                width: 20%;
-            }
-            .image-9{
-                background-image: url(../images/poster2/Image9.png);
-                width:20%;
-            }
-            .image-10{
-                background-image: url(../images/poster2/Image10.png);
-                width: 25%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-        .title {
-            grid-area: d;
-            font-size: 84px;
-            color: white;
-            background-color: black;
-            writing-mode: vertical-rl;
-            padding: 24px 0px;
-            line-height: 90px;
-            display: flex;
-            align-items: center;
-        }
+      height: auto;
     }
-    
-    img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        
+    .image-2 {
+      width: 100% !important;
+    }
+
+    .image-3, .image-6, .image-1, .image-7, .image-4, .image-5 {
+      width: 50% !important;
+    }
+
+    .image-8, .image-9, .image-10 {
+      width: 33.33% !important;
     }
 
     .poster2-footer {
-        font-family: 'Pretendard', sans-serif;
-        display: flex;
-        justify-content: space-between;
-        font-size: 12px;
-        margin-top: 38px;
-    }
+      flex-direction: column;
+      margin-top: 26px;
 
-    @media (max-width: 1279px) {
-        .grid-container{
-            display: flex;
-            flex-direction: column;
-            gap:0px;
-            
-            .num{
-                margin-right: 0px;
-            }
-            .title{
-                margin-top: 20px;
-                writing-mode:horizontal-tb;
-                padding:24px;
-            }
-            .section-1{
-                height: 25%;
-            }
-            .section-2{
-                grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
-                grid-template-rows: 1fr 1.5fr;
-                height: 45%;
-            }
-            .section-3{
-                margin-top: 20px;
-                height: 25%;
-                .image-10 {
-                    width: 60%;
-                }
-            }
-        }
+      > * {
+        text-align: left !important;
+      }
     }
-
-
-    @media (max-width: 767px) {
-        .poster2-footer{
-            flex-direction: column ;
-            margin-top: 26px;
-        }
-    }
+  }
 }
