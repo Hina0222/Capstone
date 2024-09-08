@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Back } from '../images/EntryImages/BackBtn.svg';
-import { ReactComponent as Block1 } from '../images/EntryImages/modalBlock1.svg';
-import { ReactComponent as Block2 } from '../images/EntryImages/modalBlock2.svg';
-import { ReactComponent as Block3 } from '../images/EntryImages/modalBlock3.svg';
-import { ReactComponent as Block4 } from '../images/EntryImages/modalBlock4.svg';
+import { ReactComponent as Block1 } from '../images/EntryImages/ModalBlock1.svg';
+import { ReactComponent as Block2 } from '../images/EntryImages/ModalBlock2.svg';
+import { ReactComponent as Block3 } from '../images/EntryImages/ModalBlock3.svg';
+import { ReactComponent as Block4 } from '../images/EntryImages/ModalBlock4.svg';
 
 const Modal = ({ closeModal, modalImage, position }) => {
     const [BlockComponent, setBlockComponent] = useState(null);
