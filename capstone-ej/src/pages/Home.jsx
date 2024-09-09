@@ -14,7 +14,7 @@ function Model(props) {
 
 const Three = () => {
     return (
-        <div className='main-page h-screen'>
+        <div className='main-page h-screen relative'>
             <div className='flex justify-between mt-7'>
                 <div className="w-1/4 flex flex-col">
                     <Link className='btn-img about-btn' to="/about"></Link>
@@ -30,25 +30,28 @@ const Three = () => {
                     {/* <img className="" src={Block2} alt="" /> */}
                 </div>
             </div>
-            <Canvas>
-                <PerspectiveCamera
-                    makeDefault
-                    position={[0, 0, 10]}  // 카메라 위치 조정
-                    fov={25}                // 시야각 조정 (기본값은 50 정도입니다)
-                />
+            <div className="h-screen absolute w-full" style={{ top: '17%' }}>
+                <Canvas>
+                    <PerspectiveCamera
+                        makeDefault
+                        position={[0, 0, 12]}  // 카메라 위치 조정
+                        fov={25}                // 시야각 조정 (기본값은 50 정도입니다)
+                    />
 
-                <ambientLight intensity={2.0} />
-                <pointLight position={[10, 10, 10]} intensity={2.0} />
+                    <ambientLight intensity={2.0} />
+                    <pointLight position={[10, 10, 10]} intensity={2.0} />
 
-                <Model position={[0, -0.9, 0]} scale={7.0} />
+                    <Model position={[0, -1, 0]} scale={7.3} />
 
-                <OrbitControls
-                    enableZoom={false}
-                    minPolarAngle={Math.PI / 2.2}
-                    maxPolarAngle={Math.PI / 2.2}
-                />
-            </Canvas>
-            <Arrow className="absolute w-full bottom-56" />
+                    <OrbitControls
+                        enableZoom={false}
+                        minPolarAngle={Math.PI / 2.2}
+                        maxPolarAngle={Math.PI / 2.2}
+                    />
+                </Canvas>
+                <Arrow className="absolute w-full" style={{ top: '40%' }} />
+            </div>
+
             <p className='text-center font-bold text-xl absolute bottom-8 inset-x-0'>
                 도로변으로 개발이 옮겨가면서 골목이 외면받았을 당시,
                 다시 골목길을 보존하고 골목 문화를 활성화하자는

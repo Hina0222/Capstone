@@ -29,17 +29,17 @@ const Entry = () => {
     const [filterList, setFilterList] = useState([]);
     const [modalPosition, setModalPosition] = useState({ y: 0 });
 
-    useEffect(() => {
-        const getImageList = async () => {
-            try {
-                const res = await axios.get('http://52.79.32.80:8080/data');
-                setImageList(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        getImageList();
-    }, []);
+    // useEffect(() => {
+    //     const getImageList = async () => {
+    //         try {
+    //             const res = await axios.get('http://52.79.32.80:8080/data');
+    //             setImageList(res.data);
+    //         } catch (err) {
+    //             console.log(err);
+    //         }
+    //     }
+    //     getImageList();
+    // }, []);
 
     // 타입별 정렬 기능 
     useEffect(() => {
