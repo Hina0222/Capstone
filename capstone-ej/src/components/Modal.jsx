@@ -5,7 +5,7 @@ import { ReactComponent as Block2 } from '../images/EntryImages/ModalBlock2.svg'
 import { ReactComponent as Block3 } from '../images/EntryImages/ModalBlock3.svg';
 import { ReactComponent as Block4 } from '../images/EntryImages/ModalBlock4.svg';
 
-const Modal = ({ closeModal, modalImage, position }) => {
+const Modal = ({ closeModal, modalImage, scrollPosition }) => {
     const [BlockComponent, setBlockComponent] = useState(null);
 
     useEffect(() => {
@@ -22,9 +22,9 @@ const Modal = ({ closeModal, modalImage, position }) => {
     }, []);
 
     return (
-        <div className='modal' onClick={closeModal} style={{
-            // top: position.y
-        }}>
+        <div className='modal' onClick={closeModal}
+            style={{ top: scrollPosition }}
+        >
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 {BlockComponent && <BlockComponent className="absolute left-6 top-8" />}
                 <Back className="close" onClick={closeModal} />

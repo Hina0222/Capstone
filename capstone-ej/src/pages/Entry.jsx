@@ -25,9 +25,70 @@ const Entry = () => {
     const [modalImage, setModalImage] = useState(null);
     const [showBtn, setShowBtn] = useState("Image");
     const [sortContentBtn, setSortContentBtn] = useState("");
-    const [imageList, setImageList] = useState([]);
+    const [imageList, setImageList] = useState([
+        { 'id': '1', 'category': '담배꽁초' },
+        { 'id': '2', 'category': '담배꽁초' },
+        { 'id': '3', 'category': '담배꽁초' },
+        { 'id': '4', 'category': '담배꽁초' },
+        { 'id': '5', 'category': '담배꽁초' },
+        { 'id': '6', 'category': '담배꽁초' },
+        { 'id': '7', 'category': '담배꽁초' },
+        { 'id': '8', 'category': '담배꽁초' },
+        { 'id': '9', 'category': '담배꽁초' },
+        { 'id': '10', 'category': '담배꽁초' },
+        { 'id': '11', 'category': '담배꽁초' },
+        { 'id': '12', 'category': '담배꽁초' },
+        { 'id': '13', 'category': '담배꽁초' },
+        { 'id': '14', 'category': '담배꽁초' },
+        { 'id': '15', 'category': '담배꽁초' },
+        { 'id': '16', 'category': '담배꽁초' },
+        { 'id': '17', 'category': '담배꽁초' },
+        { 'id': '18', 'category': '담배꽁초' },
+        { 'id': '19', 'category': '담배꽁초' },
+        { 'id': '20', 'category': '담배꽁초' },
+        { 'id': '21', 'category': '담배꽁초' },
+        { 'id': '22', 'category': '담배꽁초' },
+        { 'id': '23', 'category': '담배꽁초' },
+        { 'id': '24', 'category': '담배꽁초' },
+        { 'id': '25', 'category': '담배꽁초' },
+        { 'id': '26', 'category': '담배꽁초' },
+        { 'id': '27', 'category': '담배꽁초' },
+        { 'id': '28', 'category': '담배꽁초' },
+        { 'id': '29', 'category': '담배꽁초' },
+        { 'id': '30', 'category': '담배꽁초' },
+        { 'id': '1', 'category': '담배꽁초' },
+        { 'id': '2', 'category': '담배꽁초' },
+        { 'id': '3', 'category': '담배꽁초' },
+        { 'id': '4', 'category': '담배꽁초' },
+        { 'id': '5', 'category': '담배꽁초' },
+        { 'id': '6', 'category': '담배꽁초' },
+        { 'id': '7', 'category': '담배꽁초' },
+        { 'id': '8', 'category': '담배꽁초' },
+        { 'id': '9', 'category': '담배꽁초' },
+        { 'id': '10', 'category': '담배꽁초' },
+        { 'id': '11', 'category': '담배꽁초' },
+        { 'id': '12', 'category': '담배꽁초' },
+        { 'id': '13', 'category': '담배꽁초' },
+        { 'id': '14', 'category': '담배꽁초' },
+        { 'id': '15', 'category': '담배꽁초' },
+        { 'id': '16', 'category': '담배꽁초' },
+        { 'id': '17', 'category': '담배꽁초' },
+        { 'id': '18', 'category': '담배꽁초' },
+        { 'id': '19', 'category': '담배꽁초' },
+        { 'id': '20', 'category': '담배꽁초' },
+        { 'id': '21', 'category': '담배꽁초' },
+        { 'id': '22', 'category': '담배꽁초' },
+        { 'id': '23', 'category': '담배꽁초' },
+        { 'id': '24', 'category': '담배꽁초' },
+        { 'id': '25', 'category': '담배꽁초' },
+        { 'id': '26', 'category': '담배꽁초' },
+        { 'id': '27', 'category': '담배꽁초' },
+        { 'id': '28', 'category': '담배꽁초' },
+        { 'id': '29', 'category': '담배꽁초' },
+        { 'id': '30', 'category': '담배꽁초' }
+    ]);
     const [filterList, setFilterList] = useState([]);
-    const [modalPosition, setModalPosition] = useState({ y: 0 });
+    const [scrollPosition, setScrollPosition] = useState(null);
 
     // useEffect(() => {
     //     const getImageList = async () => {
@@ -40,6 +101,20 @@ const Entry = () => {
     //     }
     //     getImageList();
     // }, []);
+
+    // 스크롤 위치 저장
+    useEffect(() => {
+        if (isOpen) {
+            setScrollPosition(window.scrollY);
+            document.body.style.overflow = 'hidden';  // 모달이 열리면 배경 스크롤 방지
+        } else {
+            document.body.style.overflow = 'auto';  // 모달이 닫히면 배경 스크롤 허용
+        }
+
+        return () => {
+            document.body.style.overflow = 'auto';  // 컴포넌트 언마운트 시 배경 스크롤 원상복구
+        };
+    }, [isOpen]);
 
     // 타입별 정렬 기능 
     useEffect(() => {
@@ -62,7 +137,6 @@ const Entry = () => {
     const openModal = (imgSrc, position) => {
         setIsOpen(true);
         setModalImage(imgSrc);
-        setModalPosition(position);
     }
 
     const closeModal = () => {
@@ -76,7 +150,7 @@ const Entry = () => {
             behavior: "smooth",
         });
     }
-    console.log(modalPosition);
+
     return (
         <div className='entry-page'>
             <div className='flex justify-between'>
@@ -122,7 +196,7 @@ const Entry = () => {
 
             </div>
             <div className='top-btn' onClick={MoveTop}></div>
-            {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} position={modalPosition} />}
+            {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
 
         </div>
     );

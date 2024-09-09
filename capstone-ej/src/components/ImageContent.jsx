@@ -22,6 +22,7 @@ const ImageContent = ({ content, idx, openModal }) => {
     const MouseLeave = useCallback(() => {
         setIsMouseOver(false);
     }, []);
+
     // 모달 위치 계산
     const handleClick = (e) => {
         const y = e.clientY;
@@ -48,10 +49,11 @@ const ImageContent = ({ content, idx, openModal }) => {
         return {};
     }, [idx]);
 
-    const moveImage = useMemo(()=>{
+    // 좀 더 알아보고 지우기
+    const moveImage = useMemo(() => {
         return `https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/hover/${content.category}/${content.id}.png`;
-    },[]);
-    
+    }, []);
+
     return (
         <>
             <div

@@ -129,16 +129,20 @@
 
 
 .modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    overflow: hidden;
+  position: absolute; 
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 
-    .modal-content {
-        position: relative;
-      }
+  .modal-content {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+  }
       
       .modal-content img {
         width: 100%;
@@ -146,7 +150,7 @@
       }
 
       .close {
-        position: absolute;
+        position: fixed;
         cursor: pointer;
         bottom: 47px;
         right: 50%;
