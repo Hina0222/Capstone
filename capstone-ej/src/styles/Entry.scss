@@ -67,13 +67,11 @@
     cursor: pointer;
     position: relative;
     justify-content: center;
-
+    
     &:hover{
       background-color: #0800EE;
-      color: #E8E8E8;
       .image-num{
         background-color: #E8E8E8;
-        color: #0800EE;
       }
     }
 
