@@ -77,6 +77,8 @@ const ImageContent = ({ content, idx, openModal }) => {
                             top: `${mousePosition.y}px`,
                             pointerEvents: 'none',
                             zIndex: '2',
+                            width: 'auto',
+                            height: 'auto',
                         }}
                     />
                 )}

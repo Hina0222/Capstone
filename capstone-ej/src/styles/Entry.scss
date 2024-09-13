@@ -1,6 +1,7 @@
 .entry-page{
   margin: 20px 24px;
   overflow-x: hidden;
+  min-height: calc(100vh - 40px);
 
   .home-btn {
     display: inline-block;
@@ -72,6 +73,7 @@
       background-color: #0800EE;
       .image-num{
         background-color: #E8E8E8;
+        color:#0800EE
       }
     }
 
