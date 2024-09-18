@@ -29,9 +29,12 @@ const Modal = ({ closeModal, modalImage, scrollPosition }) => {
                 <div className="absolute left-16 top-11" style={{ width: 'calc(100% - 128px)' }}>
                     {BlockComponent && <BlockComponent className="w-full" />}
                 </div>
-                <img src={modalImage} alt="" />
+                <img src={modalImage[0]} alt="" />
                 <div className="close" onClick={closeModal}>
                     <BackBtn className="w-full" />
+                </div>
+                <div class="floating-image">
+                    <img src={modalImage[1]} alt="" />
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
         background-position: center;
         transition: background-image 0.2s ease;
         background-image: url('../images/AboutImages/Home.svg');
-        
+        z-index: 5;
         &:hover{
             background-image: url('../images/AboutImages/HomeHover.svg');
         }
