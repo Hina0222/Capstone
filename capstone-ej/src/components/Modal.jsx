@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as Back } from '../images/EntryImages/BackBtn.svg';
 import { ReactComponent as Block1 } from '../images/EntryImages/ModalBlock1.svg';
 import { ReactComponent as Block2 } from '../images/EntryImages/ModalBlock2.svg';
 import { ReactComponent as Block3 } from '../images/EntryImages/ModalBlock3.svg';
 import { ReactComponent as Block4 } from '../images/EntryImages/ModalBlock4.svg';
+import { ReactComponent as BackBtn } from '../images/EntryImages/BackBtn.svg';
 
 const Modal = ({ closeModal, modalImage, scrollPosition }) => {
     const [BlockComponent, setBlockComponent] = useState(null);
@@ -26,9 +26,13 @@ const Modal = ({ closeModal, modalImage, scrollPosition }) => {
             style={{ top: scrollPosition }}
         >
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                {BlockComponent && <BlockComponent className="absolute left-6 top-8" />}
-                <Back className="close" onClick={closeModal} />
+                <div className="absolute left-16 top-11" style={{ width: 'calc(100% - 128px)' }}>
+                    {BlockComponent && <BlockComponent className="w-full" />}
+                </div>
                 <img src={modalImage} alt="" />
+                <div className="close" onClick={closeModal}>
+                    <BackBtn className="w-full" />
+                </div>
             </div>
         </div>
     );

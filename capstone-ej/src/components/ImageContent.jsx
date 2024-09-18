@@ -23,10 +23,8 @@ const ImageContent = ({ content, idx, openModal }) => {
         setIsMouseOver(false);
     }, []);
 
-    // 모달 위치 계산
-    const handleClick = (e) => {
-        const y = e.clientY;
-        openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`, { y });
+    const handleClick = () => {
+        openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`);
     };
 
     const backgroundStyle = useMemo(() => {

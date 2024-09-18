@@ -2,10 +2,7 @@ import "../styles/Home.scss";
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
-import Title1 from '../images/HomeImages/Title1.svg';
-import Block from '../images/HomeImages/Block.svg';
-import Block2 from '../images/HomeImages/Block2.svg';
-import { ReactComponent as Arrow } from '../images/HomeImages/Arrow.svg'
+import Title from '../images/HomeImages/Title.svg';
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -18,16 +15,12 @@ const Three = () => {
             <div className='flex justify-between mt-7'>
                 <div className="w-1/4 flex flex-col">
                     <Link className='btn-img about-btn' to="/about"></Link>
-                    {/* <img className="btn-img ml-auto" src={Block} alt="" /> */}
-                    {/* <img className="btn-img -translate-x-12" src={Block} alt="" /> */}
                 </div>
                 <div className="flex flex-col items-center">
-                    <img src={Title1} alt="title" />
+                    <img src={Title} alt="title" />
                 </div>
                 <div className="w-1/4 flex flex-col">
-                    {/* <img className="btn-img ml-auto translate-x-40" src={Block} alt="" /> */}
                     <Link className='btn-img entry-btn' to="/entry"></Link>
-                    {/* <img className="" src={Block2} alt="" /> */}
                 </div>
             </div>
             <div className="h-screen absolute w-full" style={{ top: '17%' }}>
@@ -49,10 +42,9 @@ const Three = () => {
                         maxPolarAngle={Math.PI / 2.2}
                     />
                 </Canvas>
-                <Arrow className="absolute w-full" style={{ top: '40%' }} />
             </div>
 
-            <p className='text-center font-bold text-xl absolute bottom-8 inset-x-0'>
+            <p className='text-center font-bold absolute bottom-8 inset-x-0' style={{ fontSize: '28px' }}>
                 도로변으로 개발이 옮겨가면서 골목이 외면받았을 당시,
                 다시 골목길을 보존하고 골목 문화를 활성화하자는
                 움직임이 나타나면서 골목 상권이 다시 각광받기 시작했다.<br />

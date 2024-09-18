@@ -1,23 +1,19 @@
-<svg width="1680" height="41" viewBox="0 0 1680 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_271_253)">
-<rect x="221" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="699" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="804" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="987" y="0.085022" width="164" height="40" rx="12" fill="#0800EE"/>
-<rect x="1151" y="0.085022" width="95" height="40" rx="12" fill="#0800EE"/>
-<rect x="439" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="1335" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="1574" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect y="0.085022" width="38" height="40" rx="12" fill="#0800EE"/>
-<rect x="326" y="0.085022" width="38" height="40" rx="12" fill="#0800EE"/>
-<rect x="73" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-<rect x="98" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-<rect x="973" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-<rect x="1310" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-</g>
-<defs>
-<clipPath id="clip0_271_253">
-<rect width="1680" height="40" fill="white" transform="translate(0 0.085022)"/>
-</clipPath>
-</defs>
+<svg width="2427" height="52" viewBox="0 0 2427 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="18" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="1077" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="2154" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="2290" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="605" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="1438" width="213.2" height="52" rx="12" fill="#0800EE"/>
+<rect x="1651" width="123.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="741" width="91" height="52" rx="12" fill="#0800EE"/>
+<rect x="344" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect x="1997" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect x="274" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect x="883" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="1233.7" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="1963" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="540" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="1380" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
 </svg>

@@ -1,21 +1,15 @@
-<svg width="1680" height="41" viewBox="0 0 1680 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_271_239)">
-<rect y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="373" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="478" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="1094" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="1333" y="0.085022" width="164" height="40" rx="12" fill="#0800EE"/>
-<rect x="1497" y="0.085022" width="95" height="40" rx="12" fill="#0800EE"/>
-<rect x="710" y="0.085022" width="105" height="40" rx="12" fill="#0800EE"/>
-<rect x="151" y="0.085022" width="38" height="40" rx="12" fill="#0800EE"/>
-<rect x="831" y="0.085022" width="38" height="40" rx="12" fill="#0800EE"/>
-<rect x="295" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-<rect x="949" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-<rect x="979" y="0.085022" width="14" height="40" rx="7" fill="#0800EE"/>
-</g>
-<defs>
-<clipPath id="clip0_271_239">
-<rect width="1680" height="40" fill="white" transform="translate(0 0.085022)"/>
-</clipPath>
-</defs>
+<svg width="2426" height="52" viewBox="0 0 2426 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="484.9" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="621.4" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="1422.2" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="1732.9" width="213.2" height="52" rx="12" fill="#0800EE"/>
+<rect x="2212.63" width="213.2" height="52" rx="12" fill="#0800EE"/>
+<rect x="1946.1" width="123.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="923" width="136.5" height="52" rx="12" fill="#0800EE"/>
+<rect x="196.3" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect x="1080.3" width="49.4" height="52" rx="12" fill="#0800EE"/>
+<rect x="383.5" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="1233.7" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
+<rect x="1272.7" width="18.2" height="52" rx="9.1" fill="#0800EE"/>
 </svg>

@@ -1,12 +1,12 @@
 .entry-page{
-  margin: 20px 24px;
+  margin: 44px 24px;
   overflow-x: hidden;
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 88px);
 
   .home-btn {
-    display: inline-block;
-    width: 72px;
-    height: 40px;
+    position: absolute;
+    width: 94px;
+    height: 53px;
     background-size: cover;
     background-position: center;
     transition: background-image 0.2s ease;
@@ -16,15 +16,16 @@
           background-image: url('../images/AboutImages/HomeHover.svg');
       }
   }
+
   .content-btn {
     border: 1.5px solid #0800EE;
     border-radius: 12px;
-    padding: 7px 19px;
     font-weight: 700;
     color: #0800EE;
-    width: 121px;
-    height: 40px;
+    font-size: 20px;
     transition: 0.2s ease;
+    width: 140px;
+    height: 52px;
 
     &:hover{
       color:#E8E8E8;
@@ -32,36 +33,15 @@
     }
 
   }
+
   .active{
     color:#E8E8E8;
     background-color: #0800EE;
   }
 
-  .show-btn{
-    width: 72px;
-    height: 41px;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.2s ease;
-
-    &:nth-child(1){
-      background-image: url('../images/EntryImages/ImageList.svg');
-      &:hover{
-          background-image: url('../images/EntryImages/ImageListHover.png');
-      }
-  }
-  
-  &:nth-child(2){
-      background-image: url('../images/EntryImages/ContentList.svg');
-      &:hover{
-          background-image: url('../images/EntryImages/ContentListHover.png');
-      }
-  }
-  }
-
   .image-content{
-    width: 370px;
-    height: 245px;
+    width: 20%;
+    height: 300px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
     padding: 20px;
@@ -78,10 +58,10 @@
     }
 
     .image-num{
-      padding: 0.5px 5px;
+      padding: 3px 9px;
       background-color: #0800EE;
       color: #E8E8E8;
-      font-size: 18px;
+      font-size:20px;
       font-weight: 600;
       border-radius: 4px;
       position: absolute;
@@ -107,8 +87,8 @@
   }
 
   .empty-box{
-    width: 185px;
-    height: 245px;
+    width: 10%;
+    height: 300px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
   }
@@ -118,10 +98,10 @@
     background-image: url(../images/EntryImages/TopBtn.svg);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 85px;
-    height: 80px;
-    right: 48px;
-    bottom: 48px;
+    width: 75px;
+    height: 72px;
+    right: 72px;
+    bottom: 61px;
     cursor: pointer;
   }
 }
@@ -129,6 +109,7 @@
 
 
 .modal {
+  width: 100%;
   position: absolute; 
   top: 0;
   left: 0;
@@ -150,11 +131,11 @@
       }
 
       .close {
-        position: fixed;
         cursor: pointer;
-        bottom: 47px;
-        right: 50%;
-        transform: translate(50%);
+        position: fixed;
+        bottom: 51px;
+        left: 64px;
+        width: calc(100% - 128px);
       }
   }
   
