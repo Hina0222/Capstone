@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import ImageContent from '../components/ImageContent.jsx';
 import Modal from '../components/Modal.jsx'
+import ProgressBar from '../components/ProgressBar.jsx';
 
 const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -145,6 +146,8 @@ const Entry = () => {
                 ))}
             </div>
             <div className='top-btn' onClick={MoveTop}></div>
+            <ProgressBar />
+
             {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
 
         </div>
