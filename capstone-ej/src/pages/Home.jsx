@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import Title from '../images/HomeImages/Title.svg';
+import AboutBtn from '../images/HomeImages/AboutBtn.svg';
+import EntryBtn from '../images/HomeImages/EntryBtn.svg';
+import DecibelBtn from '../images/HomeImages/DecibelBtn.svg';
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -12,18 +15,21 @@ function Model(props) {
 const Three = () => {
     return (
         <div className='main-page h-screen relative'>
-            <div className='flex justify-between mt-7'>
-                <div className="w-1/4 flex flex-col">
-                    <Link className='btn-img about-btn' to="/about"></Link>
+            <section className='relative flex justify-center mt-11'>
+                <img src={Title} alt="title" />
+                <div className='absolute right-12 flex flex-col items-end'>
+                    <Link className='home-btn' to="/about" >
+                        <img src={AboutBtn} alt="about" />
+                    </Link>
+                    <Link className='home-btn' to="/entry" >
+                        <img src={EntryBtn} alt="Entry" />
+                    </Link>
+                    <Link className='home-btn' to="/decibel" >
+                        <img src={DecibelBtn} alt="decibel" />
+                    </Link>
                 </div>
-                <div className="flex flex-col items-center">
-                    <img src={Title} alt="title" />
-                </div>
-                <div className="w-1/4 flex flex-col">
-                    <Link className='btn-img entry-btn' to="/entry"></Link>
-                </div>
-            </div>
-            <div className="h-screen absolute w-full" style={{ top: '17%' }}>
+            </section>
+            <section className="h-screen absolute w-full" style={{ top: '17%' }}>
                 <Canvas>
                     <PerspectiveCamera
                         makeDefault
@@ -34,7 +40,7 @@ const Three = () => {
                     <ambientLight intensity={2.0} />
                     <pointLight position={[10, 10, 10]} intensity={2.0} />
 
-                    <Model position={[0, -1, 0]} scale={7.3} />
+                    <Model position={[0, -1, 0]} scale={7.4} />
 
                     <OrbitControls
                         enableZoom={false}
@@ -42,7 +48,7 @@ const Three = () => {
                         maxPolarAngle={Math.PI / 2.2}
                     />
                 </Canvas>
-            </div>
+            </section>
 
             <p className='text-center font-bold absolute bottom-8 inset-x-0' style={{ fontSize: '28px' }}>
                 도로변으로 개발이 옮겨가면서 골목이 외면받았을 당시,

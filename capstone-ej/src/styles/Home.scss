@@ -3,27 +3,24 @@
     background-size: cover;
     overflow: hidden;
 
-    .btn-img{
-        max-width: 162.75px;
-        width: 100%;
-        height: 49px;
-        background-size: cover;
-        transition: background-image 0.2s ease;
-    }
-    .about-btn{
-        margin-left: 52px;
-        background-image: url('../images/HomeImages/AboutBtn.svg');
-        &:hover{
-            background-image: url('../images/HomeImages/AboutBtnHover.svg');
-        }
-    }
-    
-    .entry-btn{
-        margin-left: auto;
-        margin-right: 52px;
-        background-image: url('../images/HomeImages/EntryBtn.svg');
-        &:hover{
-           background-image: url('../images/HomeImages/EntryBtnHover.svg');
+    .home-btn{
+        position: relative;
+        padding: 16px;
+        border-radius: 12px;
+        border: 1.5px solid #0800EE;
+        background: rgba(255, 255, 255, 0.50);
+        margin-bottom: 16px;
+
+        &:hover::after{
+            content: "";
+            position: absolute;
+            background-image: url('../images/HomeImages/Arrow.svg');
+            background-size: cover;
+            width: 35px;
+            height: 28px;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
         }
     }
     
