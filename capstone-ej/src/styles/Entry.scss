@@ -132,40 +132,20 @@
     position: fixed;
     top: 95px;
     left: 64px;
-    animation: float 10s linear infinite;
   }
-
-  @keyframes float {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(calc(95vw - 100%), 0); /* 오른쪽 모서리 */
-    }
-    50% {
-      transform: translate(calc(95vw - 100%), calc(90vh - 100%)); /* 오른쪽 하단 모서리 */
-    }
-    75% {
-      transform: translate(0, calc(90vh - 100%)); /* 왼쪽 하단 모서리 */
-    }
-    100% {
-      transform: translate(0, 0); /* 원래 위치로 돌아옴 */
-    }
   
+  .modal-content img {
+    width: 100%;
+    object-fit: cover; 
   }
-      
-      .modal-content img {
-        width: 100%;
-        object-fit: cover; 
-      }
 
-      .close {
-        cursor: pointer;
-        position: fixed;
-        bottom: 51px;
-        left: 64px;
-        width: calc(100% - 128px);
-      }
+  .close {
+    cursor: pointer;
+    position: fixed;
+    bottom: 51px;
+    left: 64px;
+    width: calc(100% - 128px);
+  }
   }
 
 .progress-bar-container{

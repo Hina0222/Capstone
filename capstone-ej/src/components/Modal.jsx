@@ -7,6 +7,25 @@ import { ReactComponent as BackBtn } from '../images/EntryImages/BackBtn.svg';
 
 const Modal = ({ closeModal, modalImage, scrollPosition }) => {
     const [BlockComponent, setBlockComponent] = useState(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const getRandomPosition = () => {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const randomX = Math.floor(Math.random() * viewportWidth);
+        const randomY = Math.floor(Math.random() * viewportHeight);
+
+        return { x: randomX, y: randomY };
+    };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPosition(getRandomPosition());
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const random = Math.random();
@@ -33,7 +52,10 @@ const Modal = ({ closeModal, modalImage, scrollPosition }) => {
                 <div className="close" onClick={closeModal}>
                     <BackBtn className="w-full" />
                 </div>
-                <div class="floating-image">
+                <div class="floating-image" style={{
+                    transform: `translate(${position.x}px, ${position.y}px)`,
+                    transition: 'transform 3s ease-in-out'
+                }}>
                     <img src={modalImage[1]} alt="" />
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { throttle } from 'lodash';
 import Back1 from '../images/EntryImages/Back1.svg';
 import Back2 from '../images/EntryImages/Back2.svg';
 
@@ -7,21 +8,26 @@ const ImageContent = ({ content, idx, openModal }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
 
-    const MouseMove = useCallback((e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        setMousePosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
-    }, []);
+    const MouseMove = useCallback(
+        throttle((e) => {
+            const element = e.currentTarget;
+            if (!element) return;
 
-    const MouseEnter = useCallback(() => {
+            const rect = element.getBoundingClientRect();
+            setMousePosition({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+            });
+        }, 5), []);
+
+    console.log("sd")
+    const MouseEnter = () => {
         setIsMouseOver(true);
-    }, []);
+    };
 
-    const MouseLeave = useCallback(() => {
+    const MouseLeave = () => {
         setIsMouseOver(false);
-    }, []);
+    };
 
     const handleClick = () => {
         openModal([`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`
@@ -51,7 +57,7 @@ const ImageContent = ({ content, idx, openModal }) => {
     // 좀 더 알아보고 지우기
     const moveImage = useMemo(() => {
         return `https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/hover/${content.category}/${content.id}.png`;
-    }, []);
+    }, [content.category, content.id]);
 
     return (
         <>
