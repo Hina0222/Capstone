@@ -45,7 +45,7 @@ const Modal = ({ closeModal, modalImage, scrollPosition }) => {
             style={{ top: scrollPosition }}
         >
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <div className="absolute left-16 top-11" style={{ width: 'calc(100% - 128px)' }}>
+                <div className="fixed left-16 top-11" style={{ width: 'calc(100% - 128px)' }}>
                     {BlockComponent && <BlockComponent className="w-full" />}
                 </div>
                 <img src={modalImage[0]} alt="" />
