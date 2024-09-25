@@ -5,11 +5,13 @@
 
     .home-btn{
         position: relative;
-        padding: 16px;
-        border-radius: 12px;
-        border: 1.5px solid #0800EE;
-        background: rgba(255, 255, 255, 0.50);
-        margin-bottom: 16px;
+        z-index: 10;
+        img{
+            padding: 16px;
+            border-radius: 12px;
+            border: 1.5px solid #0800EE;
+            background: rgba(255, 255, 255, 0.50);
+        }
 
         &:hover::after{
             content: "";

@@ -17,7 +17,7 @@ const Three = () => {
         <div className='main-page h-screen relative'>
             <section className='relative flex justify-center mt-11'>
                 <img src={Title} alt="title" />
-                <div className='absolute right-12 flex flex-col items-end'>
+                <div className='absolute right-12 flex flex-col items-end gap-y-4'>
                     <Link className='home-btn' to="/about" >
                         <img src={AboutBtn} alt="about" />
                     </Link>
