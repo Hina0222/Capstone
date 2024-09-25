@@ -3,21 +3,6 @@
   overflow-x: hidden;
   min-height: calc(100vh - 88px);
 
-  .home-btn {
-    position: absolute;
-    width: 94px;
-    height: 53px;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.2s ease;
-    background-image: url('../images/AboutImages/Home.svg');
-    z-index: 5;
-
-      &:hover{
-          background-image: url('../images/AboutImages/HomeHover.svg');
-      }
-  }
-
   .content-btn {
     border: 1.5px solid #0800EE;
     border-radius: 12px;

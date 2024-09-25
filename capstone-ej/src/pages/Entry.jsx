@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import "../styles/Entry.scss";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import ImageContent from '../components/ImageContent.jsx';
@@ -74,7 +73,7 @@ const Entry = () => {
                 console.log(err);
             }
         }
-        getImageList();
+        // getImageList();
     }, []);
 
     // 스크롤 위치 저장

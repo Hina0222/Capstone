@@ -1,9 +1,10 @@
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Entry from './pages/Entry';
 import About from './pages/About';
 import Home from './pages/Home';
 import Decibel from './pages/Decibel';
+import "./styles/style.scss";
+
 
 function App() {
   return (

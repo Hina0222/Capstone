@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import "../styles/About.scss";
 import Block3 from '../images/AboutImages/Block3.svg';
 import AboutTitle from '../images/AboutImages/AboutTitle.svg';
 import AboutGif1 from '../images/AboutImages/AboutGif1.gif';
@@ -17,7 +16,7 @@ const About = () => {
     };
 
     return (
-        <div className='main-container min-h-screen flex flex-col items-center'>
+        <div className='about-page min-h-screen flex flex-col items-center'>
             <Link className='home-btn' to="/"></Link>
             <img className='mx-auto mt-7' src={AboutTitle} alt="" />
             <div className='relative mx-6 -mt-3 test'>

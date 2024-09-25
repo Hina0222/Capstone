@@ -1,21 +1,10 @@
-.main-container{
+.about-page{
     background-image: url('../images/AboutImages/BackgroundImg2.jpg');
     background-size: cover;
 
     .home-btn {
-        position: absolute;
         left: 24px;
         top: 20px;
-        width: 94px;
-        height: 53px;
-        background-size: cover;
-        background-position: center;
-        transition: background-image 0.2s ease;
-        background-image: url('../images/AboutImages/Home.svg');
-        z-index: 5;
-        &:hover{
-            background-image: url('../images/AboutImages/HomeHover.svg');
-        }
     }
 
     .main-text{

@@ -1,4 +1,3 @@
-import "../styles/Home.scss";
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
@@ -18,13 +17,13 @@ const Three = () => {
             <section className='relative flex justify-center mt-11'>
                 <img src={Title} alt="title" />
                 <div className='absolute right-12 flex flex-col items-end gap-y-4'>
-                    <Link className='home-btn' to="/about" >
+                    <Link className='page-btn' to="/about" >
                         <img src={AboutBtn} alt="about" />
                     </Link>
-                    <Link className='home-btn' to="/entry" >
+                    <Link className='page-btn' to="/entry" >
                         <img src={EntryBtn} alt="Entry" />
                     </Link>
-                    <Link className='home-btn' to="/decibel" >
+                    <Link className='page-btn' to="/decibel" >
                         <img src={DecibelBtn} alt="decibel" />
                     </Link>
                 </div>

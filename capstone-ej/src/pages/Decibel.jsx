@@ -1,9 +1,9 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Decibel = () => {
     return (
-        <div>
-            dd
+        <div className='decibel-page m-16'>
+            <Link className='home-btn' to="/"></Link>
         </div>
     );
 };
