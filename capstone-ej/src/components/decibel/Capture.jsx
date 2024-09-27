@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
+import TextBox from './TextBox';
 
 const Capture = () => {
     const captureRef = useRef(null);
     const [bgColor, setBgColor] = useState('#ffffff');
-    const [fontSize,setFontSize] =useState(24);
+    const [textBoxes, setTextBoxes] = useState([]);
 
     const ClickCapture = () => {
         const element = captureRef.current;
@@ -17,24 +18,23 @@ const Capture = () => {
         });
     };
 
-    // 디바운스 처리
     const ColorChange = (event) => {
         setBgColor(event.target.value);
     };
 
-    const TextAdd = () => {
-        const newText = document.createElement('p');
-        newText.innerText = "추가된 텍스트";
-        newText.style.fontSize = `${fontSize}px`;
-        captureRef.current.appendChild(newText);
+    const TextBoxAdd = () => {
+        setTextBoxes([...textBoxes, {}]);  
     };
-
+    
     return (
         <>
             <div ref={captureRef} className='capture-container' style={{ backgroundColor: bgColor }}>
+                {textBoxes.map((_,idx) => (
+                    <TextBox key={idx}/>
+                ))}
             </div>
             <input type="color" onChange={ColorChange} value={bgColor} />
-            <button onClick={TextAdd}>텍스트 추가하기</button>
+            <button onClick={TextBoxAdd}>텍스트 추가하기</button>
             <button onClick={ClickCapture} style={{ background: 'white' }}>저장★</button>
         </>
     );

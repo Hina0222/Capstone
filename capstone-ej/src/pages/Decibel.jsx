@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Capture from '../components/Capture';
+import Capture from '../components/decibel/Capture';
 
 const Decibel = () => {
     return (
