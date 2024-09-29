@@ -73,7 +73,7 @@ const Entry = () => {
                 console.log(err);
             }
         }
-        // getImageList();
+        getImageList();
     }, []);
 
     // 스크롤 위치 저장
