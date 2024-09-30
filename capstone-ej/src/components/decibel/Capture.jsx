@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas';
 import TextBox from './TextBox';
 
 const Capture = () => {
+    console.log("캡쳐");
     const captureRef = useRef(null);
     const [bgColor, setBgColor] = useState('#ffffff');
     const [textBoxes, setTextBoxes] = useState([]);
@@ -23,19 +24,19 @@ const Capture = () => {
     };
 
     const TextBoxAdd = () => {
-        setTextBoxes([...textBoxes, {}]);  
+        setTextBoxes([...textBoxes, {}]);
     };
-    
+
     return (
         <>
             <div ref={captureRef} className='capture-container' style={{ backgroundColor: bgColor }}>
-                {textBoxes.map((_,idx) => (
-                    <TextBox key={idx}/>
+                {textBoxes.map((_, idx) => (
+                    <TextBox key={idx} />
                 ))}
             </div>
             <input type="color" onChange={ColorChange} value={bgColor} />
             <button onClick={TextBoxAdd}>텍스트 추가하기</button>
-            <button onClick={ClickCapture} style={{ background: 'white' }}>저장★</button>
+            <button onClick={ClickCapture} style={{ background: 'white' }}>저장</button>
         </>
     );
 };

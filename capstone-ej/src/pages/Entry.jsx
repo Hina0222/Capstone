@@ -69,6 +69,7 @@ const Entry = () => {
             try {
                 const res = await axios.get('http://52.79.32.80:8080/data');
                 setImageList(res.data);
+                console.log("호출")
             } catch (err) {
                 console.log(err);
             }
