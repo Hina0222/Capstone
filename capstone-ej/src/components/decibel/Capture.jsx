@@ -1,42 +1,58 @@
-import React, { useRef, useState } from 'react';
-import html2canvas from 'html2canvas';
+import React, { useState } from 'react';
 import TextBox from './TextBox';
+import { ReactComponent as Rect1 } from '../../images/DecibelImages/RectBtn/Rect1.svg';
+import { ReactComponent as Rect2 } from '../../images/DecibelImages/RectBtn/Rect2.svg';
+import { ReactComponent as Rect3 } from '../../images/DecibelImages/RectBtn/Rect3.svg';
+import { ReactComponent as Rect4 } from '../../images/DecibelImages/RectBtn/Rect4.svg';
 
-const Capture = () => {
+const Capture = ({ captureRef, textBoxes, setTextBoxes }) => {
     console.log("캡쳐");
-    const captureRef = useRef(null);
     const [bgColor, setBgColor] = useState('#ffffff');
-    const [textBoxes, setTextBoxes] = useState([]);
+    const [captureResize, setCaptureResize] = useState({ width: 800, height: 1140 });
+    const [activeButton, setActiveButton] = useState(0);
 
-    const ClickCapture = () => {
-        const element = captureRef.current;
-        html2canvas(element).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = 'capture.png';
-            link.click();
-        });
-    };
+    const Reset = () => {
+        setBgColor('#ffffff');
+        setTextBoxes([]);
+        setActiveButton(0);
+    }
 
-    const ColorChange = (event) => {
-        setBgColor(event.target.value);
-    };
-
-    const TextBoxAdd = () => {
-        setTextBoxes([...textBoxes, {}]);
-    };
+    const rects = [
+        { component: <Rect1 />, size: { width: 800, height: 1140 } },
+        { component: <Rect2 />, size: { width: 1040, height: 670 } },
+        { component: <Rect3 />, size: { width: 460, height: 1080 } },
+        { component: <Rect4 />, size: { width: 1080, height: 400 } },
+    ];
 
     return (
         <>
-            <div ref={captureRef} className='capture-container' style={{ backgroundColor: bgColor }}>
+            <div ref={captureRef} className='relative'
+                style={{ backgroundColor: bgColor, width: `${captureResize.width}px`, height: `${captureResize.height}px` }}
+            >
                 {textBoxes.map((_, idx) => (
                     <TextBox key={idx} />
                 ))}
             </div>
-            <input type="color" onChange={ColorChange} value={bgColor} />
-            <button onClick={TextBoxAdd}>텍스트 추가하기</button>
-            <button onClick={ClickCapture} style={{ background: 'white' }}>저장</button>
+            <div>
+                <div>
+                    <input type="color" onChange={(e) => { setBgColor(e.target.value) }} value={bgColor} />
+                    <button onClick={Reset}>리셋</button>
+                </div>
+                <div className='rect-btns'>
+                    {rects.map((rect, idx) => (
+                        <button
+                            key={idx}
+                            className={activeButton === idx ? 'active' : ''}
+                            onClick={() => {
+                                setCaptureResize(rect.size);
+                                setActiveButton(idx);
+                            }}
+                        >
+                            {rect.component}
+                        </button>
+                    ))}
+                </div>
+            </div>
         </>
     );
 };
