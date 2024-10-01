@@ -4,6 +4,7 @@ import { ReactComponent as Rect1 } from '../../images/DecibelImages/RectBtn/Rect
 import { ReactComponent as Rect2 } from '../../images/DecibelImages/RectBtn/Rect2.svg';
 import { ReactComponent as Rect3 } from '../../images/DecibelImages/RectBtn/Rect3.svg';
 import { ReactComponent as Rect4 } from '../../images/DecibelImages/RectBtn/Rect4.svg';
+import { ReactComponent as ResetBtn } from '../../images/DecibelImages/RectBtn/Reset.svg';
 
 const Capture = ({ captureRef, textBoxes, setTextBoxes }) => {
     console.log("캡쳐");
@@ -26,19 +27,23 @@ const Capture = ({ captureRef, textBoxes, setTextBoxes }) => {
 
     return (
         <>
-            <div ref={captureRef} className='relative'
-                style={{ backgroundColor: bgColor, width: `${captureResize.width}px`, height: `${captureResize.height}px` }}
-            >
-                {textBoxes.map((_, idx) => (
-                    <TextBox key={idx} />
-                ))}
+            <div className='capture-content'>
+                <div ref={captureRef} className='relative'
+                    style={{ backgroundColor: bgColor, width: `${captureResize.width}px`, height: `${captureResize.height}px` }}
+                >
+                    {textBoxes.map((_, idx) => (
+                        <TextBox key={idx} />
+                    ))}
+                </div>
             </div>
-            <div>
+            <div className='capture-option'>
                 <div>
                     <input type="color" onChange={(e) => { setBgColor(e.target.value) }} value={bgColor} />
-                    <button onClick={Reset}>리셋</button>
+                    <button onClick={Reset}>
+                        <ResetBtn />
+                    </button>
                 </div>
-                <div className='rect-btns'>
+                <div>
                     {rects.map((rect, idx) => (
                         <button
                             key={idx}

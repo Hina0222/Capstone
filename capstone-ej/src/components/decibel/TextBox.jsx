@@ -4,7 +4,7 @@ import Draggable from 'react-draggable';
 const TextBox = () => {
     console.log("TextBox");
     const nodeRef = useRef(null);
-    const [fontSize, setFontSize] = useState(24);
+    const [fontSize, setFontSize] = useState(48);
     const [textColor, setTextColor] = useState('#000000');
     const [textVisible, setTextVisible] = useState(true);
     const [optionVisible, setOptionVisible] = useState(false);

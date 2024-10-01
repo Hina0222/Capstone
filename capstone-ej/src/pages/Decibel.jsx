@@ -18,6 +18,7 @@ const Decibel = () => {
     const [bgImage, setBgImage] = useState(Bg.Bg1);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [textBoxes, setTextBoxes] = useState([]);
+    const [decibelLevel, setDecibelLevel] = useState(0);
 
     const ClickCapture = () => {
         const element = captureRef.current;
@@ -37,7 +38,7 @@ const Decibel = () => {
     return (
         <div className='decibel-page' style={{ backgroundImage: `url(${bgImage})` }}>
             <Link className='home-btn' to="/"></Link>
-            <section className='flex flex-col mt-36'>
+            <section className='flex flex-col mt-36' style={{ width: '4.93%' }}>
                 {buttons.map((bgBtn, idx) => (
                     <button
                         className='bg-btn'
@@ -57,26 +58,42 @@ const Decibel = () => {
             <section className='capture-container'>
                 <Capture captureRef={captureRef} textBoxes={textBoxes} setTextBoxes={setTextBoxes} />
             </section>
-            <section>
+            <section className='option-container'>
                 <div>
                     <div className='option-box'>
-                        <h3>DECIBEL STEP 데시벨 단계</h3>
-                        <div>
-
+                        <h3 className='mb-14'><b>DECIBEL STEP</b>데시벨 단계</h3>
+                        <div className='flex'>
+                            {Array.from({ length: 16 }, (_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => { setDecibelLevel(index) }}
+                                    style={{
+                                        width: '40px',
+                                        height: '76px',
+                                        marginRight: '5px',
+                                        backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8',
+                                    }}
+                                >
+                                </button>
+                            ))}
+                        </div>
+                        <div className='flex justify-between mt-5' style={{ fontSize: '20px', fontWeight: 700 }}>
+                            <span>낮음</span>
+                            <span>높음</span>
                         </div>
                     </div>
                     <div className='option-box'>
-                        <h3>A CAUSE OF ANGER 분도 원인</h3>
-                        <button onClick={TextBoxAdd}>텍스트 추가하기</button>
+                        <h3 className='mb-14'><b>A CAUSE OF ANGER</b>분도 원인</h3>
+                        <button className='text-add' onClick={TextBoxAdd}>+ 텍스트 추가하기</button>
                     </div>
                     <div className='option-box'>
-                        <h3>SPEECH 말투</h3>
+                        <h3 className='mb-14'><b>SPEECH</b>말투</h3>
                     </div>
                     <div className='option-box'>
-                        <h3>ILLUST 일러스트</h3>
+                        <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>
                     </div>
                 </div>
-                <button onClick={ClickCapture} style={{ background: 'white' }}>저장</button>
+                <button className='save-btn' onClick={ClickCapture} >SAVE</button>
             </section>
         </div>
     );

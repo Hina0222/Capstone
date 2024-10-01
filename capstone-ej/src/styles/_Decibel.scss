@@ -3,12 +3,10 @@
     background-size: cover;
     background-position: center;
     padding: 64px;
-    overflow: hidden;
     display: flex;
     
     .bg-btn{
         position: relative;
-        width: 120px;
         margin-bottom: 28px;
     }
     
@@ -27,37 +25,74 @@
 
     .capture-container{
         display: flex;
-        margin:86px 64px 86px 204px;
-    }
+        margin: 0 64px;
+        width: 50.7%;
 
-    .rect-btns{
-        button{
-            margin-bottom: 28px;
-            width: 88px;
-            height: 88px;
-            padding: 18px;
-            border-radius: 16px;
-            background-color: #E8E8E8;
-            display: flex;
+        .capture-content {
             align-items: center;
+            display: flex;
+            width: 92.87%;
             justify-content: center;
-            color: #0800EE;
-
-            &:hover{
-                background-color: #0800EE;
-                color: #E8E8E8;
-            }
         }
         
-        .active{
-            color: #E8E8E8;
-            background-color: #0800EE;
+        .capture-option{
+            width: 7.13%;
+
+            button {
+                width: 100%;
+                height: 88px;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #E8E8E8;
+                color: #0800EE;
+    
+                &:hover{
+                    background-color: #0800EE;
+                    color: #E8E8E8;
+                }
+            }
+                    
+            .active{
+                color: #E8E8E8;
+                background-color: #0800EE;
+            }
         }
     }
-    .option-box{
-        background-color: #E8E8E8;
-        border-radius: 24px;
-        padding: 56px;
-        color:#0800EE;
+
+    .option-container{
+        width: 39.14%;
+        .option-box{
+            background-color: #E8E8E8;
+            border-radius: 24px;
+            padding: 42px 56px 56px 56px;
+            color:#0800EE;
+            font-size: 24px;
+            width: 100%;
+            margin-bottom: 64px;
+    
+            b {
+                font-size: 32px;
+                margin-right: 24px;
+            }
+    
+            .text-add {
+                border-radius: 12px;
+                border: 1.5px solid #0800EE;
+                font-weight: 700;
+                padding: 15px 40px;
+            }
+        }
+
+        .save-btn{
+            width: 100%;
+            padding: 18px;
+            background-color: #0800EE;
+            color:#E8E8E8;
+            border-radius: 24px;
+            font-size: 42px;
+        }
     }
+    
 }
