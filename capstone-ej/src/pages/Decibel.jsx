@@ -4,9 +4,14 @@ import Bg from "../images/DecibelImages/Background";
 import Capture from '../components/decibel/Capture';
 import html2canvas from 'html2canvas';
 import { ReactComponent as Check } from '../images/DecibelImages/BgBtn/Check.svg';
+import { ReactComponent as Test1 } from '../images/DecibelImages/Test1.svg';
+import { ReactComponent as Test2 } from '../images/DecibelImages/Test2.svg';
+import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
+import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
+import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
 
 const Decibel = () => {
-    console.log("Decibelㅠㅔ이지")
+    console.log("Decibel페이지")
     const captureRef = useRef(null);
     const buttons = [
         Bg.BgBtn1,
@@ -17,8 +22,9 @@ const Decibel = () => {
     ];
     const [bgImage, setBgImage] = useState(Bg.Bg1);
     const [activeBgImage, setActiveBgImage] = useState(0);
-    const [textBoxes, setTextBoxes] = useState([]);
     const [decibelLevel, setDecibelLevel] = useState(0);
+    const [textBoxes, setTextBoxes] = useState([]);
+    const [imgBoxes, setImgBoxes] = useState([]);
 
     const ClickCapture = () => {
         const element = captureRef.current;
@@ -33,6 +39,10 @@ const Decibel = () => {
 
     const TextBoxAdd = () => {
         setTextBoxes([...textBoxes, {}]);
+    };
+
+    const ImageBoxAdd = (component) => {
+        setImgBoxes([...imgBoxes, component]);
     };
 
     return (
@@ -56,19 +66,24 @@ const Decibel = () => {
                 ))}
             </section>
             <section className='capture-container'>
-                <Capture captureRef={captureRef} textBoxes={textBoxes} setTextBoxes={setTextBoxes} />
+                <Capture captureRef={captureRef}
+                    textBoxes={textBoxes}
+                    setTextBoxes={setTextBoxes}
+                    imgBoxes={imgBoxes}
+                    setImgBoxes={setImgBoxes}
+                />
             </section>
             <section className='option-container'>
-                <div>
+                <div className='option-boxes'>
                     <div className='option-box'>
-                        <h3 className='mb-14'><b>DECIBEL STEP</b>데시벨 단계</h3>
+                        <h3 className='mb-7'><b>DECIBEL STEP</b>데시벨 단계</h3>
                         <div className='flex justify-between'>
                             {Array.from({ length: 16 }, (_, index) => (
                                 <button
                                     key={index}
                                     className='decibel-btn'
                                     onClick={() => { setDecibelLevel(index) }}
-                                    style={{backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8'}}
+                                    style={{ backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8' }}
                                 >
                                 </button>
                             ))}
@@ -84,6 +99,13 @@ const Decibel = () => {
                     </div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>SPEECH</b>말투</h3>
+                        <div className='flex flex-wrap gap-14'>
+                            <Test1 onClick={() => ImageBoxAdd(<Test1 />)} />
+                            <Test2 onClick={() => ImageBoxAdd(<Test2 />)} />
+                            <Test3 onClick={() => ImageBoxAdd(<Test3 />)} />
+                            <Test4 onClick={() => ImageBoxAdd(<Test4 />)} />
+                            <Test5 onClick={() => ImageBoxAdd(<Test5 />)} />
+                        </div>
                     </div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>

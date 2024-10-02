@@ -4,12 +4,12 @@ import { ReactComponent as Trash } from '../../images/DecibelImages/Trash.svg';
 import { ReactComponent as Minus } from '../../images/DecibelImages/Minus.svg';
 import { ReactComponent as Plus } from '../../images/DecibelImages/Plus.svg';
 
-const TextBox = () => {
-    console.log("TextBox");
+const ImageBox = ({ Image }) => {
+    console.log("ImageBox");
     const nodeRef = useRef(null);
-    const [fontSize, setFontSize] = useState(48);
-    const [textColor, setTextColor] = useState('#000000');
-    const [boxVisible, setboxVisible] = useState(true);
+    const [imageSize, setImageSize] = useState(200);
+    const [imageColor, setimageColor] = useState('#000000');
+    const [boxVisible, setBoxVisible] = useState(true);
     const [optionVisible, setOptionVisible] = useState(false);
 
     useEffect(() => {
@@ -32,30 +32,28 @@ const TextBox = () => {
                     nodeRef={nodeRef}
                     bounds="parent"
                 >
-                    <div className='text-box' ref={nodeRef}
+                    <div className='text-box flex' ref={nodeRef}
                         onClick={() => setOptionVisible(true)}
                     >
-                        <span style={{ fontSize: `${fontSize}px`, color: `${textColor}` }}
-                            contentEditable
-                            suppressContentEditableWarning={true}>
-                            텍스트를 입력해주세요.
-                        </span>
+                        <div style={{ color: `${imageColor}`, width: `${imageSize}px` }}>
+                            {Image}
+                        </div>
                         {optionVisible && (
-                            <div className='flex mt-3'>
+                            <div className='ml-5'>
                                 <div className='color-btn'>
                                     <input
                                         type="color"
-                                        value={textColor}
-                                        onChange={(e) => { setTextColor(e.target.value); }}
+                                        value={imageColor}
+                                        onChange={(e) => { setimageColor(e.target.value); }}
                                     />
                                 </div>
-                                <button onClick={() => setFontSize(prev => prev + 1)}>
+                                <button onClick={() => setImageSize(prev => prev + 3)}>
                                     <Plus />
                                 </button>
-                                <button onClick={() => setFontSize(prev => prev - 1)}>
+                                <button onClick={() => setImageSize(prev => prev - 3)}>
                                     <Minus />
                                 </button>
-                                <button onClick={() => setboxVisible(false)}>
+                                <button onClick={() => setBoxVisible(false)}>
                                     <Trash />
                                 </button>
                             </div>
@@ -66,5 +64,4 @@ const TextBox = () => {
         </>
     );
 };
-
-export default TextBox;
+export default ImageBox;
