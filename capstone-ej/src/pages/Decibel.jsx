@@ -62,17 +62,13 @@ const Decibel = () => {
                 <div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>DECIBEL STEP</b>데시벨 단계</h3>
-                        <div className='flex'>
+                        <div className='flex justify-between'>
                             {Array.from({ length: 16 }, (_, index) => (
                                 <button
                                     key={index}
+                                    className='decibel-btn'
                                     onClick={() => { setDecibelLevel(index) }}
-                                    style={{
-                                        width: '40px',
-                                        height: '76px',
-                                        marginRight: '5px',
-                                        backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8',
-                                    }}
+                                    style={{backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8'}}
                                 >
                                 </button>
                             ))}
