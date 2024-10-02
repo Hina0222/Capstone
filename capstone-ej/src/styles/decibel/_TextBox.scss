@@ -10,6 +10,7 @@
         height:48px;
         border-radius: 8px;
         margin-right: 6px;
+        margin-bottom: 6px;
     }
     
     input[type="color"] {
@@ -21,6 +22,7 @@
     
     button {
         margin-right: 6px;
+        margin-bottom: 6px;
         font-size: 20px;
         height: 48px;
         width: 48px;
@@ -40,5 +42,10 @@
     svg {
         height: 100%;
         width: 100%;
+    }
+
+    .trash-img{
+        height: auto;
+        width: auto;
     }
 }

@@ -23,7 +23,6 @@ const Decibel = () => {
     const [bgImage, setBgImage] = useState(Bg.Bg1);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [decibelLevel, setDecibelLevel] = useState(0);
-    const [textBoxes, setTextBoxes] = useState([]);
     const [imgBoxes, setImgBoxes] = useState([]);
 
     const ClickCapture = () => {
@@ -37,17 +36,15 @@ const Decibel = () => {
         });
     };
 
-    const TextBoxAdd = () => {
-        setTextBoxes([...textBoxes, {}]);
-    };
-
     const ImageBoxAdd = (component) => {
         setImgBoxes([...imgBoxes, component]);
     };
 
     return (
         <div className='decibel-page' style={{ backgroundImage: `url(${bgImage})` }}>
-            <Link className='home-btn' to="/"></Link>
+            <Link className='home-btn'
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: '18px' }}
+                to="/"></Link>
             <section className='flex flex-col mt-36' style={{ width: '4.93%' }}>
                 {buttons.map((bgBtn, idx) => (
                     <button
@@ -67,8 +64,6 @@ const Decibel = () => {
             </section>
             <section className='capture-container'>
                 <Capture captureRef={captureRef}
-                    textBoxes={textBoxes}
-                    setTextBoxes={setTextBoxes}
                     imgBoxes={imgBoxes}
                     setImgBoxes={setImgBoxes}
                 />
@@ -92,10 +87,6 @@ const Decibel = () => {
                             <span>낮음</span>
                             <span>높음</span>
                         </div>
-                    </div>
-                    <div className='option-box'>
-                        <h3 className='mb-14'><b>A CAUSE OF ANGER</b>분도 원인</h3>
-                        <button className='text-add' onClick={TextBoxAdd}>+ 텍스트 추가하기</button>
                     </div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>SPEECH</b>말투</h3>

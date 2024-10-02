@@ -47,14 +47,14 @@ const ImageBox = ({ Image }) => {
                                         onChange={(e) => { setimageColor(e.target.value); }}
                                     />
                                 </div>
-                                <button onClick={() => setImageSize(prev => prev + 3)}>
+                                <button onClick={() => setImageSize(prev => prev + 10)}>
                                     <Plus />
                                 </button>
-                                <button onClick={() => setImageSize(prev => prev - 3)}>
+                                <button onClick={() => setImageSize(prev => prev - 10)}>
                                     <Minus />
                                 </button>
                                 <button onClick={() => setBoxVisible(false)}>
-                                    <Trash />
+                                    <Trash className='trash-img' />
                                 </button>
                             </div>
                         )}

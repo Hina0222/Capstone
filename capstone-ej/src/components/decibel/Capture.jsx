@@ -5,13 +5,15 @@ import { ReactComponent as Rect1 } from '../../images/DecibelImages/RectBtn/Rect
 import { ReactComponent as Rect2 } from '../../images/DecibelImages/RectBtn/Rect2.svg';
 import { ReactComponent as Rect3 } from '../../images/DecibelImages/RectBtn/Rect3.svg';
 import { ReactComponent as Rect4 } from '../../images/DecibelImages/RectBtn/Rect4.svg';
+import { ReactComponent as T } from '../../images/DecibelImages/RectBtn/T.svg';
 import { ReactComponent as ResetBtn } from '../../images/DecibelImages/RectBtn/Reset.svg';
 
-const Capture = ({ captureRef, textBoxes, setTextBoxes, imgBoxes, setImgBoxes }) => {
+const Capture = ({ captureRef, imgBoxes, setImgBoxes }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
     const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89 });
     const [activeButton, setActiveButton] = useState(0);
+    const [textBoxes, setTextBoxes] = useState([]);
 
     const Reset = () => {
         setBgColor('#ffffff');
@@ -20,6 +22,10 @@ const Capture = ({ captureRef, textBoxes, setTextBoxes, imgBoxes, setImgBoxes })
         setCaptureResize({ width: 69.93, height: 86.89 });
         setActiveButton(0);
     }
+
+    const TextBoxAdd = () => {
+        setTextBoxes([...textBoxes, {}]);
+    };
 
     const rects = [
         { component: <Rect1 />, size: { width: 69.93, height: 86.89 } },
@@ -64,6 +70,11 @@ const Capture = ({ captureRef, textBoxes, setTextBoxes, imgBoxes, setImgBoxes })
                             {rect.component}
                         </button>
                     ))}
+                </div>
+                <div>
+                    <button onClick={TextBoxAdd} style={{ marginTop: '100px' }}>
+                        <T />
+                    </button>
                 </div>
             </div>
         </>

@@ -56,7 +56,7 @@ const TextBox = () => {
                                     <Minus />
                                 </button>
                                 <button onClick={() => setboxVisible(false)}>
-                                    <Trash />
+                                    <Trash className='trash-img' />
                                 </button>
                             </div>
                         )}
