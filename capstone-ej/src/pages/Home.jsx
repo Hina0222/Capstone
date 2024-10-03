@@ -28,18 +28,18 @@ const Three = () => {
                     </Link>
                 </div>
             </section>
-            <section className="h-screen absolute w-full" style={{ top: '17%' }}>
+            <section className="h-screen absolute w-full" style={{ top: '16%' }}>
                 <Canvas>
                     <PerspectiveCamera
                         makeDefault
-                        position={[0, 0, 12]}  // 카메라 위치 조정
-                        fov={25}                // 시야각 조정 (기본값은 50 정도입니다)
+                        position={[0, 0, 12]}
+                        fov={25}
                     />
 
                     <ambientLight intensity={2.0} />
                     <pointLight position={[10, 10, 10]} intensity={2.0} />
 
-                    <Model position={[0, -1, 0]} scale={7.4} />
+                    <Model position={[0, -1.7, 0]} scale={9} />
 
                     <OrbitControls
                         enableZoom={false}
