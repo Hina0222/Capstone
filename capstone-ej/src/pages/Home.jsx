@@ -29,7 +29,7 @@ const Three = () => {
                     </Link>
                 </div>
             </section>
-            <section className="h-screen relative w-full three-section" style={{ top: '-10%' }}>
+            <section className="h-screen relative w-full three-section" style={{ top: '-8%' }}>
                 <Spin />
                 <Spin />
                 <Canvas>
@@ -46,8 +46,8 @@ const Three = () => {
 
                     <OrbitControls
                         enableZoom={false}
-                        minPolarAngle={Math.PI / 2.2}
-                        maxPolarAngle={Math.PI / 2.2}
+                        minPolarAngle={Math.PI / 2.15}
+                        maxPolarAngle={Math.PI / 2.15}
                     />
                 </Canvas>
             </section>
