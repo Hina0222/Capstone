@@ -5,6 +5,7 @@ import Title from '../images/HomeImages/Title.svg';
 import AboutBtn from '../images/HomeImages/AboutBtn.svg';
 import EntryBtn from '../images/HomeImages/EntryBtn.svg';
 import DecibelBtn from '../images/HomeImages/DecibelBtn.svg';
+import { ReactComponent as Spin } from '../images/HomeImages/Spin.svg';
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -13,7 +14,7 @@ function Model(props) {
 
 const Three = () => {
     return (
-        <div className='main-page h-screen relative'>
+        <div className='main-page h-screen'>
             <section className='relative flex justify-center mt-11'>
                 <img src={Title} alt="title" />
                 <div className='absolute right-12 flex flex-col items-end gap-y-4'>
@@ -28,18 +29,20 @@ const Three = () => {
                     </Link>
                 </div>
             </section>
-            <section className="h-screen absolute w-full" style={{ top: '16%' }}>
+            <section className="h-screen relative w-full three-section" style={{ top: '-10%' }}>
+                <Spin />
+                <Spin />
                 <Canvas>
                     <PerspectiveCamera
                         makeDefault
-                        position={[0, 0, 12]}
+                        position={[0, 0, 13]}
                         fov={25}
                     />
 
                     <ambientLight intensity={2.0} />
                     <pointLight position={[10, 10, 10]} intensity={2.0} />
 
-                    <Model position={[0, -1.7, 0]} scale={9} />
+                    <Model position={[0, -1.7, 0]} scale={9.2} />
 
                     <OrbitControls
                         enableZoom={false}

@@ -26,4 +26,17 @@
         }
     }
     
+    .three-section{
+        svg:first-of-type{
+            position: absolute;
+            top:45%;
+            left:4%;
+        }
+        svg:last-of-type{
+            position: absolute;
+            top:45%;
+            right:4%;
+        }
+    }
+    
 }
