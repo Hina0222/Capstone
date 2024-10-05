@@ -4,7 +4,7 @@
 }
 
 .poster1-page{
-    height: 100%;
+    min-height: 100vh;
     background-image: url(../images/poster1/Background.png);
     background-size: cover;
     display: flex;
