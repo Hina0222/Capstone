@@ -48,6 +48,8 @@ const Three = () => {
                         enableZoom={false}
                         minPolarAngle={Math.PI / 2.15}
                         maxPolarAngle={Math.PI / 2.15}
+                        autoRotate={true}
+                        autoRotateSpeed={0.5}
                     />
                 </Canvas>
             </section>
