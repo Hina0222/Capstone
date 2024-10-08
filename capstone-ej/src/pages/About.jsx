@@ -18,7 +18,7 @@ const About = () => {
     return (
         <div className='about-page min-h-screen flex flex-col items-center'>
             <Link className='home-btn' to="/"></Link>
-            <img className='mx-auto mt-7' src={AboutTitle} alt="" />
+            <img className='mx-auto mt-11' src={AboutTitle} alt="" />
             <div className='relative mx-6 -mt-3 test'>
                 <img src={Block3} alt="" />
                 {showGif && <img className='absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2' src={AboutGif2} alt="" />}
