@@ -10,6 +10,13 @@ import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
 import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
 import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
 
+const captureRectMap = {
+    1: { width: 460, height: 655 },
+    2: { width: 520, height: 335 },
+    3: { width: 320, height: 750 },
+    4: { width: 540, height: 200 }
+}
+
 const Decibel = () => {
     console.log("Decibel페이지")
     const captureRef = useRef(null);
@@ -24,15 +31,41 @@ const Decibel = () => {
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [decibelLevel, setDecibelLevel] = useState(0);
     const [imgBoxes, setImgBoxes] = useState([]);
+    const [activeButton, setActiveButton] = useState(0);
 
     const ClickCapture = () => {
         const element = captureRef.current;
         html2canvas(element).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = 'capture.png';
-            link.click();
+
+            const backgroundImage = new Image();
+            backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
+
+            backgroundImage.onload = () => {
+                const finalCanvas = document.createElement('canvas');
+                finalCanvas.width = backgroundImage.width;
+                finalCanvas.height = backgroundImage.height;
+
+                const ctx = finalCanvas.getContext('2d');
+                ctx.drawImage(backgroundImage, 0, 0);
+
+                const capturedImage = new Image();
+                capturedImage.src = imgData;
+
+                capturedImage.onload = () => {
+
+                    const x = (finalCanvas.width - captureRectMap[activeButton + 1].width) / 2;
+                    const y = (finalCanvas.height - capturedImage.height) / 2;
+
+                    ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
+                    const finalImgData = finalCanvas.toDataURL('image/png');
+
+                    const link = document.createElement('a');
+                    link.href = finalImgData;
+                    link.download = 'final-image.png';
+                    link.click();
+                };
+            };
         });
     };
 
@@ -42,6 +75,7 @@ const Decibel = () => {
 
     return (
         <div className='decibel-page' style={{ backgroundImage: `url(${bgImage})` }}>
+
             <Link className='home-btn'
                 style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: '18px' }}
                 to="/"></Link>
@@ -66,6 +100,8 @@ const Decibel = () => {
                 <Capture captureRef={captureRef}
                     imgBoxes={imgBoxes}
                     setImgBoxes={setImgBoxes}
+                    activeButton={activeButton}
+                    setActiveButton={setActiveButton}
                 />
             </section>
             <section className='option-container'>
@@ -102,7 +138,7 @@ const Decibel = () => {
                         <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>
                     </div>
                 </div>
-                <button className='save-btn' onClick={ClickCapture} >SAVE</button>
+                <button onClick={ClickCapture} className='save-btn' >SAVE</button>
             </section>
         </div>
     );

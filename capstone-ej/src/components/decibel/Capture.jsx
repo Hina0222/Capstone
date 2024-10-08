@@ -12,11 +12,11 @@ import Tape2 from '../../images/DecibelImages/RectBtn/Tape2.png';
 import Tape3 from '../../images/DecibelImages/RectBtn/Tape3.png';
 import Tape4 from '../../images/DecibelImages/RectBtn/Tape4.png';
 
-const Capture = ({ captureRef, imgBoxes, setImgBoxes }) => {
+const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
     const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89, image: Tape1 });
-    const [activeButton, setActiveButton] = useState(0);
+
     const [textBoxes, setTextBoxes] = useState([]);
 
     const Reset = () => {
