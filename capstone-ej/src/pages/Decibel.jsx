@@ -37,38 +37,38 @@ const Decibel = () => {
         const element = captureRef.current;
         html2canvas(element).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-
+    
             const backgroundImage = new Image();
             backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
-
+    
             backgroundImage.onload = () => {
                 const finalCanvas = document.createElement('canvas');
                 finalCanvas.width = backgroundImage.width;
                 finalCanvas.height = backgroundImage.height;
-
+    
                 const ctx = finalCanvas.getContext('2d');
                 ctx.drawImage(backgroundImage, 0, 0);
-
+    
                 const capturedImage = new Image();
                 capturedImage.src = imgData;
-
+    
                 capturedImage.onload = () => {
-
                     const x = (finalCanvas.width - captureRectMap[activeButton + 1].width) / 2;
                     const y = (finalCanvas.height - capturedImage.height) / 2;
-
+    
                     ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
-                    const finalImgData = finalCanvas.toDataURL('image/png');
-
-                    const link = document.createElement('a');
-                    link.href = finalImgData;
-                    link.download = 'final-image.png';
-                    link.click();
+    
+                    // canvas를 Blob 형식으로 변환하여 FormData로 추가
+                    finalCanvas.toBlob(blob => {
+                        const formData = new FormData();
+                        formData.append('image', blob, 'final-image.png'); 
+                        
+                    }, 'image/png');
                 };
             };
         });
     };
-
+    
     const ImageBoxAdd = (component) => {
         setImgBoxes([...imgBoxes, component]);
     };
