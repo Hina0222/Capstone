@@ -7,15 +7,11 @@ import { ReactComponent as Rect3 } from '../../images/DecibelImages/RectBtn/Rect
 import { ReactComponent as Rect4 } from '../../images/DecibelImages/RectBtn/Rect4.svg';
 import { ReactComponent as T } from '../../images/DecibelImages/RectBtn/T.svg';
 import { ReactComponent as ResetBtn } from '../../images/DecibelImages/RectBtn/Reset.svg';
-import Tape1 from '../../images/DecibelImages/RectBtn/Tape1.png';
-import Tape2 from '../../images/DecibelImages/RectBtn/Tape2.png';
-import Tape3 from '../../images/DecibelImages/RectBtn/Tape3.png';
-import Tape4 from '../../images/DecibelImages/RectBtn/Tape4.png';
 
 const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
-    const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89, image: Tape1 });
+    const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89 });
 
     const [textBoxes, setTextBoxes] = useState([]);
 
@@ -23,7 +19,7 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
         setBgColor('#ffffff');
         setTextBoxes([]);
         setImgBoxes([]);
-        setCaptureResize({ width: 69.93, height: 86.89, image: Tape1 });
+        setCaptureResize({ width: 69.93, height: 86.89});
         setActiveButton(0);
     }
 
@@ -32,10 +28,10 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
     };
 
     const rects = [
-        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 69.93, height: 86.89, image: Tape1 } },
-        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 90.85, height: 51.06, image: Tape2 } },
-        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 40.18, height: 82.31, image: Tape3 } },
-        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 30.48, image: Tape4 } },
+        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 69.93, height: 86.89 } },
+        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 90.85, height: 51.06 } },
+        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 40.18, height: 82.31 } },
+        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 30.48 } },
     ];
 
     return (
@@ -50,7 +46,6 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                     {imgBoxes.map((Image, idx) => (
                         <ImageBox key={idx} Image={Image} />
                     ))}
-                    <img className='tape-img' src={captureResize.image} alt="" />
                 </div>
             </div>
             <div className='capture-option'>

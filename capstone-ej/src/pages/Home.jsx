@@ -5,7 +5,6 @@ import Title from '../images/HomeImages/Title.svg';
 import AboutBtn from '../images/HomeImages/AboutBtn.svg';
 import EntryBtn from '../images/HomeImages/EntryBtn.svg';
 import DecibelBtn from '../images/HomeImages/DecibelBtn.svg';
-import { ReactComponent as Spin } from '../images/HomeImages/Spin.svg';
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -29,9 +28,7 @@ const Three = () => {
                     </Link>
                 </div>
             </section>
-            <section className="h-screen relative w-full three-section" style={{ top: '-8%' }}>
-                <Spin />
-                <Spin />
+            <section className="h-screen relative w-full" style={{ top: '-8%' }}>
                 <Canvas>
                     <PerspectiveCamera
                         makeDefault
