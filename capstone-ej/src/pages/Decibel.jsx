@@ -9,6 +9,7 @@ import { ReactComponent as Test2 } from '../images/DecibelImages/Test2.svg';
 import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
 import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
 import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
+import axios from 'axios';
 
 const captureRectMap = {
     1: { width: 460, height: 655 },
@@ -59,15 +60,38 @@ const Decibel = () => {
                     ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
     
                     // canvas를 Blob 형식으로 변환하여 FormData로 추가
-                    finalCanvas.toBlob(blob => {
-                        const formData = new FormData();
-                        formData.append('image', blob, 'final-image.png'); 
+                    // finalCanvas.toBlob(blob => {
+                    //     const formData = new FormData();
+                    //     formData.append('image', blob, 'final-image.png'); 
                         
-                    }, 'image/png');
+                    //     console.log(formData)
+
+                    // }, 'image/png');
+
+                    const pngDataUrl = finalCanvas.toDataURL('image/png');
+
+                    const formData = new FormData();
+                    formData.append('image', pngDataUrl)
+
+                    PostImageSend(formData);
                 };
             };
         });
     };
+
+    // 이미지 전송 테스트
+    const PostImageSend = async (formData) => {
+        try {
+            const res = await axios.post('',formData,{
+                headers:{
+                    "Content-Type": "multipart/form-data",
+                }
+            });
+            console.log(res.data)
+        } catch (err) {
+            console.log(err);
+        }
+    }
     
     const ImageBoxAdd = (component) => {
         setImgBoxes([...imgBoxes, component]);
@@ -136,6 +160,11 @@ const Decibel = () => {
                     </div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>
+                    </div>
+                    <div>
+                        <input type="file" onChange={(e) => {
+                            console.log(e.target.files)
+                        }} />
                     </div>
                 </div>
                 <button onClick={ClickCapture} className='save-btn' >SAVE</button>
