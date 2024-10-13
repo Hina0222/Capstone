@@ -12,10 +12,10 @@ import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
 import axios from 'axios';
 
 const captureRectMap = {
-    1: { width: 460, height: 655 },
-    2: { width: 520, height: 335 },
-    3: { width: 320, height: 750 },
-    4: { width: 540, height: 200 }
+    1: { width: 460, height: 655, y: 1160 },
+    2: { width: 520, height: 335, y: 970 },
+    3: { width: 320, height: 750, y: 1190 },
+    4: { width: 540, height: 200, y: 880 }
 }
 
 const Decibel = () => {
@@ -44,6 +44,7 @@ const Decibel = () => {
 
             backgroundImage.onload = () => {
                 const finalCanvas = document.createElement('canvas');
+                // 배경 이미지의 크기
                 finalCanvas.width = backgroundImage.width;
                 finalCanvas.height = backgroundImage.height;
 
@@ -55,10 +56,17 @@ const Decibel = () => {
 
                 capturedImage.onload = () => {
                     const x = (finalCanvas.width - captureRectMap[activeButton + 1].width) / 2;
-                    const y = (finalCanvas.height - capturedImage.height) / 2;
-
+                    const y = (finalCanvas.height - captureRectMap[activeButton + 1].y);
+                    // 그려질 이미지, x좌표, y좌표, 이미지의 너비, 높이
                     ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
 
+                    const finalImgData = finalCanvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.href = finalImgData;
+                    link.download = 'final-image.png';
+                    link.click();
+
+                    // 테스트 방식 1
                     // canvas를 Blob 형식으로 변환하여 FormData로 추가
                     // finalCanvas.toBlob(blob => {
                     //     const formData = new FormData();
@@ -68,12 +76,15 @@ const Decibel = () => {
 
                     // }, 'image/png');
 
-                    const pngDataUrl = finalCanvas.toDataURL('image/png');
 
-                    const formData = new FormData();
-                    formData.append('image', pngDataUrl)
+                    // 테스트 방식 2
 
-                    PostImageSend(formData);
+                    // const pngDataUrl = finalCanvas.toDataURL('image/png');
+
+                    // const formData = new FormData();
+                    // formData.append('image', pngDataUrl)
+
+                    // PostImageSend(formData);
                 };
             };
         });
