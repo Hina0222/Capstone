@@ -36,7 +36,7 @@ const Three = () => {
                         fov={25}
                     />
 
-                    <ambientLight intensity={2.0} />
+                    <ambientLight intensity={2.4} />
                     <pointLight position={[10, 10, 10]} intensity={2.0} />
 
                     <Model position={[0, -1.7, 0]} scale={9.2} />

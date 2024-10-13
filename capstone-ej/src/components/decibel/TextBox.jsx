@@ -35,9 +35,10 @@ const TextBox = () => {
                     <div className='text-box' ref={nodeRef}
                         onClick={() => setOptionVisible(true)}
                     >
-                        <span style={{ fontSize: `${fontSize}px`, color: `${textColor}` }}
+                        <span style={{ outline: 'none', fontSize: `${fontSize}px`, color: `${textColor}`, border: optionVisible ? '1px solid #0800EE' : 'none' }}
                             contentEditable
-                            suppressContentEditableWarning={true}>
+                            suppressContentEditableWarning={true}
+                            spellCheck={false}>
                             텍스트를 입력해주세요.
                         </span>
                         {optionVisible && (

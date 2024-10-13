@@ -38,32 +38,32 @@ const Decibel = () => {
         const element = captureRef.current;
         html2canvas(element).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-    
+
             const backgroundImage = new Image();
             backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
-    
+
             backgroundImage.onload = () => {
                 const finalCanvas = document.createElement('canvas');
                 finalCanvas.width = backgroundImage.width;
                 finalCanvas.height = backgroundImage.height;
-    
+
                 const ctx = finalCanvas.getContext('2d');
                 ctx.drawImage(backgroundImage, 0, 0);
-    
+
                 const capturedImage = new Image();
                 capturedImage.src = imgData;
-    
+
                 capturedImage.onload = () => {
                     const x = (finalCanvas.width - captureRectMap[activeButton + 1].width) / 2;
                     const y = (finalCanvas.height - capturedImage.height) / 2;
-    
+
                     ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
-    
+
                     // canvas를 Blob 형식으로 변환하여 FormData로 추가
                     // finalCanvas.toBlob(blob => {
                     //     const formData = new FormData();
                     //     formData.append('image', blob, 'final-image.png'); 
-                        
+
                     //     console.log(formData)
 
                     // }, 'image/png');
@@ -82,8 +82,8 @@ const Decibel = () => {
     // 이미지 전송 테스트
     const PostImageSend = async (formData) => {
         try {
-            const res = await axios.post('',formData,{
-                headers:{
+            const res = await axios.post('', formData, {
+                headers: {
                     "Content-Type": "multipart/form-data",
                 }
             });
@@ -92,7 +92,7 @@ const Decibel = () => {
             console.log(err);
         }
     }
-    
+
     const ImageBoxAdd = (component) => {
         setImgBoxes([...imgBoxes, component]);
     };
@@ -160,11 +160,6 @@ const Decibel = () => {
                     </div>
                     <div className='option-box'>
                         <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>
-                    </div>
-                    <div>
-                        <input type="file" onChange={(e) => {
-                            console.log(e.target.files)
-                        }} />
                     </div>
                 </div>
                 <button onClick={ClickCapture} className='save-btn' >SAVE</button>

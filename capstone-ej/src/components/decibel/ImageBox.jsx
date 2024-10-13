@@ -35,7 +35,7 @@ const ImageBox = ({ Image }) => {
                     <div className='text-box flex' ref={nodeRef}
                         onClick={() => setOptionVisible(true)}
                     >
-                        <div style={{ color: `${imageColor}`, width: `${imageSize}px` }}>
+                        <div style={{ color: `${imageColor}`, width: `${imageSize}px`, border: optionVisible ? '1px solid #0800EE' : 'none' }}>
                             {Image}
                         </div>
                         {optionVisible && (
@@ -59,7 +59,7 @@ const ImageBox = ({ Image }) => {
                             </div>
                         )}
                     </div>
-                </Draggable>
+                </Draggable >
             )}
         </>
     );
