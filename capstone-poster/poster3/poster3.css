@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "Noto-Serif";
+    src: url('./NotoSerifKR-VariableFont_wght.ttf')format('truetype');
+}
+
+body{
+    margin: 0;
+    font-family: "Noto-Serif",sans-serif;
+}
+p{
+    margin: 0;
+}
+
+#root {
+    box-sizing: border-box;
+    min-height: 100vh;
+    background-image: url('./Bg1.png');
+    background-size: 100% 100%;
+}
+
+.poster3-container {
+    min-height: calc(100vh - 3.5rem);
+    border: 1.75rem solid black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0.625rem;
+}
+
+.header-container {
+    color: #0DFF00;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.header-title {
+    font-size: clamp(1rem, 14vh, 134px);
+    z-index: 1;
+    position: relative;
+}
+.header-title::before{
+    z-index: -1;
+    content: attr(data-content);
+    position: absolute;
+    left: 0;  
+    -webkit-text-stroke:10px red;
+    text-shadow: 0px 10px 8px rgba(0, 0, 0, 0.70);
+    width: 100%;
+}
+
+.header-subtitle {
+    font-size: clamp(1rem, 6vh, 56px);
+    z-index: 1;
+    position: relative;
+}
+
+.header-subtitle::before{
+    z-index: -1;
+    content: attr(data-content);
+    position: absolute;
+    left: 0;  
+    -webkit-text-stroke:8px red;
+    text-shadow: 0px 10px 8px rgba(0, 0, 0, 0.70);
+    width: 100%;
+}
+
+.main-container{
+    font-size: clamp(1rem, 4.7vh, 44px);
+    width: 75%;
+    margin: 10vh auto;
+}
+
+.font-red {
+    color: red;
+    font-weight: 700;
+    text-shadow: 0px 4.08px 2.04px rgba(0, 0, 0, 0.70);
+}
+
+.font-white-red {
+    color: white;
+    text-shadow: 
+        -1px 0px red,
+        0px 1px red,    
+        1px 0px red,    
+        0px -1px red,   
+        0px 4.08px 2.04px rgba(0, 0, 0, 0.70);
+}
+
+@media (max-width: 1279px) {
+    #root{
+        background-image: url('./Bg2.png');
+    }
+    .header-container{
+        display: block;
+    }
+    .header-title {
+        font-size: clamp(1rem, 12vh, 107px);
+    }
+    .main-container{
+        font-size: clamp(1rem, 3.6vh, 38px);
+        width: 90%;
+        margin: 0 auto 10vh;
+    }
+}
+
+@media (max-width: 619px) {
+    #root{
+        background-image: url('./Bg3.png');
+    }
+    .poster3-container{
+        text-align: start;
+    }
+    .header-subtitle {
+        font-size:  56px;
+    }
+    .header-title {
+        font-size:  69px;
+    }
+    .main-container{
+        font-size: 34px;
+        width: 100%;
+        margin: 10vh auto ;
+    }
+}
