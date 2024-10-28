@@ -1,0 +1,20 @@
+.popup-page {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.88);
+    height: 100vh;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 96px;
+
+    .popup-img{
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .popup-close{
+        margin: 0 auto;
+    }
+}

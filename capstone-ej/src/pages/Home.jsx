@@ -5,6 +5,8 @@ import Title from '../images/HomeImages/Title.svg';
 import AboutBtn from '../images/HomeImages/AboutBtn.svg';
 import EntryBtn from '../images/HomeImages/EntryBtn.svg';
 import DecibelBtn from '../images/HomeImages/DecibelBtn.svg';
+import { useState } from 'react';
+import Popup from '../components/Popup';
 
 function Model(props) {
     const { scene } = useGLTF('scene.gltf');
@@ -12,8 +14,11 @@ function Model(props) {
 }
 
 const Three = () => {
+    const [popupOpen, setPopupOpen] = useState(true);
+
     return (
         <div className='main-page h-screen'>
+            {popupOpen && <Popup setPopupOpen={setPopupOpen} />}
             <section className='relative flex justify-center mt-11'>
                 <img src={Title} alt="title" />
                 <div className='absolute right-12 flex flex-col items-end gap-y-4'>
