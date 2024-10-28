@@ -105,7 +105,8 @@ const Decibel = () => {
     }
 
     const ImageBoxAdd = (component) => {
-        setImgBoxes([...imgBoxes, component]);
+        const newImageBox = { id: Date.now(), component };
+        setImgBoxes([...imgBoxes, newImageBox]);
     };
 
     return (

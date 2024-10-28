@@ -7,24 +7,28 @@ import { ReactComponent as Rect3 } from '../../images/DecibelImages/RectBtn/Rect
 import { ReactComponent as Rect4 } from '../../images/DecibelImages/RectBtn/Rect4.svg';
 import { ReactComponent as T } from '../../images/DecibelImages/RectBtn/T.svg';
 import { ReactComponent as ResetBtn } from '../../images/DecibelImages/RectBtn/Reset.svg';
+import { ReactComponent as Trash } from '../../images/DecibelImages/Trash.svg';
+
 
 const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
     const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89 });
-
     const [textBoxes, setTextBoxes] = useState([]);
+    const [trashVisible, setTrashVisible] = useState(false);
+    const [trashId, setTrashId] = useState('');
 
     const Reset = () => {
         setBgColor('#ffffff');
         setTextBoxes([]);
         setImgBoxes([]);
-        setCaptureResize({ width: 69.93, height: 86.89});
+        setCaptureResize({ width: 69.93, height: 86.89 });
         setActiveButton(0);
     }
 
     const TextBoxAdd = () => {
-        setTextBoxes([...textBoxes, {}]);
+        const newTextBox = { id: Date.now() };
+        setTextBoxes([...textBoxes, newTextBox]);
     };
 
     const rects = [
@@ -34,17 +38,22 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
         { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 30.48 } },
     ];
 
+    const onDelete = (id) => {
+        setTextBoxes(textBoxes.filter((box) => box.id !== id));
+        setImgBoxes(imgBoxes.filter((box) => box.id !== id));
+    }
+
     return (
         <>
             <div className='capture-content'>
                 <div ref={captureRef} className='relative'
                     style={{ backgroundColor: bgColor, width: `${captureResize.width}%`, height: `${captureResize.height}%` }}
                 >
-                    {textBoxes.map((_, idx) => (
-                        <TextBox key={idx} />
+                    {textBoxes.map((text) => (
+                        <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} />
                     ))}
-                    {imgBoxes.map((Image, idx) => (
-                        <ImageBox key={idx} Image={Image} />
+                    {imgBoxes.map((Image) => (
+                        <ImageBox key={Image.id} id={Image.id} Image={Image.component} setTrashVisible={setTrashVisible} setTrashId={setTrashId} />
                     ))}
                 </div>
             </div>
@@ -71,10 +80,20 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                         </button>
                     ))}
                 </div>
-                <div>
-                    <button onClick={TextBoxAdd} style={{ marginTop: '100px' }}>
+                <div style={{ marginTop: '100px' }}>
+                    <button onClick={TextBoxAdd} >
                         <T style={{ width: '43.18%' }} />
                     </button>
+                </div>
+                <div style={{ marginTop: '100px' }}>
+                    {trashVisible &&
+                        <button onMouseDown={() => {
+                            onDelete(trashId)
+                            setTrashVisible(false)
+                        }}>
+                            <Trash style={{ width: '68%' }} />
+                        </button>
+                    }
                 </div>
             </div>
         </>
