@@ -31,7 +31,6 @@ p{
 .header-container {
     color: #0DFF00;
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -54,6 +53,8 @@ p{
     font-size: clamp(1rem, 6vh, 56px);
     z-index: 1;
     position: relative;
+    white-space: nowrap;
+    top:50px
 }
 
 .header-subtitle::before{
@@ -97,6 +98,10 @@ p{
     }
     .header-title {
         font-size: clamp(1rem, 12vh, 107px);
+    }
+    .header-subtitle{
+        white-space: normal;
+        top:auto;
     }
     .main-container{
         font-size: clamp(1rem, 3.6vh, 38px);
