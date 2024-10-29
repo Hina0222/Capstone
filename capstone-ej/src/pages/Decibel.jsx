@@ -1,26 +1,20 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Bg from "../images/DecibelImages/Background";
 import Capture from '../components/decibel/Capture';
-import html2canvas from 'html2canvas';
 import { ReactComponent as Check } from '../images/DecibelImages/BgBtn/Check.svg';
 import { ReactComponent as Test1 } from '../images/DecibelImages/Test1.svg';
 import { ReactComponent as Test2 } from '../images/DecibelImages/Test2.svg';
 import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
 import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
 import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
-import axios from 'axios';
+import html2canvas from 'html2canvas';
 
-const captureRectMap = {
-    1: { width: 460, height: 655, y: 1160 },
-    2: { width: 520, height: 335, y: 970 },
-    3: { width: 320, height: 750, y: 1190 },
-    4: { width: 540, height: 200, y: 880 }
-}
 
 const Decibel = () => {
     console.log("Decibel페이지")
     const captureRef = useRef(null);
+    const navigate = useNavigate();
     const buttons = [
         Bg.BgBtn1,
         Bg.BgBtn2,
@@ -34,75 +28,12 @@ const Decibel = () => {
     const [imgBoxes, setImgBoxes] = useState([]);
     const [activeButton, setActiveButton] = useState(0);
 
-    const ClickCapture = () => {
-        const element = captureRef.current;
-        html2canvas(element).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
+    const SaveClick = async () => {
+        const canvas = await html2canvas(captureRef.current);
+        const imgData = canvas.toDataURL('image/png');
 
-            const backgroundImage = new Image();
-            backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
-
-            backgroundImage.onload = () => {
-                const finalCanvas = document.createElement('canvas');
-                // 배경 이미지의 크기
-                finalCanvas.width = backgroundImage.width;
-                finalCanvas.height = backgroundImage.height;
-
-                const ctx = finalCanvas.getContext('2d');
-                ctx.drawImage(backgroundImage, 0, 0);
-
-                const capturedImage = new Image();
-                capturedImage.src = imgData;
-
-                capturedImage.onload = () => {
-                    const x = (finalCanvas.width - captureRectMap[activeButton + 1].width) / 2;
-                    const y = (finalCanvas.height - captureRectMap[activeButton + 1].y);
-                    // 그려질 이미지, x좌표, y좌표, 이미지의 너비, 높이
-                    ctx.drawImage(capturedImage, x, y, captureRectMap[activeButton + 1].width, captureRectMap[activeButton + 1].height);
-
-                    const finalImgData = finalCanvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.href = finalImgData;
-                    link.download = 'final-image.png';
-                    link.click();
-
-                    // 테스트 방식 1
-                    // canvas를 Blob 형식으로 변환하여 FormData로 추가
-                    // finalCanvas.toBlob(blob => {
-                    //     const formData = new FormData();
-                    //     formData.append('image', blob, 'final-image.png'); 
-
-                    //     console.log(formData)
-
-                    // }, 'image/png');
-
-
-                    // 테스트 방식 2
-
-                    // const pngDataUrl = finalCanvas.toDataURL('image/png');
-
-                    // const formData = new FormData();
-                    // formData.append('image', pngDataUrl)
-
-                    // PostImageSend(formData);
-                };
-            };
-        });
+        navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
     };
-
-    // 이미지 전송 테스트
-    const PostImageSend = async (formData) => {
-        try {
-            const res = await axios.post('', formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                }
-            });
-            console.log(res.data)
-        } catch (err) {
-            console.log(err);
-        }
-    }
 
     const ImageBoxAdd = (component) => {
         const newImageBox = { id: Date.now(), component };
@@ -174,7 +105,7 @@ const Decibel = () => {
                         <h3 className='mb-14'><b>ILLUST</b>일러스트</h3>
                     </div>
                 </div>
-                <button onClick={ClickCapture} className='save-btn' >SAVE</button>
+                <button onClick={SaveClick} className='save-btn'>SAVE</button>
             </section>
         </div>
     );
