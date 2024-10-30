@@ -31,6 +31,15 @@ const Decibel = () => {
     const SaveClick = async () => {
         const canvas = await html2canvas(captureRef.current);
         const imgData = canvas.toDataURL('image/png');
+        // 로컬스토리지에 저장
+        const existingImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
+        const newCaptureData = {
+            image: imgData,
+            rect: activeButton,
+        };
+        existingImages.push(newCaptureData);
+
+        localStorage.setItem('capturedImages', JSON.stringify(existingImages));
 
         navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
     };
