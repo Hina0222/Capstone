@@ -94,11 +94,11 @@ const Decibel = () => {
                     <div className='option-box'>
                         <h3 className='mb-14'><b>SPEECH</b>말투</h3>
                         <div className='flex flex-wrap gap-14'>
-                            <Test1 onClick={() => ImageBoxAdd(<Test1 />)} />
-                            <Test2 onClick={() => ImageBoxAdd(<Test2 />)} />
-                            <Test3 onClick={() => ImageBoxAdd(<Test3 />)} />
-                            <Test4 onClick={() => ImageBoxAdd(<Test4 />)} />
-                            <Test5 onClick={() => ImageBoxAdd(<Test5 />)} />
+                            <Test1 onClick={() => ImageBoxAdd(Test1)} />
+                            <Test2 onClick={() => ImageBoxAdd(Test2)} />
+                            <Test3 onClick={() => ImageBoxAdd(Test3)} />
+                            <Test4 onClick={() => ImageBoxAdd(Test4)} />
+                            <Test5 onClick={() => ImageBoxAdd(Test5)} />
                         </div>
                     </div>
                     <div className='option-box'>

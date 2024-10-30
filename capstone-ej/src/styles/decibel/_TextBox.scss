@@ -5,8 +5,18 @@
     span{
         font-weight: bold;
     }
-    svg {
+    .img-svg {
         height: 100%;
         width: 100%;
+    }
+
+    .drag-icon{
+        position: absolute;
+        padding: 6px;
+        border:1px solid #0800EE;
+        border-radius: 8px;
+        right: -25px;
+        bottom: -25px;
+        background-color: white;
     }
 }
