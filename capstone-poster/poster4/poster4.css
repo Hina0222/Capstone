@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "Noto-Serif";
+    src: url('./NotoSerifKR-VariableFont_wght.ttf')format('truetype');
+}
+
+body{
+    margin: 0;
+    font-family: "Noto-Serif",sans-serif;
+    background-color: #D9D9D9;
+}
+p{
+    margin: 0;
+}
+
+.poster4-footer{
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 30px 40px;
+}
+
+#root {
+    box-sizing: border-box;
+    min-height: 100vh;
+    background-image: url('./Bg1.jpg');
+    background-size: 100% 100%;
+}
+
+
+@media (max-width: 1279px) {
+    #root{
+        background-image: url('./Bg2.jpg');
+    }
+
+    .poster4-footer{
+        justify-content: start;
+    }
+    .poster4-footer-center{
+        display: none;
+    }
+
+}
+
+@media (max-width: 619px) {
+    #root{
+        background-image: none;
+    }
+    .poster4-footer{
+        justify-content: end;
+    }
+
+}
