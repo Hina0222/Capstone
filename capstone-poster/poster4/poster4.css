@@ -8,15 +8,8 @@ body{
     font-family: "Noto-Serif",sans-serif;
     background-color: #D9D9D9;
 }
-p{
+p, h1{
     margin: 0;
-}
-
-.poster4-footer{
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 40px 30px 40px;
 }
 
 #root {
@@ -26,16 +19,103 @@ p{
     background-size: 100% 100%;
 }
 
+.poster4-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.poster4-main{
+    display: flex;
+}
+
+.poster4-main-left {
+    box-sizing: border-box;
+    height: 75vh;
+    padding: 42px;
+    width: 70%;
+    background-image: url('./BgEffect.png');
+    background-position: bottom;
+    background-size:100%;
+    background-color: #0F9968;
+    background-repeat: no-repeat;
+}
+
+.main-h1-1{
+    font-size: clamp(1rem, 9vh, 110px);
+    font-weight: 700;
+    line-height: 112.115%;
+}
+.main-h1-2{
+    display: none;
+    font-weight: 700;
+    line-height: 112.115%;
+}
+
+.poster4-main-right{
+    width: 30%;
+    height: 100%;
+}
+
+.poster4-main-yellow{
+    box-sizing: border-box;
+    font-size: clamp(1rem, 7vh, 76px);
+    background-color: #E7E514;
+    font-weight: 700;    
+    padding: 36px;
+}
+
+.poster4-main-p{
+    padding: 36px;
+    font-weight: 700;
+    font-size: clamp(10px, 2vh, 18px);
+}
+.main-sub-1{
+    display: none;
+}
+.main-sub-2{
+    display: none;
+}
+
+.main-1280{
+    display: none;
+}
+
+.poster4-footer{
+    font-size: clamp(1rem, 2vh, 24px);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 30px 40px;
+}
+.poster4-footer-center{
+    margin:0 10px;
+}
 
 @media (max-width: 1279px) {
     #root{
         background-image: url('./Bg2.jpg');
     }
+    .main-h1-1{
+        display: none;
+    }
+    .main-h1-2{
+        display: block;
+        font-size: clamp(1rem, 6vh, 80px);
+    }
+    .main-sub-1{
+        display: block;
+        font-size:clamp(1rem, 4vh, 52px);
+        font-weight: 700;
+    }
+    .poster4-main-yellow{
+        display: none;
+    }
 
     .poster4-footer{
         justify-content: start;
     }
-    .poster4-footer-center{
+    .poster4-footer-right{
         display: none;
     }
 
@@ -44,6 +124,32 @@ p{
 @media (max-width: 619px) {
     #root{
         background-image: none;
+    }
+    .poster4-main{
+        display: block;
+    }
+    .poster4-main-left{
+        width: 100%;
+        height: auto;
+    }
+    .poster4-main-right{
+        width: 100%;
+    }
+    .main-sub-1{
+        display: none;
+    }
+    .poster4-main-p{
+        padding: 20px 20px 0 20px;
+    }
+    .main-sub-2{
+        display: block;
+        font-weight: 700;
+        padding: 20px;
+        font-size: 35px;
+    }
+    
+    .main-1280{
+        display: none;
     }
     .poster4-footer{
         justify-content: end;
