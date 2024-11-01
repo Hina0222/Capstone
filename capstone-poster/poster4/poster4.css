@@ -39,6 +39,8 @@ p, h1{
     background-size:100%;
     background-color: #0F9968;
     background-repeat: no-repeat;
+    box-shadow: 3px 1px 4px 0px rgba(0, 0, 0, 0.70);
+    z-index: 10;
 }
 
 .main-h1-1{
@@ -63,6 +65,7 @@ p, h1{
     background-color: #E7E514;
     font-weight: 700;    
     padding: 36px;
+    box-shadow: 3px 1px 4px 0px rgba(0, 0, 0, 0.70);
 }
 
 .poster4-main-p{
@@ -123,7 +126,7 @@ p, h1{
 
 @media (max-width: 619px) {
     #root{
-        background-image: none;
+        background-image: url('./Bg3.jpg');
     }
     .poster4-main{
         display: block;
@@ -131,15 +134,22 @@ p, h1{
     .poster4-main-left{
         width: 100%;
         height: auto;
+        padding: 22px;
+        padding-bottom: 15vh;
     }
     .poster4-main-right{
-        width: 100%;
+        margin-left: auto;
+        width: 80%;
     }
     .main-sub-1{
         display: none;
     }
     .poster4-main-p{
         padding: 20px 20px 0 20px;
+    }
+    .main-h1-2{
+        font-size: 62px;
+        text-align: right;
     }
     .main-sub-2{
         display: block;
@@ -153,6 +163,7 @@ p, h1{
     }
     .poster4-footer{
         justify-content: end;
+        padding: 30px 40px 30px 40px;
     }
 
 }
