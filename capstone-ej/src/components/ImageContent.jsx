@@ -68,7 +68,6 @@ const ImageContent = ({ content, idx, openModal }) => {
                 onMouseEnter={MouseEnter}
                 onMouseLeave={MouseLeave}
             >
-                <div className="image-num">{String(content.id).padStart(3, '0')}</div>
                 {!isMouseOver ? <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/deactive/${content.category}/${content.id}.svg`} alt="" /> :
                     <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/active/${content.category}/${content.id}.svg`} alt="" />}
                 {isMouseOver && (

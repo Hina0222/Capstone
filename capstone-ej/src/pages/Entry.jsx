@@ -125,10 +125,21 @@ const Entry = () => {
 
     return (
         <div className='entry-page'>
-            <Link className='home-btn' to="/" onClick={() => { sortContent("") }}>
-                <Home />
-            </Link>
-            <div className='flex justify-center text-center relative'>
+            <div className='home-top'>
+                <Link className='home-btn' to="/" onClick={() => { sortContent("") }} style={{ position: 'static' }}>
+                    <Home />
+                </Link>
+                <div className='home-top-center'>
+                    어쩌구 저쩌구
+                </div>
+                <div className='home-top-right'>
+                    <div>
+                        어쩌구 저쩌구
+                    </div>
+                    <input type="range" className='w-2/3' />
+                </div>
+            </div>
+            <div className='flex justify-center text-center relative mt-10'>
                 <div className='relative w-1/2'>
                     <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }} >담배꽁초</button>
                     <button className={`content-btn ${sortContentBtn === "쓰레기" ? "active" : ""}`} onClick={() => { sortContent("쓰레기") }}>쓰레기</button>
@@ -143,7 +154,7 @@ const Entry = () => {
                 </div>
             </div>
 
-            <div className='flex mt-9 flex-wrap'>
+            <div className='flex flex-wrap mt-11'>
                 {filterList?.map((content, idx) => (
                     <ImageContent key={content.id} content={content} idx={idx} openModal={openModal} />
                 ))}

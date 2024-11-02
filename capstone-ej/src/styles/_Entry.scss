@@ -1,11 +1,37 @@
 .entry-page{
-  margin: 44px 24px;
+  margin: 44px 80px;
   overflow-x: hidden;
   min-height: calc(100vh - 88px);
   
+  .home-top{
+    display: flex;
+    gap:24px;
+    font-weight: 700;
+    font-size: 20px;
+
+    .home-top-center{
+      border-radius: 8px;
+      background-color: #0800EE;
+      padding: 11px 20px;
+      color: white;
+      width: 68%;
+    }
+
+    .home-top-right{
+      display: flex;
+      color:#0800EE;
+      border-radius: 8px;
+      border: 1.5px solid #0800EE;
+      padding: 10px 20px;
+      width: 28%;
+      gap:20px;
+    }
+
+  }
+  
   .content-btn {
     border: 1.5px solid #0800EE;
-    border-radius: 12px;
+    border-radius: 8px;
     font-weight: 700;
     color: #0800EE;
     font-size: 20px;
@@ -27,8 +53,8 @@
 
   .image-content{
     width: 20%;
-    max-height: 300px;
-    height: 21vh;
+    max-height: 250px;
+    height: 17.36vh;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
     padding: 20px;
@@ -38,22 +64,6 @@
     
     &:hover{
       background-color: #0800EE;
-      .image-num{
-        background-color: #E8E8E8;
-        color:#0800EE
-      }
-    }
-
-    .image-num{
-      padding: 3px 9px;
-      background-color: #0800EE;
-      color: #E8E8E8;
-      font-size:20px;
-      font-weight: 600;
-      border-radius: 4px;
-      position: absolute;
-      left: 20px;
-      top: 20px;
     }
 
     img {
@@ -61,6 +71,7 @@
       width: 70%;
     }
   }
+
   .list-content{
     box-sizing: border-box;
     border-radius: 12px;
@@ -75,8 +86,8 @@
 
   .empty-box{
     width: 10%;
-    height: 21vh;
-    max-height: 300px;
+    height: 17.36vh;
+    max-height: 250px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
   }
@@ -88,8 +99,8 @@
     background-repeat: no-repeat;
     width: 75px;
     height: 72px;
-    right: 72px;
-    bottom: 61px;
+    right: 105px;
+    bottom: 60px;
     cursor: pointer;
   }
 }
