@@ -13,7 +13,7 @@ import { ReactComponent as Trash } from '../../images/DecibelImages/Trash.svg';
 const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
-    const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 86.89 });
+    const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 94.05 });
     const [textBoxes, setTextBoxes] = useState([]);
     const [trashVisible, setTrashVisible] = useState(false);
     const [trashId, setTrashId] = useState('');
@@ -32,10 +32,10 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
     };
 
     const rects = [
-        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 69.93, height: 86.89 } },
-        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 90.85, height: 51.06 } },
-        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 40.18, height: 82.31 } },
-        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 30.48 } },
+        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 69.93, height: 94.05 } },
+        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 90.85, height: 55.28 } },
+        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 40.18, height: 89.10 } },
+        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 33 } },
     ];
 
     const onDelete = (id) => {

@@ -67,7 +67,6 @@ const Entry = () => {
     const [scrollPosition, setScrollPosition] = useState(null);
     const [rangeValue, setRangeValue] = useState(1);
     const [tapeImg, setTapeImg] = useState(Tape.s1);
-
     useEffect(() => {
         const tapeKey = `s${Number(rangeValue)}`;
         setTapeImg(Tape[tapeKey]);
@@ -172,7 +171,7 @@ const Entry = () => {
             <ProgressBar />
 
             {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
-            <img className='fixed top-0 left-0 h-screen w-full pointer-events-none z-10' src={tapeImg} alt="" />
+            {Number(rangeValue) !== 0 && <img className='fixed top-0 left-0 h-screen w-full pointer-events-none z-10' src={tapeImg} alt="" />}
         </div>
     );
 };
