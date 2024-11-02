@@ -8,6 +8,8 @@ import { ReactComponent as Test2 } from '../images/DecibelImages/Test2.svg';
 import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
 import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
 import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
+import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
+
 import html2canvas from 'html2canvas';
 
 
@@ -52,9 +54,9 @@ const Decibel = () => {
     return (
         <div className='decibel-page' style={{ backgroundImage: `url(${bgImage})` }}>
 
-            <Link className='home-btn'
-                style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: '18px' }}
-                to="/"></Link>
+            <Link className='home-btn' to="/">
+                <Home />
+            </Link>
             <section className='flex flex-col mt-36' style={{ width: '4.93%' }}>
                 {buttons.map((bgBtn, idx) => (
                     <button

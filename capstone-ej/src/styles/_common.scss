@@ -1,15 +1,25 @@
 .home-btn {
     position: absolute;
-    width: 94px;
-    height: 53px;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.2s ease;
-    background-image: url('../images/AboutImages/Home.svg');
+    width: 3.66vw;
+    height: 3.61vh;
+    min-width: 70px;
+    min-height: 40px;
     z-index: 5;
+    border-radius: 8px;
+    color: #0800EE;
+    background-color: white;
+    border: 1.5px solid #0800EE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    svg {
+        width: 46%;
+        height: 64%;
+    }
       &:hover{
-          background-image: url('../images/AboutImages/HomeHover.svg');
+          color: white;
+          background-color: #0800EE;
       }
   }
 

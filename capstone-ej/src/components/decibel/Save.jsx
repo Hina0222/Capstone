@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Bg from "../../images/DecibelImages/Background";
 import axios from 'axios';
 import html2canvas from 'html2canvas';
+import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
 
 const captureRectMap = {
     1: { width: 460, height: 655, y: 1160 },
@@ -98,7 +99,9 @@ const Save = () => {
 
     return (
         <div className='save-page'>
-            <Link className='home-btn decibel-save-btn' to="/"></Link>
+            <Link className='home-btn decibel-save-btn' to="/">
+                <Home />
+            </Link>
             <div className='w-1/2 p-16 flex justify-between' style={{ backgroundColor: '#0800EE' }}>
                 <div style={{ width: '31.5%', paddingTop: '104px' }} >
                     <div style={{ height: '42.5%', display: 'flex' }}>

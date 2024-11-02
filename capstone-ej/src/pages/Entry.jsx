@@ -4,6 +4,7 @@ import axios from "axios";
 import ImageContent from '../components/ImageContent.jsx';
 import Modal from '../components/Modal.jsx'
 import ProgressBar from '../components/ProgressBar.jsx';
+import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
 
 const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -124,7 +125,9 @@ const Entry = () => {
 
     return (
         <div className='entry-page'>
-            <Link className='home-btn' to="/" onClick={() => { sortContent("") }}></Link>
+            <Link className='home-btn' to="/" onClick={() => { sortContent("") }}>
+                <Home />
+            </Link>
             <div className='flex justify-center text-center relative'>
                 <div className='relative w-1/2'>
                     <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }} >담배꽁초</button>

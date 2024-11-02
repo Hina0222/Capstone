@@ -4,6 +4,8 @@ import Block3 from '../images/AboutImages/Block3.svg';
 import AboutTitle from '../images/AboutImages/AboutTitle.svg';
 import AboutGif1 from '../images/AboutImages/AboutGif1.gif';
 import AboutGif2 from '../images/AboutImages/AboutGif2.gif';
+import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
+
 
 const About = () => {
     const [showGif, setShowGif] = useState(false);
@@ -17,7 +19,9 @@ const About = () => {
 
     return (
         <div className='about-page min-h-screen flex flex-col items-center'>
-            <Link className='home-btn' to="/"></Link>
+            <Link className='home-btn' to="/" style={{ backgroundColor: 'transparent', color: '#0800EE' }}>
+                <Home />
+            </Link>
             <img className='mx-auto mt-11' src={AboutTitle} alt="" />
             <div className='relative mx-6 -mt-3 test'>
                 <img src={Block3} alt="" />
