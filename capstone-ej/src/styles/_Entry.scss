@@ -25,6 +25,37 @@
       padding: 10px 20px;
       width: 28%;
       gap:20px;
+      
+      input[type="range"]{
+        cursor: pointer;
+        accent-color: #0800EE;
+        background-color: #E8E8E8;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        flex: 1;
+        
+        /* 범위 바에 채워진 부분 */
+        &::-webkit-slider-runnable-track{
+          -webkit-appearance: none;
+          appearance: none;
+          background-color:#0800EE;
+          height: 4px;
+        }
+
+        /* 슬라이더 조절 핸들 */
+        &::-webkit-slider-thumb{
+          -webkit-appearance: none;
+          appearance: none;
+          background-color:#0800EE;
+          width: 24px;
+          height: 24px;
+          border-radius: 6px;
+          position: relative;
+          top: 50%;  
+          transform: translateY(-50%);
+        }
+      }
     }
 
   }

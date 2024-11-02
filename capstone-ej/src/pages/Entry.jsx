@@ -137,7 +137,7 @@ const Entry = () => {
                     <label>
                         어쩌구 저쩌구
                     </label>
-                    <input type="range" className='w-2/3' min="0" max="6" step="1" value={rangeValue} onChange={(e) => { setRangeValue(e.target.value) }} />
+                    <input type="range" min="0" max="6" step="1" value={rangeValue} onChange={(e) => { setRangeValue(e.target.value) }} />
                 </div>
             </div>
             <div className='flex justify-center text-center relative mt-10'>
