@@ -7,7 +7,7 @@ import ProgressBar from '../components/ProgressBar.jsx';
 
 const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [modalImage, setModalImage] = useState([]);
+    const [modalImage, setModalImage] = useState('');
     const [sortContentBtn, setSortContentBtn] = useState("");
     const [imageList, setImageList] = useState([
         // { 'id': '1', 'category': '쓰레기' },
@@ -112,7 +112,7 @@ const Entry = () => {
 
     const closeModal = () => {
         setIsOpen(false);
-        setModalImage([]);
+        setModalImage('');
     }
 
     const MoveTop = () => {

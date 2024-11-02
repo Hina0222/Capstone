@@ -30,8 +30,7 @@ const ImageContent = ({ content, idx, openModal }) => {
     };
 
     const handleClick = () => {
-        openModal([`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`
-            , `https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/deactive/${content.category}/${content.id}.svg`]);
+        openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`);
     };
 
     const backgroundStyle = useMemo(() => {

@@ -12,3 +12,7 @@
           background-image: url('../images/AboutImages/HomeHover.svg');
       }
   }
+
+body::-webkit-scrollbar{
+    display: none;
+}

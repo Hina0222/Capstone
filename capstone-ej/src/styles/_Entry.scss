@@ -2,7 +2,7 @@
   margin: 44px 24px;
   overflow-x: hidden;
   min-height: calc(100vh - 88px);
-
+  
   .content-btn {
     border: 1.5px solid #0800EE;
     border-radius: 12px;
@@ -98,40 +98,33 @@
 
 .modal {
   width: 100%;
+  height: 100vh;
   position: absolute; 
   top: 0;
   left: 0;
   z-index: 10;
-  overflow: hidden; 
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .modal-content {
     position: relative;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100%;
-  }
-
-  .floating-image {
-    position: fixed;
-    top: 95px;
-    left: 64px;
-  }
-  
-  .modal-content img {
-    width: 100%;
-    object-fit: cover; 
+    box-shadow: 4px 8px 24px 2px rgba(8, 0, 238, 0.24);
+    border-radius: 20px;
   }
 
   .close {
-    cursor: pointer;
-    position: fixed;
-    bottom: 51px;
-    left: 64px;
-    width: calc(100% - 128px);
+    position: absolute;
+    top: 32px;
+    right: 32px;
   }
+
+  .modal-img{
+    max-width: 60vw;
+    max-height: 83.3vh;;
+    border-radius: 20px;
   }
+}
 
 .progress-bar-container{
   position: fixed;
