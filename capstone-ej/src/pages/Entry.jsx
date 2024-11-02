@@ -64,6 +64,7 @@ const Entry = () => {
     ]);
     const [filterList, setFilterList] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(null);
+    const [rangeValue, setRangeValue] = useState(0);
 
     useEffect(() => {
         const getImageList = async () => {
@@ -133,10 +134,10 @@ const Entry = () => {
                     어쩌구 저쩌구
                 </div>
                 <div className='home-top-right'>
-                    <div>
+                    <label>
                         어쩌구 저쩌구
-                    </div>
-                    <input type="range" className='w-2/3' />
+                    </label>
+                    <input type="range" className='w-2/3' min="0" max="6" step="1" value={rangeValue} onChange={(e) => { setRangeValue(e.target.value) }} />
                 </div>
             </div>
             <div className='flex justify-center text-center relative mt-10'>

@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, memo } from 'react';
 import { throttle } from 'lodash';
 import Back1 from '../images/EntryImages/Back1.svg';
 import Back2 from '../images/EntryImages/Back2.svg';
 
-const ImageContent = ({ content, idx, openModal }) => {
+const ImageContent = memo(({ content, idx, openModal }) => {
     const adjustedIndex = idx % 9;
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
@@ -20,7 +20,7 @@ const ImageContent = ({ content, idx, openModal }) => {
             });
         }, 5), []);
 
-    console.log("sd")
+    console.log(`컴포넌트 렌더링`);
     const MouseEnter = () => {
         setIsMouseOver(true);
     };
@@ -91,6 +91,9 @@ const ImageContent = ({ content, idx, openModal }) => {
             )}
         </>
     );
-};
-
+}, (prev, next) => {
+    // 컴포넌트 재랜더링 되는지 확인
+    console.log('비교 함수 실행');
+    return prev.content === next.content;
+});
 export default ImageContent;
