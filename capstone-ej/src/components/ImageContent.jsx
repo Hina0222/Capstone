@@ -79,7 +79,7 @@ const ImageContent = memo(({ content, idx, openModal }) => {
                             left: `${mousePosition.x}px`,
                             top: `${mousePosition.y}px`,
                             pointerEvents: 'none',
-                            zIndex: '2',
+                            zIndex: '1',
                             width: 'auto',
                             height: 'auto',
                         }}
