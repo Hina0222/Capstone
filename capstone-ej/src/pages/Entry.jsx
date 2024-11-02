@@ -5,6 +5,7 @@ import ImageContent from '../components/ImageContent.jsx';
 import Modal from '../components/Modal.jsx'
 import ProgressBar from '../components/ProgressBar.jsx';
 import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
+import Tape from '../images/EntryImages/Tape.js';
 
 const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +65,14 @@ const Entry = () => {
     ]);
     const [filterList, setFilterList] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(null);
-    const [rangeValue, setRangeValue] = useState(0);
+    const [rangeValue, setRangeValue] = useState(1);
+    const [tapeImg, setTapeImg] = useState(Tape.s1);
+
+    useEffect(() => {
+        const tapeKey = `s${Number(rangeValue)}`;
+        setTapeImg(Tape[tapeKey]);
+
+    }, [rangeValue]);
 
     useEffect(() => {
         const getImageList = async () => {
@@ -76,7 +84,7 @@ const Entry = () => {
                 console.log(err);
             }
         }
-        getImageList();
+        // getImageList();
     }, []);
 
     // 스크롤 위치 저장
@@ -164,7 +172,7 @@ const Entry = () => {
             <ProgressBar />
 
             {isOpen && <Modal closeModal={closeModal} modalImage={modalImage} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
-
+            <img className='fixed top-0 left-0 h-screen w-full pointer-events-none' src={tapeImg} alt="" />
         </div>
     );
 };
