@@ -9,6 +9,7 @@ const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => 
     const [optionVisible, setOptionVisible] = useState(false);
     const [{ x, y, w }, setConfig] = useState({ x: 0, y: 0, w: 200 });
     const [isResizing, setIsResizing] = useState(false);
+    const [imageSrcWithTimestamp] = useState(`${ImageSrc}?timestamp=${Date.now()}`);
 
     const inrange = (v, min, max) => {
         if (v < min) return min;
@@ -49,7 +50,7 @@ const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => 
                     }}
 
                 >
-                    <img className="w-full h-full" src={ImageSrc} alt="" style={{ border: optionVisible ? '1px solid #0800EE' : 'none', pointerEvents: 'none' }} />
+                    <img crossOrigin="anonymous" className="w-full h-full" src={imageSrcWithTimestamp} alt="" style={{ border: optionVisible ? '1px solid #0800EE' : 'none', pointerEvents: 'none' }} />
                     {optionVisible && (
                         <div className="drag-icon"
                             onMouseEnter={() => { setIsResizing(true) }}

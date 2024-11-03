@@ -25,24 +25,23 @@ const Decibel = () => {
     const [activeButton, setActiveButton] = useState(0);
 
     const SaveClick = async () => {
-        const canvas = await html2canvas(captureRef.current, { useCORS: true });
+        const canvas = await html2canvas(captureRef.current, {
+            allowTaint: true,
+            useCORS: true,
+        });
         const imgData = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.href = imgData;
-        link.download = 'final-image.png';
-        link.click();
+        // 로컬스토리지에 저장
+        const existingImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
+        const newCaptureData = {
+            image: imgData,
+            rect: activeButton,
+        };
+        existingImages.push(newCaptureData);
+
+        localStorage.setItem('capturedImages', JSON.stringify(existingImages));
+
+        navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
     };
-    // 로컬스토리지에 저장
-    // const existingImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
-    // const newCaptureData = {
-    //     image: imgData,
-    //     rect: activeButton,
-    // };
-    // existingImages.push(newCaptureData);
-
-    // localStorage.setItem('capturedImages', JSON.stringify(existingImages));
-
-    // navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
 
     const ImageBoxAdd = (src) => {
         const newImageBox = { id: Date.now(), src };
