@@ -7,7 +7,7 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
     console.log("ImageBox");
     const nodeRef = useRef(null);
     const [optionVisible, setOptionVisible] = useState(false);
-    const [{ x, y, w, h }, setConfig] = useState({ x: 0, y: 0, w: 200, h: 100, });
+    const [{ x, y, w }, setConfig] = useState({ x: 0, y: 0, w: 200 });
     const [isResizing, setIsResizing] = useState(false);
 
     const inrange = (v, min, max) => {
@@ -28,7 +28,6 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
             x: data.x,
             y: data.y,
             w,
-            h,
         });
     }
 
@@ -41,7 +40,7 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
                 disabled={isResizing}
                 onStop={(e, data) => StopDrag(data)}
             >
-                <div className='text-box' ref={nodeRef} id={id} style={{ width: w, height: h }}
+                <div className='text-box' ref={nodeRef} id={id} style={{ width: w }}
                     tabIndex={0}
                     onBlur={handleBlur}
                     onClick={() => {
@@ -62,7 +61,6 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
                                     x,
                                     y,
                                     w: inrange(w + deltaX, MIN_W, boundary.width - x),
-                                    h: inrange(h + deltaY, MIN_H, boundary.height - y),
                                 });
                             })}
                         >
