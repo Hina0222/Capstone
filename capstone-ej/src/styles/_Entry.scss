@@ -29,7 +29,7 @@
       input[type="range"]{
         cursor: pointer;
         accent-color: #0800EE;
-        background-color: #E8E8E8;
+        background-color: white;
         outline: none;
         -webkit-appearance: none;
         appearance: none;
@@ -71,14 +71,14 @@
     height: 52px;
 
     &:hover{
-      color:#E8E8E8;
+      color:white;
       background-color: #0800EE;
     }
 
   }
 
   .active{
-    color:#E8E8E8;
+    color:white;
     background-color: #0800EE;
   }
 
@@ -86,33 +86,15 @@
     width: 20%;
     max-height: 250px;
     height: 17.36vh;
-    border: 1.5px solid #0800EE;
     border-radius: 12px;
     padding: 20px;
     cursor: pointer;
     position: relative;
-    justify-content: center;
     
-    &:hover{
-      background-color: #0800EE;
-    }
-
     img {
       height: 70%;
       width: 70%;
     }
-  }
-
-  .list-content{
-    box-sizing: border-box;
-    border-radius: 12px;
-    border: 1.5px solid #0800EE;
-    display: flex;
-    width: 100%;
-    padding: 18.5px 24px;
-    color: #0800EE;
-    font-size: 24px;
-    font-weight: 600;
   }
 
   .empty-box{
