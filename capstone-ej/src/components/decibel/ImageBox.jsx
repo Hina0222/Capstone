@@ -1,31 +1,36 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { ReactComponent as DragSizeIcon } from '../../images/DecibelImages/DragSizeIcon.svg';
 import registMouseDownDrag from './registMouseDownDrag.js';
 
-const ImageBox = ({ Image, id, setTrashVisible, setTrashId }) => {
+const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
     console.log("ImageBox");
     const nodeRef = useRef(null);
     const [optionVisible, setOptionVisible] = useState(false);
-    // const [{ w, h }, setConfig] = useState({ w: 0, h: 0, });
+    const [{ x, y, w, h }, setConfig] = useState({ x: 0, y: 0, w: 200, h: 100, });
+    const [isResizing, setIsResizing] = useState(false);
+
+    const inrange = (v, min, max) => {
+        if (v < min) return min;
+        if (v > max) return max;
+        return v;
+    };
+    const MIN_W = 80;
+    const MIN_H = 80;
 
     const handleBlur = () => {
         setOptionVisible(false);
         setTrashVisible(false);
     };
 
-    // useEffect(() => {
-    //     const boundary = nodeRef.current?.getBoundingClientRect();
-
-    //     if (boundary) {
-    //         const DEFAULT_W = 240;
-    //         const DEFAULT_H = 120;
-    //         setConfig({
-    //             w: DEFAULT_W,
-    //             h: DEFAULT_H,
-    //         });
-    //     }
-    // }, []);
+    const StopDrag = (data) => {
+        setConfig({
+            x: data.x,
+            y: data.y,
+            w,
+            h,
+        });
+    }
 
     return (
 
@@ -33,29 +38,34 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId }) => {
             <Draggable
                 nodeRef={nodeRef}
                 bounds="parent"
+                disabled={isResizing}
+                onStop={(e, data) => StopDrag(data)}
             >
-                <div className='text-box flex' ref={nodeRef} id={id}
+                <div className='text-box' ref={nodeRef} id={id} style={{ width: w, height: h }}
                     tabIndex={0}
                     onBlur={handleBlur}
                     onClick={() => {
                         setOptionVisible(true)
                         setTrashVisible(true)
                         setTrashId(id);
-                    }
-                    }
-                // style={{ width: w, height: h }}
+                    }}
+
                 >
-                    <div style={{ color: '#0800EE', border: optionVisible ? '1px solid #0800EE' : 'none' }}>
-                        <Image className="img-svg" />
-                    </div>
+                    <Image className="img-svg" style={{ color: '#0800EE', border: optionVisible ? '1px solid #0800EE' : 'none' }} />
                     {optionVisible && (
-                        // {...registMouseDownDrag((deltaX, deltaY) => {
-                        //     setConfig({
-                        //         w: w + deltaX,
-                        //         h: h + deltaY,
-                        //     });
-                        // })}
-                        <div className="drag-icon">
+                        <div className="drag-icon"
+                            onMouseEnter={() => { setIsResizing(true) }}
+                            onMouseLeave={() => { setIsResizing(false) }}
+                            {...registMouseDownDrag((deltaX, deltaY) => {
+                                const boundary = captureRef.current.getBoundingClientRect();
+                                setConfig({
+                                    x,
+                                    y,
+                                    w: inrange(w + deltaX, MIN_W, boundary.width - x),
+                                    h: inrange(h + deltaY, MIN_H, boundary.height - y),
+                                });
+                            })}
+                        >
                             <DragSizeIcon />
                         </div>
                     )}

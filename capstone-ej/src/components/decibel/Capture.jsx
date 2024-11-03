@@ -50,10 +50,10 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                     style={{ backgroundColor: bgColor, width: `${captureResize.width}%`, height: `${captureResize.height}%` }}
                 >
                     {textBoxes.map((text) => (
-                        <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} />
+                        <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
                     ))}
                     {imgBoxes.map((Image) => (
-                        <ImageBox key={Image.id} id={Image.id} Image={Image.component} setTrashVisible={setTrashVisible} setTrashId={setTrashId} />
+                        <ImageBox key={Image.id} id={Image.id} Image={Image.component} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
                     ))}
                 </div>
             </div>

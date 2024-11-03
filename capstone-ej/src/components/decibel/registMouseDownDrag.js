@@ -1,7 +1,6 @@
-export default function registMouseDownDrag(onDragChange, e) {
+export default function registMouseDownDrag(onDragChange) {
     return {
         onMouseDown: (clickEvent) => {
-            e.stopPropagation()
             const mouseMoveHandler = (moveEvent) => {
                 const deltaX = moveEvent.screenX - clickEvent.screenX;
                 const deltaY = moveEvent.screenY - clickEvent.screenY;
