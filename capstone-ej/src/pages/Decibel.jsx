@@ -3,11 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Bg from "../images/DecibelImages/Background";
 import Capture from '../components/decibel/Capture';
 import { ReactComponent as Check } from '../images/DecibelImages/BgBtn/Check.svg';
-import { ReactComponent as Test1 } from '../images/DecibelImages/Test1.svg';
-import { ReactComponent as Test2 } from '../images/DecibelImages/Test2.svg';
-import { ReactComponent as Test3 } from '../images/DecibelImages/Test3.svg';
-import { ReactComponent as Test4 } from '../images/DecibelImages/Test4.svg';
-import { ReactComponent as Test5 } from '../images/DecibelImages/Test5.svg';
 import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
 import html2canvas from 'html2canvas';
 
@@ -25,28 +20,32 @@ const Decibel = () => {
     const navigate = useNavigate();
     const [bgImage, setBgImage] = useState(Bg.Bg1);
     const [activeBgImage, setActiveBgImage] = useState(0);
-    const [decibelLevel, setDecibelLevel] = useState(0);
+    const [decibelLevel, setDecibelLevel] = useState(1);
     const [imgBoxes, setImgBoxes] = useState([]);
     const [activeButton, setActiveButton] = useState(0);
 
     const SaveClick = async () => {
-        const canvas = await html2canvas(captureRef.current);
+        const canvas = await html2canvas(captureRef.current, { useCORS: true });
         const imgData = canvas.toDataURL('image/png');
-        // 로컬스토리지에 저장
-        const existingImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
-        const newCaptureData = {
-            image: imgData,
-            rect: activeButton,
-        };
-        existingImages.push(newCaptureData);
-
-        localStorage.setItem('capturedImages', JSON.stringify(existingImages));
-
-        navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'final-image.png';
+        link.click();
     };
+    // 로컬스토리지에 저장
+    // const existingImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
+    // const newCaptureData = {
+    //     image: imgData,
+    //     rect: activeButton,
+    // };
+    // existingImages.push(newCaptureData);
 
-    const ImageBoxAdd = (component) => {
-        const newImageBox = { id: Date.now(), component };
+    // localStorage.setItem('capturedImages', JSON.stringify(existingImages));
+
+    // navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
+
+    const ImageBoxAdd = (src) => {
+        const newImageBox = { id: Date.now(), src };
         setImgBoxes([...imgBoxes, newImageBox]);
     };
 
@@ -96,8 +95,8 @@ const Decibel = () => {
                                         <button
                                             key={index}
                                             className='decibel-btn'
-                                            onClick={() => { setDecibelLevel(index) }}
-                                            style={{ backgroundColor: index <= decibelLevel ? '#0800EE' : '#E8E8E8' }}
+                                            onClick={() => { setDecibelLevel(index + 1) }}
+                                            style={{ backgroundColor: index + 1 <= decibelLevel ? '#0800EE' : 'white' }}
                                         >
                                         </button>
                                     ))}
@@ -111,16 +110,26 @@ const Decibel = () => {
                         <div className='option-box'>
                             <h3 className='option-title'><b>SPEECH</b>말투</h3>
                             <div className='flex flex-wrap gap-14 option-content' style={{ paddingBottom: '56px' }}>
-                                <Test1 onClick={() => ImageBoxAdd(Test1)} />
-                                <Test2 onClick={() => ImageBoxAdd(Test2)} />
-                                <Test3 onClick={() => ImageBoxAdd(Test3)} />
-                                <Test4 onClick={() => ImageBoxAdd(Test4)} />
-                                <Test5 onClick={() => ImageBoxAdd(Test5)} />
+                                {Array.from({ length: Math.ceil(decibelLevel / 4) <= 3 ? 9 : 18 }, (_, index) => {
+                                    const LEVEL = Math.ceil(decibelLevel / 4);
+                                    return <img key={index} src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/alleyloss/DECIBEL/speech/${LEVEL}/${LEVEL}-${index + 1}.svg`} alt=""
+                                        className='cursor-pointer' style={{ maxWidth: '230px' }}
+                                        onClick={() => ImageBoxAdd(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/alleyloss/DECIBEL/speech/${LEVEL}/${LEVEL}-${index + 1}.svg`)}
+                                    />
+                                }
+                                )}
                             </div>
                         </div>
                         <div className='option-box'>
                             <h3 className='option-title'><b>ILLUST</b>일러스트</h3>
-                            <div className='option-content' style={{ paddingBottom: '56px' }}></div>
+                            <div className='option-content flex flex-wrap gap-14' style={{ paddingBottom: '56px' }}>
+                                {Array.from({ length: 26 }, (_, index) => (
+                                    <img key={index} src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/alleyloss/DECIBEL/illust/i-${index + 1}.svg`} alt=""
+                                        className='cursor-pointer'
+                                        onClick={() => ImageBoxAdd(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/alleyloss/DECIBEL/illust/i-${index + 1}.svg`)}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <button onClick={SaveClick} className='save-btn'>SAVE</button>

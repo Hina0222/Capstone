@@ -9,7 +9,6 @@ import { ReactComponent as T } from '../../images/DecibelImages/RectBtn/T.svg';
 import { ReactComponent as ResetBtn } from '../../images/DecibelImages/RectBtn/Reset.svg';
 import { ReactComponent as Trash } from '../../images/DecibelImages/Trash.svg';
 
-
 const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
@@ -53,7 +52,7 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                         <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
                     ))}
                     {imgBoxes.map((Image) => (
-                        <ImageBox key={Image.id} id={Image.id} Image={Image.component} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
+                        <ImageBox key={Image.id} id={Image.id} ImageSrc={Image.src} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
                     ))}
                 </div>
             </div>

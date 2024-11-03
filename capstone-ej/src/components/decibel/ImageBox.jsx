@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 import { ReactComponent as DragSizeIcon } from '../../images/DecibelImages/DragSizeIcon.svg';
 import registMouseDownDrag from './registMouseDownDrag.js';
 
-const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
+const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => {
     console.log("ImageBox");
     const nodeRef = useRef(null);
     const [optionVisible, setOptionVisible] = useState(false);
@@ -16,7 +16,6 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
         return v;
     };
     const MIN_W = 80;
-    const MIN_H = 80;
 
     const handleBlur = () => {
         setOptionVisible(false);
@@ -50,7 +49,7 @@ const ImageBox = ({ Image, id, setTrashVisible, setTrashId, captureRef }) => {
                     }}
 
                 >
-                    <Image className="img-svg" style={{ color: '#0800EE', border: optionVisible ? '1px solid #0800EE' : 'none' }} />
+                    <img className="w-full h-full" src={ImageSrc} alt="" style={{ border: optionVisible ? '1px solid #0800EE' : 'none', pointerEvents: 'none' }} />
                     {optionVisible && (
                         <div className="drag-icon"
                             onMouseEnter={() => { setIsResizing(true) }}
