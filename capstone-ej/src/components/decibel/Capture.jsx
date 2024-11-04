@@ -21,7 +21,7 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
         setBgColor('#ffffff');
         setTextBoxes([]);
         setImgBoxes([]);
-        setCaptureResize({ width: 69.93, height: 86.89 });
+        setCaptureResize({ width: 69.93, height: 94.05 });
         setActiveButton(0);
     }
 
@@ -44,18 +44,6 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
 
     return (
         <>
-            <div className='capture-content'>
-                <div ref={captureRef} className='relative'
-                    style={{ backgroundColor: bgColor, width: `${captureResize.width}%`, height: `${captureResize.height}%` }}
-                >
-                    {textBoxes.map((text) => (
-                        <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
-                    ))}
-                    {imgBoxes.map((Image) => (
-                        <ImageBox key={Image.id} id={Image.id} ImageSrc={Image.src} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
-                    ))}
-                </div>
-            </div>
             <div className='capture-option'>
                 <div>
                     <div className='color-btn'>
@@ -93,6 +81,18 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                             <Trash style={{ width: '68%' }} />
                         </button>
                     }
+                </div>
+            </div>
+            <div className='capture-content'>
+                <div ref={captureRef} className='relative'
+                    style={{ backgroundColor: bgColor, width: `${captureResize.width}%`, height: `${captureResize.height}%` }}
+                >
+                    {textBoxes.map((text) => (
+                        <TextBox key={text.id} id={text.id} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
+                    ))}
+                    {imgBoxes.map((Image) => (
+                        <ImageBox key={Image.id} id={Image.id} ImageSrc={Image.src} setTrashVisible={setTrashVisible} setTrashId={setTrashId} captureRef={captureRef} />
+                    ))}
                 </div>
             </div>
         </>

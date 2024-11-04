@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Bg from "../../images/DecibelImages/Background";
 import axios from 'axios';
 import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
+import { ReactComponent as Check } from '../../images/DecibelImages/BgBtn/Check.svg';
+import { ReactComponent as SwapArrow } from '../../images/DecibelImages/SavePage/SwapArrow.svg';
 
 const captureRectMap = {
-    1: { width: 460, height: 655, y: 1160 },
-    2: { width: 520, height: 335, y: 970 },
-    3: { width: 320, height: 750, y: 1190 },
-    4: { width: 540, height: 200, y: 880 }
+    1: { width: 588, height: 837, y: 1208 },
+    2: { width: 600, height: 386, y: 1053 },
+    3: { width: 372, height: 873, y: 1207 },
+    4: { width: 600, height: 222, y: 879 }
 }
+const buttons = [
+    Bg.BgBtn1,
+    Bg.BgBtn2,
+    Bg.BgBtn3,
+    Bg.BgBtn4,
+    Bg.BgBtn5,
+];
 
 const Save = () => {
     const location = useLocation();
-    const { activeBgImage, activeButton, capturedImage } = location.state;
+    const { activeButton, capturedImage } = location.state;
+    const localImgsRef = useRef(null);
+
     const [saveImgs, setSaveImgs] = useState([]);
     const [imgSrc, setImgSrc] = useState(capturedImage);
     const [rectNum, setRectNum] = useState(activeButton);
+    const [activeBgImage, setActiveBgImage] = useState(0);
+    const [localImgNum, setLocalImgNum] = useState(0);
 
     const Base64ImageSend = async (image) => {
         try {
@@ -37,7 +50,35 @@ const Save = () => {
     const imgClick = (imgSrc, rect) => {
         setImgSrc(imgSrc);
         setRectNum(rect);
+        const imgElement = document.getElementById(`localImg-${localImgNum}`);
+        if (imgElement) {
+            imgElement.focus();
+        }
     }
+
+    useEffect(() => {
+        const localImgs = localImgsRef.current;
+
+        const handleWheel = (event) => {
+            event.preventDefault();
+            localImgs.scrollLeft += event.deltaY;
+        };
+
+        // 이벤트 리스너 추가
+        localImgs.addEventListener('wheel', handleWheel);
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => localImgs.removeEventListener('wheel', handleWheel);
+    }, []);
+
+    const HandleSwap = (direction) => {
+        const newIndex = direction === 'left' ? localImgNum - 1 : localImgNum + 1;
+        if (newIndex >= 0 && newIndex < saveImgs.length) {
+            const { image, rect } = saveImgs[newIndex];
+            setLocalImgNum(newIndex);
+            imgClick(image, rect);
+        }
+    };
 
     const ClickCapture = () => {
         const imgData = imgSrc;
@@ -66,7 +107,12 @@ const Save = () => {
                 const pngDataUrl = finalCanvas.toDataURL('image/png');
                 const base64Image = pngDataUrl.split(',')[1]
 
-                Base64ImageSend(base64Image);
+                const link = document.createElement('a');
+                link.href = pngDataUrl;
+                link.download = 'final-image.png';
+                link.click();
+
+                // Base64ImageSend(base64Image);
             };
         };
     };
@@ -76,26 +122,57 @@ const Save = () => {
             <Link className='home-btn decibel-save-btn' to="/">
                 <Home />
             </Link>
-            <div className='w-1/2 p-16 flex justify-between' style={{ backgroundColor: '#0800EE' }}>
-                <div style={{ width: '31.5%', paddingTop: '104px' }} >
-                    <div style={{ height: '42.5%', display: 'flex' }}>
-                        <img src={imgSrc} alt="" className='max-h-full m-auto' />
-                    </div>
-                    <button className='print-btn' onClick={ClickCapture}>
-                        PRINT
+            <div className='flex justify-between' style={{ height: '78.9%' }}>
+                <div className='flex items-center'>
+                    <button className='swap-btn -scale-x-100 ' onClick={() => HandleSwap('left')}>
+                        <SwapArrow />
                     </button>
                 </div>
-                <div className='mr-2 flex items-center relative' style={{ width: '62.9%' }}>
-                    <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" />
-                    <img className='capture-content' src={imgSrc} style={{ top: 1280 - captureRectMap[rectNum + 1].y }} width={captureRectMap[rectNum + 1].width} height={captureRectMap[rectNum + 1].height} alt="" />
+                <div className='flex gap-x-16'>
+                    <div className='flex flex-col' style={{ width: '10.5%' }}>
+                        {buttons.map((bgBtn, idx) => (
+                            <button
+                                className='bg-btn'
+                                key={idx} onClick={() => {
+                                    setActiveBgImage(idx);
+                                }}>
+                                <img src={bgBtn} alt="" />
+                                {(activeBgImage === idx) &&
+                                    <div className='overray'>
+                                        <Check />
+                                    </div>
+                                }
+                            </button>
+                        ))}
+                    </div>
+                    <div className='relative' style={{ width: '52.1%' }} >
+                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{ height: '100%' }} />
+                        <img className='capture-content' src={imgSrc} style={{ top: 1280 - captureRectMap[rectNum + 1].y }} width={captureRectMap[rectNum + 1].width} height={captureRectMap[rectNum + 1].height} alt="" />
+                    </div>
+                </div>
+                <div className='flex items-center'>
+                    <button className='swap-btn' onClick={() => HandleSwap('right')}>
+                        <SwapArrow />
+                    </button>
+                    {/* <button className='print-btn' onClick={ClickCapture}>
+                        PRINT
+                    </button> */}
                 </div>
             </div>
-            <div className='w-1/2 p-16 flex flex-wrap gap-4 overflow-y-scroll'>
-                {saveImgs.map((data, idx) => {
-                    const { image, rect } = data;
-                    return <img key={idx} id={idx} className='h-1/3' src={image} onClick={() => { imgClick(image, rect) }} alt="" style={{ cursor: 'pointer' }} />
-                }
-                )}
+            <div>
+                <div className='local-imgs' ref={localImgsRef}>
+                    {saveImgs.map((data, idx) => {
+                        const { image, rect } = data;
+                        return <img key={idx} id={`localImg-${idx}`} src={image}
+                            onClick={() => {
+                                imgClick(image, rect);
+                                setLocalImgNum(idx);
+                            }} alt=""
+                            tabIndex={0}
+                            style={{ cursor: 'pointer', height: '188px', border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white' }} />
+                    }
+                    )}
+                </div>
             </div>
         </div >
     );

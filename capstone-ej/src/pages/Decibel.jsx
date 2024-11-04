@@ -2,24 +2,13 @@ import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Bg from "../images/DecibelImages/Background";
 import Capture from '../components/decibel/Capture';
-import { ReactComponent as Check } from '../images/DecibelImages/BgBtn/Check.svg';
 import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
 import html2canvas from 'html2canvas';
-
-const buttons = [
-    Bg.BgBtn1,
-    Bg.BgBtn2,
-    Bg.BgBtn3,
-    Bg.BgBtn4,
-    Bg.BgBtn5,
-];
 
 const Decibel = () => {
     console.log("Decibel페이지")
     const captureRef = useRef(null);
     const navigate = useNavigate();
-    const [bgImage, setBgImage] = useState(Bg.Bg1);
-    const [activeBgImage, setActiveBgImage] = useState(0);
     const [decibelLevel, setDecibelLevel] = useState(1);
     const [imgBoxes, setImgBoxes] = useState([]);
     const [activeButton, setActiveButton] = useState(0);
@@ -40,7 +29,7 @@ const Decibel = () => {
 
         localStorage.setItem('capturedImages', JSON.stringify(existingImages));
 
-        navigate('/decibel/save', { state: { activeBgImage, activeButton, capturedImage: imgData } });
+        navigate('/decibel/save', { state: { activeButton, capturedImage: imgData } });
     };
 
     const ImageBoxAdd = (src) => {
@@ -49,7 +38,7 @@ const Decibel = () => {
     };
 
     return (
-        <div className='decibel-page' style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className='decibel-page'>
             <div className='flex gap-10'>
                 <Link className='home-btn' to="/" style={{ position: 'static' }}>
                     <Home />
@@ -59,23 +48,6 @@ const Decibel = () => {
                 </div>
             </div>
             <div className='flex' style={{ marginTop: '60px', height: 'calc(100% - 112px)' }}>
-                <section className='flex flex-col' style={{ width: '5%' }}>
-                    {buttons.map((bgBtn, idx) => (
-                        <button
-                            className='bg-btn'
-                            key={idx} onClick={() => {
-                                setBgImage(Bg[`Bg${idx + 1}`]);
-                                setActiveBgImage(idx);
-                            }}>
-                            <img src={bgBtn} alt="" />
-                            {(activeBgImage === idx) &&
-                                <div className='overray'>
-                                    <Check />
-                                </div>
-                            }
-                        </button>
-                    ))}
-                </section>
                 <section className='capture-container'>
                     <Capture captureRef={captureRef}
                         imgBoxes={imgBoxes}

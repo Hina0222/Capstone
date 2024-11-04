@@ -149,8 +149,8 @@ const Entry = () => {
             </div>
             <div className='flex justify-center text-center relative mt-10'>
                 <div className='relative w-1/2'>
-                    <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }} >담배꽁초</button>
                     <button className={`content-btn ${sortContentBtn === "쓰레기" ? "active" : ""}`} onClick={() => { sortContent("쓰레기") }}>쓰레기</button>
+                    <button className={`content-btn ${sortContentBtn === "담배꽁초" ? "active" : ""}`} onClick={() => { sortContent("담배꽁초") }} >담배꽁초</button>
                     <button className={`content-btn ${sortContentBtn === "흡연" ? "active" : ""}`} onClick={() => { sortContent("흡연") }}>흡연</button>
                     <button className={`content-btn ${sortContentBtn === "도난" ? "active" : ""}`} onClick={() => { sortContent("도난") }}>도난</button><br />
                     <button className={`content-btn ${sortContentBtn === "소음" ? "active" : ""}`} onClick={() => { sortContent("소음") }}>소음</button>

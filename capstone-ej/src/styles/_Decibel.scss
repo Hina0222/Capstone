@@ -14,27 +14,8 @@
         flex: 1;
     }
 
-    .bg-btn{
-        position: relative;
-        margin-bottom: 28px;
-    }
-    
-    .overray {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(8, 0, 238, 0.50);
-        border-radius: 9.8%;
-    }
-
     .capture-container{
         display: flex;
-        margin: 0 64px;
         width: 51.1%;
 
         .capture-content {
