@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Bg from "../../images/DecibelImages/Background";
 import axios from 'axios';
-import html2canvas from 'html2canvas';
 import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
 
 const captureRectMap = {
@@ -19,9 +18,19 @@ const Save = () => {
     const [imgSrc, setImgSrc] = useState(capturedImage);
     const [rectNum, setRectNum] = useState(activeButton);
 
+    const Base64ImageSend = async (image) => {
+        try {
+            const res = await axios.post('http://localhost:8080/save/image', {
+                image: image
+            });
+            console.log(res.data)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
         const savedImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
-        console.log(savedImages);
         setSaveImgs(savedImages);
     }, []);
 
@@ -54,48 +63,13 @@ const Save = () => {
                 // 그려질 이미지, x좌표, y좌표, 이미지의 너비, 높이
                 ctx.drawImage(capturedImage, x, y, captureRectMap[rectNum + 1].width, captureRectMap[rectNum + 1].height);
 
-                const finalImgData = finalCanvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.href = finalImgData;
-                link.download = 'final-image.png';
-                link.click();
+                const pngDataUrl = finalCanvas.toDataURL('image/png');
+                const base64Image = pngDataUrl.split(',')[1]
 
-                // 테스트 방식 1
-                // canvas를 Blob 형식으로 변환하여 FormData로 추가
-                // finalCanvas.toBlob(blob => {
-                //     const formData = new FormData();
-                //     formData.append('image', blob, 'final-image.png'); 
-
-                //     console.log(formData)
-
-                // }, 'image/png');
-
-
-                // 테스트 방식 2
-
-                // const pngDataUrl = finalCanvas.toDataURL('image/png');
-
-                // const formData = new FormData();
-                // formData.append('image', pngDataUrl)
-
-                // PostImageSend(formData);
+                Base64ImageSend(base64Image);
             };
         };
     };
-
-    // 이미지 전송 테스트
-    const PostImageSend = async (formData) => {
-        try {
-            const res = await axios.post('', formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                }
-            });
-            console.log(res.data)
-        } catch (err) {
-            console.log(err);
-        }
-    }
 
     return (
         <div className='save-page'>
@@ -119,7 +93,7 @@ const Save = () => {
             <div className='w-1/2 p-16 flex flex-wrap gap-4 overflow-y-scroll'>
                 {saveImgs.map((data, idx) => {
                     const { image, rect } = data;
-                    return <img id={idx} className='h-1/3' src={image} onClick={() => { imgClick(image, rect) }} alt="" style={{ cursor: 'pointer' }} />
+                    return <img key={idx} id={idx} className='h-1/3' src={image} onClick={() => { imgClick(image, rect) }} alt="" style={{ cursor: 'pointer' }} />
                 }
                 )}
             </div>
