@@ -59,7 +59,8 @@
         overflow-x: scroll;
         gap: 20px;
         padding-bottom: 20px;
-        height: 14%;
+        height: 17%;
+        align-items: end;
 
         /* 전체 스크롤바의 너비 */
         &::-webkit-scrollbar {

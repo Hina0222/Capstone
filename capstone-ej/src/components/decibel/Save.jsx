@@ -174,7 +174,12 @@ const Save = () => {
                             setLocalImgNum(idx);
                         }} alt=""
                         tabIndex={0}
-                        style={{ cursor: 'pointer', border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white' }} />
+                        style={{
+                            cursor: 'pointer',
+                            border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white',
+                            height: idx === localImgNum ? '100%' : '64%'
+                        }}
+                    />
                 }
                 )}
             </div>
