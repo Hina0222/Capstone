@@ -30,6 +30,7 @@ const Save = () => {
     const [rectNum, setRectNum] = useState(activeButton);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [localImgNum, setLocalImgNum] = useState(0);
+    console.log(localImgNum);
 
     const Base64ImageSend = async (image) => {
         try {
@@ -50,10 +51,6 @@ const Save = () => {
     const imgClick = (imgSrc, rect) => {
         setImgSrc(imgSrc);
         setRectNum(rect);
-        const imgElement = document.getElementById(`localImg-${localImgNum}`);
-        if (imgElement) {
-            imgElement.focus();
-        }
     }
 
     useEffect(() => {
@@ -74,9 +71,18 @@ const Save = () => {
     const HandleSwap = (direction) => {
         const newIndex = direction === 'left' ? localImgNum - 1 : localImgNum + 1;
         if (newIndex >= 0 && newIndex < saveImgs.length) {
-            const { image, rect } = saveImgs[newIndex];
+            const { image, rect } = saveImgs.slice().reverse()[newIndex];
             setLocalImgNum(newIndex);
             imgClick(image, rect);
+
+            const localImgs = localImgsRef.current;
+            const imgElement = document.getElementById(`localImg-${newIndex}`);
+            if (imgElement) {
+                localImgs.scrollTo({
+                    left: imgElement.offsetLeft - localImgs.clientWidth / 2 + imgElement.clientWidth / 2,
+                    behavior: 'smooth',
+                });
+            }
         }
     };
 
@@ -161,7 +167,7 @@ const Save = () => {
             </div>
             <div>
                 <div className='local-imgs' ref={localImgsRef}>
-                    {saveImgs.map((data, idx) => {
+                    {saveImgs.slice().reverse().map((data, idx) => {
                         const { image, rect } = data;
                         return <img key={idx} id={`localImg-${idx}`} src={image}
                             onClick={() => {
