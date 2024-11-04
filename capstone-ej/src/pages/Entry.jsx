@@ -138,11 +138,18 @@ const Entry = () => {
                     <Home />
                 </Link>
                 <div className='home-top-center'>
-                    어쩌구 저쩌구
+                    <div className='text-3xl font-medium'>
+                        ARCHIVING
+                    </div>
+                    <div className='overflow-hidden'>
+                        <div className='home-top-flowing'>
+                            골목의 다양한 경고문을 240장 수집하였습니다. 골목 거주민들의 분노를 엿볼 수 있는 경고문들을 기준을 세워 분류한 후, 경고문의 재미난 요소들에 집중하였습니다. 시각으로 보여지는 경고문에 집중해 주세요.
+                        </div>
+                    </div>
                 </div>
                 <div className='home-top-right'>
                     <label>
-                        어쩌구 저쩌구
+                        STRENGTH
                     </label>
                     <input type="range" min="0" max="6" step="1" value={rangeValue} onChange={(e) => { setRangeValue(e.target.value) }} />
                 </div>

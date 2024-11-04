@@ -9,9 +9,25 @@
         font-size: 20px;
         border-radius: 8px;
         background-color: #0800EE;
-        padding: 11px 20px;
+        padding: 8px 20px;
         color: white;
-        flex: 1;
+        display: flex;
+        align-items: center;
+        gap:24px;
+
+        .decibel-top-flowing{
+            @keyframes flowText1 {
+                0% {
+                transform: translateX(100%);
+                }
+                100% {
+                transform: translateX(-100%);
+                }
+            }
+            white-space: nowrap;
+            animation: flowText1 35s linear infinite;
+            font-weight: 500;
+        }
     }
 
     .capture-container{
