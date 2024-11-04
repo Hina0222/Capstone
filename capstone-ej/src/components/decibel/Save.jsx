@@ -7,10 +7,10 @@ import { ReactComponent as Check } from '../../images/DecibelImages/BgBtn/Check.
 import { ReactComponent as SwapArrow } from '../../images/DecibelImages/SavePage/SwapArrow.svg';
 
 const captureRectMap = {
-    1: { width: 588, height: 837, y: 1208 },
-    2: { width: 600, height: 386, y: 1053 },
-    3: { width: 372, height: 873, y: 1207 },
-    4: { width: 600, height: 222, y: 879 }
+    1: { width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%' },
+    2: { width: 600, height: 386, y: 1053, widthPer: '83%', heightPer: '32.2%', top: '17.6%' },
+    3: { width: 372, height: 873, y: 1207, widthPer: '51.5%', heightPer: '68.2%', top: '5.7%' },
+    4: { width: 600, height: 222, y: 879, widthPer: '83.1%', heightPer: '17.4%', top: '31.2%' }
 }
 const buttons = [
     Bg.BgBtn1,
@@ -30,7 +30,6 @@ const Save = () => {
     const [rectNum, setRectNum] = useState(activeButton);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [localImgNum, setLocalImgNum] = useState(0);
-    console.log(localImgNum);
 
     const Base64ImageSend = async (image) => {
         try {
@@ -134,8 +133,8 @@ const Save = () => {
                         <SwapArrow />
                     </button>
                 </div>
-                <div className='flex gap-x-16'>
-                    <div className='flex flex-col' style={{ width: '10.5%' }}>
+                <div className='flex gap-x-16 justify-center'>
+                    <div style={{ width: '5.5%' }}>
                         {buttons.map((bgBtn, idx) => (
                             <button
                                 className='bg-btn'
@@ -151,9 +150,9 @@ const Save = () => {
                             </button>
                         ))}
                     </div>
-                    <div className='relative' style={{ width: '52.1%' }} >
+                    <div className='relative'>
                         <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{ height: '100%' }} />
-                        <img className='capture-content' src={imgSrc} style={{ top: 1280 - captureRectMap[rectNum + 1].y }} width={captureRectMap[rectNum + 1].width} height={captureRectMap[rectNum + 1].height} alt="" />
+                        <img className='capture-content' src={imgSrc} style={{ top: captureRectMap[rectNum + 1].top, width: captureRectMap[rectNum + 1].widthPer, height: captureRectMap[rectNum + 1].heightPer }} alt="" />
                     </div>
                 </div>
                 <div className='flex items-center'>
@@ -165,21 +164,21 @@ const Save = () => {
                     </button> */}
                 </div>
             </div>
-            <div>
-                <div className='local-imgs' ref={localImgsRef}>
-                    {saveImgs.slice().reverse().map((data, idx) => {
-                        const { image, rect } = data;
-                        return <img key={idx} id={`localImg-${idx}`} src={image}
-                            onClick={() => {
-                                imgClick(image, rect);
-                                setLocalImgNum(idx);
-                            }} alt=""
-                            tabIndex={0}
-                            style={{ cursor: 'pointer', height: '188px', border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white' }} />
-                    }
-                    )}
-                </div>
+
+            <div className='local-imgs' ref={localImgsRef}>
+                {saveImgs.slice().reverse().map((data, idx) => {
+                    const { image, rect } = data;
+                    return <img key={idx} id={`localImg-${idx}`} src={image}
+                        onClick={() => {
+                            imgClick(image, rect);
+                            setLocalImgNum(idx);
+                        }} alt=""
+                        tabIndex={0}
+                        style={{ cursor: 'pointer', border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white' }} />
+                }
+                )}
             </div>
+
         </div >
     );
 };
