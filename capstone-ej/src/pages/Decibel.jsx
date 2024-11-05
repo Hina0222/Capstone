@@ -52,7 +52,7 @@ const Decibel = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex' style={{ marginTop: '60px', height: 'calc(100% - 112px)' }}>
+            <div className='flex justify-between' style={{ marginTop: '60px', height: 'calc(100% - 112px)' }}>
                 <section className='capture-container'>
                     <Capture captureRef={captureRef}
                         imgBoxes={imgBoxes}

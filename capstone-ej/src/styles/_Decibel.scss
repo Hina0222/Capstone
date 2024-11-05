@@ -25,25 +25,25 @@
                 }
             }
             white-space: nowrap;
-            animation: flowText1 35s linear infinite;
+            //animation: flowText1 35s linear infinite;
             font-weight: 500;
         }
     }
 
     .capture-container{
         display: flex;
-        width: 51.1%;
+        width: 61.26%;
+        justify-content: space-between;
 
         .capture-content {
-            align-items: center;
             display: flex;
-            width: 92.87%;
+            align-items: center;
             justify-content: center;
-
+            width: 94.05%;
         }
         
         .capture-option{
-            width: 7.19%;
+            width: 5.95%;
 
             button {
                 margin-top: 28px;
