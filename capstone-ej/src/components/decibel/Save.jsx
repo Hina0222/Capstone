@@ -52,6 +52,7 @@ const Save = () => {
     const imgClick = (imgSrc, rect) => {
         setImgSrc(imgSrc);
         setRectNum(rect);
+        setQrVisible(false);
     }
 
     useEffect(() => {
@@ -132,38 +133,38 @@ const Save = () => {
             <Link className='home-btn decibel-save-btn' to="/">
                 <Home />
             </Link>
-            <div className='flex justify-between' style={{ height: '78.9%' }}>
-                <div className='flex items-center'>
-                    <button className='swap-btn -scale-x-100 ' onClick={() => HandleSwap('left')}>
-                        <SwapArrow />
-                    </button>
-                </div>
+            <div className='flex justify-between relative' style={{height: '78.9%'}}>
+                <button className='swap-btn -scale-x-100 ' onClick={() => HandleSwap('left')}>
+                    <SwapArrow/>
+                </button>
                 <div className='flex gap-x-16 justify-center'>
-                    <div style={{ width: '5.5%' }}>
+                    <div style={{width: '5.5%'}}>
                         {buttons.map((bgBtn, idx) => (
                             <button
                                 className='bg-btn'
                                 key={idx} onClick={() => {
-                                    setActiveBgImage(idx);
-                                }}>
-                                <img src={bgBtn} alt="" />
+                                setActiveBgImage(idx);
+                                setQrVisible(false);
+                            }}>
+                                <img src={bgBtn} alt=""/>
                                 {(activeBgImage === idx) &&
                                     <div className='overlay'>
-                                        <Check />
+                                        <Check/>
                                     </div>
                                 }
                             </button>
                         ))}
                     </div>
                     <div className='relative'>
-                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{ height: '100%' }} />
-                        <img className='capture-content' src={imgSrc} style={{ top: captureRectMap[rectNum + 1].top, width: captureRectMap[rectNum + 1].widthPer, height: captureRectMap[rectNum + 1].heightPer }} alt="" />
+                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{height: '100%'}}/>
+                        <img className='capture-content' src={imgSrc} style={{
+                            top: captureRectMap[rectNum + 1].top,
+                            width: captureRectMap[rectNum + 1].widthPer,
+                            height: captureRectMap[rectNum + 1].heightPer
+                        }} alt=""/>
                     </div>
                 </div>
-                <div>
-                    {/*<button className='swap-btn' onClick={() => HandleSwap('right')}>*/}
-                    {/*    <SwapArrow />*/}
-                    {/*</button>*/}
+                <div className='text-right'>
                     <button className='print-btn' onClick={ClickCapture}>
                         PRINT
                     </button>
@@ -177,11 +178,14 @@ const Save = () => {
                         </div>
                     }
                 </div>
+                <button className='swap-btn right-0' onClick={() => HandleSwap('right')}>
+                    <SwapArrow/>
+                </button>
             </div>
 
             <div className='local-imgs' ref={localImgsRef}>
                 {saveImgs.slice().reverse().map((data, idx) => {
-                    const { image, rect } = data;
+                        const { image, rect } = data;
                     return <img key={idx} id={`localImg-${idx}`} src={image}
                         onClick={() => {
                             imgClick(image, rect);

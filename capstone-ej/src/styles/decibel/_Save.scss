@@ -9,8 +9,11 @@
     .bg-btn{
         position: relative;
         margin-bottom: 24px;
-        border-radius: 12px;
-        border: 1.5px solid #0800EE;
+
+        img {
+            border-radius: 12px;
+            border: 1.5px solid #0800EE;
+        }
     }
 
     .overlay {
@@ -23,7 +26,7 @@
         right: 0;
         bottom: 0;
         background-color: rgba(8, 0, 238, 0.50);
-        border-radius: 9.8%;
+        border-radius: 12px;
     }
     
     .decibel-save-btn{
@@ -79,6 +82,8 @@
         border: 1.5px solid #0800EE;
         padding: 19px 22px;
         background-color: white;
+        position: absolute;
+        top: 49%;
     }
 
     .local-imgs{
