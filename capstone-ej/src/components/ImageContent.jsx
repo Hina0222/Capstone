@@ -1,10 +1,17 @@
 import { useCallback, useMemo, useState, memo } from 'react';
 import { throttle } from 'lodash';
-import ContentBox1 from '../images/EntryImages/ContentBox1.png';
-import ContentBox2 from '../images/EntryImages/ContentBox2.png';
-import ContentBox3 from '../images/EntryImages/ContentBox3.png';
+import ContentBox1 from '../images/EntryImages/ContentBoxs/ContentBox1.png';
+import ContentBox2 from '../images/EntryImages/ContentBoxs/ContentBox2.png';
+import ContentBox3 from '../images/EntryImages/ContentBoxs/ContentBox3.png';
+import ContentBoxHover1 from '../images/EntryImages/ContentBoxs/ContentBoxHover1.png';
+import ContentBoxHover2 from '../images/EntryImages/ContentBoxs/ContentBoxHover2.png';
+import ContentBoxHover3 from '../images/EntryImages/ContentBoxs/ContentBoxHover3.png';
+
+const ContentBox = [ContentBox1, ContentBox2, ContentBox3];
+const ContentBoxHover = [ContentBoxHover1, ContentBoxHover2, ContentBoxHover3];
 
 const ImageContent = memo(({ content, idx, openModal }) => {
+    console.log(`컴포넌트 렌더링`);
     const adjustedIndex = idx % 9;
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
@@ -21,7 +28,6 @@ const ImageContent = memo(({ content, idx, openModal }) => {
             });
         }, 5), []);
 
-    console.log(`컴포넌트 렌더링`);
     const MouseEnter = () => {
         setIsMouseOver(true);
     };
@@ -34,33 +40,14 @@ const ImageContent = memo(({ content, idx, openModal }) => {
         openModal(`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/original/${content.category}/${content.id}.png`);
     };
 
-    const backgroundStyle = useMemo(() => {
-        const random = Math.random();
-        if (random < 0.2) {
-            return {
-                backgroundImage: `url(${ContentBox1})`,
-                backgroundSize: '100% 100%',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-            };
-        } else if (random < 0.4) {
-            return {
-                backgroundImage: `url(${ContentBox2})`,
-                backgroundSize: '100% 100%',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-            };
-        } else if (random < 0.6) {
-            return {
-                backgroundImage: `url(${ContentBox3})`,
-                backgroundSize: '100% 100%',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
 
-            };
-        }
-        return { border: '1.5px solid #0800EE' ,backgroundColor:'white'};
-    }, [idx]);
+    const randomImg = useMemo(() => {
+        const randomValue = Math.random();
+        if (randomValue < 0.2) return 1;
+        else if (randomValue < 0.4) return 2;
+        else if (randomValue < 0.6) return 3;
+        return 4; // 기본값 설정
+    }, []);
 
     // 좀 더 알아보고 지우기
     const moveImage = useMemo(() => {
@@ -71,13 +58,21 @@ const ImageContent = memo(({ content, idx, openModal }) => {
         <>
             <div
                 className="image-content flex justify-center items-center relative"
-                style={backgroundStyle}
+                style={{
+                    backgroundImage: isMouseOver ? `url(${ContentBoxHover[randomImg - 1]})` : `url(${ContentBox[randomImg - 1]})`,
+                    border: randomImg === 4 ? '1.5px solid #0800EE' : 'none',
+                    backgroundColor: randomImg === 4 ? isMouseOver ? '#0800EE' : 'white' : 'none',
+                    backgroundSize: '100% 100%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                }}
                 onClick={handleClick}
                 onMouseMove={MouseMove}
                 onMouseEnter={MouseEnter}
                 onMouseLeave={MouseLeave}
             >
-                <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/deactive/${content.category}/${content.id}.svg`} alt="" />
+                {!isMouseOver ? <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/deactive/${content.category}/${content.id}.svg`} alt="" /> :
+                    <img src={`https://bucket-geeks.s3.ap-northeast-2.amazonaws.com/symbol/active/${content.category}/${content.id}.svg`} alt="" />}
                 {isMouseOver && (
                     <img
                         src={moveImage}
