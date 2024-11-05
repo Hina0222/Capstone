@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
 import { ReactComponent as Check } from '../../images/DecibelImages/BgBtn/Check.svg';
 import { ReactComponent as SwapArrow } from '../../images/DecibelImages/SavePage/SwapArrow.svg';
+import QrTest from '../../images/DecibelImages/SavePage/QrTest.png';
 
 const captureRectMap = {
     1: { width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%' },
@@ -30,6 +31,7 @@ const Save = () => {
     const [rectNum, setRectNum] = useState(activeButton);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [localImgNum, setLocalImgNum] = useState(0);
+    const [qrVisible,setQrVisible] = useState(false);
 
     const Base64ImageSend = async (image) => {
         try {
@@ -60,10 +62,8 @@ const Save = () => {
             localImgs.scrollLeft += event.deltaY;
         };
 
-        // 이벤트 리스너 추가
         localImgs.addEventListener('wheel', handleWheel);
 
-        // 컴포넌트 언마운트 시 이벤트 리스너 제거
         return () => localImgs.removeEventListener('wheel', handleWheel);
     }, []);
 
@@ -84,6 +84,11 @@ const Save = () => {
             }
         }
     };
+
+    const ClickQrPrint = () => {
+        // api받아서 이미지 넣기
+        setQrVisible(!qrVisible);
+    }
 
     const ClickCapture = () => {
         const imgData = imgSrc;
@@ -155,13 +160,22 @@ const Save = () => {
                         <img className='capture-content' src={imgSrc} style={{ top: captureRectMap[rectNum + 1].top, width: captureRectMap[rectNum + 1].widthPer, height: captureRectMap[rectNum + 1].heightPer }} alt="" />
                     </div>
                 </div>
-                <div className='flex items-center'>
-                    <button className='swap-btn' onClick={() => HandleSwap('right')}>
-                        <SwapArrow />
-                    </button>
-                    {/* <button className='print-btn' onClick={ClickCapture}>
+                <div>
+                    {/*<button className='swap-btn' onClick={() => HandleSwap('right')}>*/}
+                    {/*    <SwapArrow />*/}
+                    {/*</button>*/}
+                    <button className='print-btn' onClick={ClickCapture}>
                         PRINT
-                    </button> */}
+                    </button>
+                    <button className='qr-btn' onClick={ClickQrPrint}>
+                        SAVE IMAGE
+                    </button>
+                    {qrVisible &&
+                        <div className='qr-box'>
+                            <p>큐알을 찍으면 <br/>모바일에서 이미지를<br/>저장할 수 있어요</p>
+                            <img src={QrTest} alt=""/>
+                        </div>
+                    }
                 </div>
             </div>
 
