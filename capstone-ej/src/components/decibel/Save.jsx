@@ -5,7 +5,6 @@ import axios from 'axios';
 import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
 import { ReactComponent as Check } from '../../images/DecibelImages/BgBtn/Check.svg';
 import { ReactComponent as SwapArrow } from '../../images/DecibelImages/SavePage/SwapArrow.svg';
-import QrTest from '../../images/DecibelImages/SavePage/QrTest.png';
 
 const captureRectMap = {
     1: { width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%' },
@@ -31,66 +30,22 @@ const Save = () => {
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [localImgNum, setLocalImgNum] = useState(0);
     const [qrVisible, setQrVisible] = useState(false);
+    const [qrImg, setQrImg] = useState(null);
 
     const Base64ImageSend = async (image) => {
         try {
-            const res = await axios.post('http://localhost:8080/save/image', {
+            const res = await axios.post('http://52.79.32.80:8080/save/image', {
                 image: image
             });
-            console.log(res.data)
+            console.log(res.data);
+            setQrImg(res.data);
+            setQrVisible(true);
         } catch (err) {
             console.log(err);
         }
     }
 
-    useEffect(() => {
-        const savedImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
-        setSaveImgs(savedImages);
-    }, []);
-
-    const imgClick = (imgSrc, rect) => {
-        setImgSrc(imgSrc);
-        setRectNum(rect);
-        setQrVisible(false);
-    }
-
-    useEffect(() => {
-        const localImgs = localImgsRef.current;
-
-        const handleWheel = (event) => {
-            event.preventDefault();
-            localImgs.scrollLeft += event.deltaY;
-        };
-
-        localImgs.addEventListener('wheel', handleWheel);
-
-        return () => localImgs.removeEventListener('wheel', handleWheel);
-    }, []);
-
-    const HandleSwap = (direction) => {
-        const newIndex = direction === 'left' ? localImgNum - 1 : localImgNum + 1;
-        if (newIndex >= 0 && newIndex < saveImgs.length) {
-            const { image, rect } = saveImgs.slice().reverse()[newIndex];
-            setLocalImgNum(newIndex);
-            imgClick(image, rect);
-
-            const localImgs = localImgsRef.current;
-            const imgElement = document.getElementById(`localImg-${newIndex}`);
-            if (imgElement) {
-                localImgs.scrollTo({
-                    left: imgElement.offsetLeft - localImgs.clientWidth / 2 + imgElement.clientWidth / 2,
-                    behavior: 'smooth',
-                });
-            }
-        }
-    };
-
-    const ClickQrPrint = () => {
-        // api받아서 이미지 넣기
-        setQrVisible(!qrVisible);
-    }
-
-    const ClickCapture = () => {
+    const QrLoad = () => {
         const imgData = imgSrc;
 
         const backgroundImage = new Image();
@@ -117,14 +72,60 @@ const Save = () => {
                 const pngDataUrl = finalCanvas.toDataURL('image/png');
                 const base64Image = pngDataUrl.split(',')[1]
 
-                const link = document.createElement('a');
-                link.href = pngDataUrl;
-                link.download = 'final-image.png';
-                link.click();
+                // const link = document.createElement('a');
+                // link.href = pngDataUrl;
+                // link.download = 'final-image.png';
+                // link.click();
 
-                // Base64ImageSend(base64Image);
+                Base64ImageSend(base64Image);
             };
         };
+    };
+
+    const LocalPrint = () => {
+
+    }
+
+    useEffect(() => {
+        const savedImages = JSON.parse(localStorage.getItem('capturedImages')) || [];
+        setSaveImgs(savedImages);
+    }, []);
+
+    useEffect(() => {
+        const localImgs = localImgsRef.current;
+
+        const handleWheel = (event) => {
+            event.preventDefault();
+            localImgs.scrollLeft += event.deltaY;
+        };
+
+        localImgs.addEventListener('wheel', handleWheel);
+
+        return () => localImgs.removeEventListener('wheel', handleWheel);
+    }, []);
+
+    const imgClick = (imgSrc, rect) => {
+        setImgSrc(imgSrc);
+        setRectNum(rect);
+        setQrVisible(false);
+    }
+
+    const ImageSwap = (direction) => {
+        const newIndex = direction === 'left' ? localImgNum - 1 : localImgNum + 1;
+        if (newIndex >= 0 && newIndex < saveImgs.length) {
+            const { image, rect } = saveImgs.slice().reverse()[newIndex];
+            setLocalImgNum(newIndex);
+            imgClick(image, rect);
+
+            const localImgs = localImgsRef.current;
+            const imgElement = document.getElementById(`localImg-${newIndex}`);
+            if (imgElement) {
+                localImgs.scrollTo({
+                    left: imgElement.offsetLeft - localImgs.clientWidth / 2 + imgElement.clientWidth / 2,
+                    behavior: 'smooth',
+                });
+            }
+        }
     };
 
     return (
@@ -133,7 +134,7 @@ const Save = () => {
                 <Home />
             </Link>
             <div className='flex justify-between relative' style={{ height: '78.9%' }}>
-                <button className='swap-btn -scale-x-100 ' onClick={() => HandleSwap('left')}>
+                <button className='swap-btn -scale-x-100 ' onClick={() => ImageSwap('left')}>
                     <SwapArrow />
                 </button>
                 <div className='flex gap-x-16 justify-center'>
@@ -164,20 +165,20 @@ const Save = () => {
                     </div>
                 </div>
                 <div className='text-right'>
-                    <button className='print-btn' onClick={ClickCapture}>
+                    <button className='print-btn' onClick={LocalPrint}>
                         PRINT
                     </button>
-                    <button className='qr-btn' onClick={ClickQrPrint}>
+                    <button className='qr-btn' onClick={QrLoad}>
                         SAVE IMAGE
                     </button>
                     {qrVisible &&
                         <div className='qr-box'>
                             <p>큐알을 찍으면 <br />모바일에서 이미지를<br />저장할 수 있어요</p>
-                            <img src={QrTest} alt="" />
+                            <img src={qrImg} alt="" />
                         </div>
                     }
                 </div>
-                <button className='swap-btn right-0' onClick={() => HandleSwap('right')}>
+                <button className='swap-btn right-0' onClick={() => ImageSwap('right')}>
                     <SwapArrow />
                 </button>
             </div>
