@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Bg from "../images/DecibelImages/Background";
 import Capture from '../components/decibel/Capture';
 import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
 import html2canvas from 'html2canvas';

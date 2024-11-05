@@ -18,7 +18,6 @@ const buttons = [
     Bg.BgBtn2,
     Bg.BgBtn3,
     Bg.BgBtn4,
-    Bg.BgBtn5,
 ];
 
 const Save = () => {
@@ -31,7 +30,7 @@ const Save = () => {
     const [rectNum, setRectNum] = useState(activeButton);
     const [activeBgImage, setActiveBgImage] = useState(0);
     const [localImgNum, setLocalImgNum] = useState(0);
-    const [qrVisible,setQrVisible] = useState(false);
+    const [qrVisible, setQrVisible] = useState(false);
 
     const Base64ImageSend = async (image) => {
         try {
@@ -133,35 +132,35 @@ const Save = () => {
             <Link className='home-btn decibel-save-btn' to="/">
                 <Home />
             </Link>
-            <div className='flex justify-between relative' style={{height: '78.9%'}}>
+            <div className='flex justify-between relative' style={{ height: '78.9%' }}>
                 <button className='swap-btn -scale-x-100 ' onClick={() => HandleSwap('left')}>
-                    <SwapArrow/>
+                    <SwapArrow />
                 </button>
                 <div className='flex gap-x-16 justify-center'>
-                    <div style={{width: '5.5%'}}>
+                    <div style={{ width: '5.5%' }}>
                         {buttons.map((bgBtn, idx) => (
                             <button
                                 className='bg-btn'
                                 key={idx} onClick={() => {
-                                setActiveBgImage(idx);
-                                setQrVisible(false);
-                            }}>
-                                <img src={bgBtn} alt=""/>
+                                    setActiveBgImage(idx);
+                                    setQrVisible(false);
+                                }}>
+                                <img src={bgBtn} alt="" />
                                 {(activeBgImage === idx) &&
                                     <div className='overlay'>
-                                        <Check/>
+                                        <Check />
                                     </div>
                                 }
                             </button>
                         ))}
                     </div>
                     <div className='relative'>
-                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{height: '100%'}}/>
+                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{ height: '100%' }} />
                         <img className='capture-content' src={imgSrc} style={{
                             top: captureRectMap[rectNum + 1].top,
                             width: captureRectMap[rectNum + 1].widthPer,
                             height: captureRectMap[rectNum + 1].heightPer
-                        }} alt=""/>
+                        }} alt="" />
                     </div>
                 </div>
                 <div className='text-right'>
@@ -173,19 +172,19 @@ const Save = () => {
                     </button>
                     {qrVisible &&
                         <div className='qr-box'>
-                            <p>큐알을 찍으면 <br/>모바일에서 이미지를<br/>저장할 수 있어요</p>
-                            <img src={QrTest} alt=""/>
+                            <p>큐알을 찍으면 <br />모바일에서 이미지를<br />저장할 수 있어요</p>
+                            <img src={QrTest} alt="" />
                         </div>
                     }
                 </div>
                 <button className='swap-btn right-0' onClick={() => HandleSwap('right')}>
-                    <SwapArrow/>
+                    <SwapArrow />
                 </button>
             </div>
 
             <div className='local-imgs' ref={localImgsRef}>
                 {saveImgs.slice().reverse().map((data, idx) => {
-                        const { image, rect } = data;
+                    const { image, rect } = data;
                     return <img key={idx} id={`localImg-${idx}`} src={image}
                         onClick={() => {
                             imgClick(image, rect);
