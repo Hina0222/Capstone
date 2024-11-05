@@ -31,10 +31,10 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
     };
 
     const rects = [
-        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 69.93, height: 94.05 } },
-        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 90.85, height: 55.28 } },
-        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 40.18, height: 89.10 } },
-        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 94.34, height: 33 } },
+        { component: <Rect1 style={{ width: '40.9%' }} />, size: { width: 57.5, height: 94.1 } },
+        { component: <Rect2 style={{ width: '59.09%' }} />, size: { width: 81.9, height: 55.3 } },
+        { component: <Rect3 style={{ width: '26.13%' }} />, size: { width: 33.05, height: 89.11 } },
+        { component: <Rect4 style={{ width: '60.22%' }} />, size: { width: 77.6, height: 33 } },
     ];
 
     const onDelete = (id) => {

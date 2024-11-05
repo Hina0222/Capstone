@@ -14,6 +14,7 @@
         display: flex;
         align-items: center;
         gap:24px;
+        width: calc(100% - 3.66vw - 2.5rem);
 
         .decibel-top-flowing{
             @keyframes flowText1 {
@@ -24,8 +25,9 @@
                 transform: translateX(-100%);
                 }
             }
+            width: 100%;
             white-space: nowrap;
-            //animation: flowText1 35s linear infinite;
+            animation: flowText1 35s linear infinite;
             font-weight: 500;
         }
     }
