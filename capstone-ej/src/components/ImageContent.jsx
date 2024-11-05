@@ -59,7 +59,7 @@ const ImageContent = memo(({ content, idx, openModal }) => {
 
             };
         }
-        return { border: '1.5px solid #0800EE' };
+        return { border: '1.5px solid #0800EE' ,backgroundColor:'white'};
     }, [idx]);
 
     // 좀 더 알아보고 지우기

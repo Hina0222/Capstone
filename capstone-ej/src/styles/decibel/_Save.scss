@@ -1,7 +1,6 @@
 .save-page{
     height: 100vh;
     padding: 44px 80px 52px 80px;
-    background-color: #882445;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,9 +11,10 @@
         margin-bottom: 24px;
         border-radius: 12px;
         border: 1.5px solid #0800EE;
+        background-color: white;
     }
 
-    .overray {
+    .overlay {
         display: flex;
         align-items: center;
         justify-content: center;

@@ -143,7 +143,7 @@ const Save = () => {
                                 }}>
                                 <img src={bgBtn} alt="" />
                                 {(activeBgImage === idx) &&
-                                    <div className='overray'>
+                                    <div className='overlay'>
                                         <Check />
                                     </div>
                                 }

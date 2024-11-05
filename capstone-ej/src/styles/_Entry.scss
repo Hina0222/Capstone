@@ -37,8 +37,9 @@
     .home-top-right{
       display: flex;
       color:#0800EE;
-      border-radius: 8px;
       border: 1.5px solid #0800EE;
+      background-color: white;
+      border-radius: 8px;
       padding: 10px 20px;
       width: 28%;
       gap:20px;
@@ -86,6 +87,7 @@
     transition: 0.2s ease;
     width: 140px;
     height: 52px;
+    background-color: white;
 
     &:hover{
       color:white;
@@ -107,7 +109,7 @@
     padding: 20px;
     cursor: pointer;
     position: relative;
-    
+
     img {
       height: 70%;
       width: 70%;
@@ -120,6 +122,7 @@
     max-height: 250px;
     border: 1.5px solid #0800EE;
     border-radius: 12px;
+    background-color: white;
   }
 
   .top-btn {

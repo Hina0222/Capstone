@@ -1,10 +1,10 @@
+@import "pretendard/dist/web/static/pretendard.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "pretendard/dist/web/static/pretendard.css";
 
 body {
-  background-color: white;
+  background-color: #F6F6F6;
   font-family: "pretendard", sans-serif;
 }
 
