@@ -83,64 +83,77 @@ const Save = () => {
     };
 
     const LocalPrint = () => {
-        // const imgData = imgSrc;
+        const imgData = imgSrc;
 
-        // const backgroundImage = new Image();
-        // backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
+        const backgroundImage = new Image();
+        backgroundImage.src = Bg[`BgCapture${activeBgImage + 1}`];
 
-        // backgroundImage.onload = () => {
-        //     const finalCanvas = document.createElement('canvas');
-        //     // 배경 이미지의 크기
-        //     finalCanvas.width = backgroundImage.width;
-        //     finalCanvas.height = backgroundImage.height;
+        backgroundImage.onload = () => {
+            const finalCanvas = document.createElement('canvas');
+            // 배경 이미지의 크기
+            finalCanvas.width = backgroundImage.width;
+            finalCanvas.height = backgroundImage.height;
 
-        //     const ctx = finalCanvas.getContext('2d');
-        //     ctx.drawImage(backgroundImage, 0, 0);
+            const ctx = finalCanvas.getContext('2d');
+            ctx.drawImage(backgroundImage, 0, 0);
 
-        //     const capturedImage = new Image();
-        //     capturedImage.src = imgData;
+            const capturedImage = new Image();
+            capturedImage.src = imgData;
 
-        //     capturedImage.onload = () => {
-        //         const x = (finalCanvas.width - captureRectMap[rectNum + 1].width) / 2;
-        //         const y = (finalCanvas.height - captureRectMap[rectNum + 1].y);
-        //         // 그려질 이미지, x좌표, y좌표, 이미지의 너비, 높이
-        //         ctx.drawImage(capturedImage, x, y, captureRectMap[rectNum + 1].width, captureRectMap[rectNum + 1].height);
+            capturedImage.onload = () => {
+                const x = (finalCanvas.width - captureRectMap[rectNum + 1].width) / 2;
+                const y = (finalCanvas.height - captureRectMap[rectNum + 1].y);
+                // 그려질 이미지, x좌표, y좌표, 이미지의 너비, 높이
+                ctx.drawImage(capturedImage, x, y, captureRectMap[rectNum + 1].width, captureRectMap[rectNum + 1].height);
 
-        //         const pngDataUrl = finalCanvas.toDataURL('image/png');
+                const pngDataUrl = finalCanvas.toDataURL('image/png');
 
-        //         const imgWindow = window.open('', '_blank');
-        //         imgWindow.document.write(`
-        //             <html>
-        //             <head>
-        //                 <title>Print Image</title>
-        //                 <style>
-        //                     @page {
-        //                         size: A4;
-        //                         margin: 0;
-        //                     }
-        //                     body {
-        //                         margin: 0;
-        //                     }
-        //                     img {
-        //                         width: 100%;
-        //                         height: auto;
-        //                     }
-        //                 </style>
-        //             </head>
-        //             <body>
-        //                 <img src="${pngDataUrl}" />
-        //             </body>
-        //             </html>
-        //         `);
-        //         imgWindow.document.close();
+                const printFrame = document.createElement('iframe');
+                printFrame.style.position = 'fixed';
+                printFrame.style.right = '0';
+                printFrame.style.bottom = '0';
+                printFrame.style.width = '0';
+                printFrame.style.height = '0';
+                printFrame.style.border = '0';
+                document.body.appendChild(printFrame);
 
-        //         // 이미지가 로드된 후 인쇄
-        //         imgWindow.onload = () => {
-        //             imgWindow.print();
-        //             imgWindow.onafterprint = () => imgWindow.close(); // 인쇄 후 창 닫기
-        //         };
-        //     };
-        // };
+                printFrame.contentDocument.write(`
+                    <html>
+                    <head>
+                        <title>Print Image</title>
+                        <style>
+                            @page {
+                                size: A4;
+                                margin: 0;
+                            }
+                            body {
+                                margin: 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                            img {
+                                width: 70%;
+                                height: auto;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <img src="${pngDataUrl}" />
+                    </body>
+                    </html>
+                `);
+                printFrame.contentDocument.close();
+
+                printFrame.onload = () => {
+                    printFrame.contentWindow.print();
+
+                    setTimeout(() => {
+                        document.body.removeChild(printFrame);
+                    }, 500);
+                };
+            };
+        };
     }
 
     useEffect(() => {

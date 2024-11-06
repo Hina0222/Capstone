@@ -12,7 +12,7 @@ import { ReactComponent as Trash } from '../../images/DecibelImages/Trash.svg';
 const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeButton }) => {
     console.log("캡쳐");
     const [bgColor, setBgColor] = useState('#ffffff');
-    const [captureResize, setCaptureResize] = useState({ width: 69.93, height: 94.05 });
+    const [captureResize, setCaptureResize] = useState({ width: 57.5, height: 94.1 });
     const [textBoxes, setTextBoxes] = useState([]);
     const [trashVisible, setTrashVisible] = useState(false);
     const [trashId, setTrashId] = useState('');
@@ -21,7 +21,7 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
         setBgColor('#ffffff');
         setTextBoxes([]);
         setImgBoxes([]);
-        setCaptureResize({ width: 69.93, height: 94.05 });
+        setCaptureResize({ width: 57.5, height: 94.1 });
         setActiveButton(0);
     }
 
