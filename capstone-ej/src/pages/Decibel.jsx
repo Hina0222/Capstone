@@ -46,7 +46,7 @@ const Decibel = () => {
                     <div className='text-3xl font-medium'>DECIBEL</div>
                     <div className='overflow-hidden w-full'>
                         <div className='decibel-top-flowing'>
-                            골목의 다양한 경고문을 240장 수집하였습니다. 골목 거주민들의 분노를 엿볼 수 있는 경고문들을 기준을 세워 분류한 후, 경고문의 재미난 요소들에 집중하였습니다. 시각으로 보여지는 경고문에 집중해 주세요.
+                            거주민들의 목소리를 생각하면서 청각으로 들리는 경고문에 집중해 주세요. 경고문의 글쓴이가 되어 하고 싶었던 이야기를 경고문으로 만들어 나만의 골목에 부착해 보세요.
                         </div>
                     </div>
                 </div>
