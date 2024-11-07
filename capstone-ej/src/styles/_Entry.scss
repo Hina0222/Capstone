@@ -1,7 +1,9 @@
 .entry-page{
-  margin: 44px 80px;
+  padding: 44px 80px;
   overflow-x: hidden;
-  min-height: calc(100vh - 88px);
+  min-height: 100vh;
+  background-image: url("../images/Background.jpg");
+  background-position: center;
   
   .home-top{
     display: flex;

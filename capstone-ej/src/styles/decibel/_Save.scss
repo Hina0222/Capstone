@@ -5,6 +5,10 @@
     flex-direction: column;
     justify-content: space-between;
     gap:45px;
+    background-image: url("../../images/Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     .bg-btn{
         position: relative;

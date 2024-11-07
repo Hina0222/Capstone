@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 import Bg from "../../images/DecibelImages/Background";
 import axios from 'axios';
-import { ReactComponent as Home } from '../../images/AboutImages/Home.svg';
-import { ReactComponent as Check } from '../../images/DecibelImages/BgBtn/Check.svg';
-import { ReactComponent as SwapArrow } from '../../images/DecibelImages/SavePage/SwapArrow.svg';
+import {ReactComponent as Home} from '../../images/AboutImages/Home.svg';
+import {ReactComponent as Check} from '../../images/DecibelImages/BgBtn/Check.svg';
+import {ReactComponent as SwapArrow} from '../../images/DecibelImages/SavePage/SwapArrow.svg';
 
 const captureRectMap = {
-    1: { width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%' },
-    2: { width: 600, height: 386, y: 1053, widthPer: '83%', heightPer: '32.2%', top: '17.6%' },
-    3: { width: 372, height: 873, y: 1207, widthPer: '51.5%', heightPer: '68.2%', top: '5.7%' },
-    4: { width: 600, height: 222, y: 879, widthPer: '83.1%', heightPer: '17.4%', top: '31.2%' }
+    1: {width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%'},
+    2: {width: 600, height: 386, y: 1053, widthPer: '83%', heightPer: '32.2%', top: '17.6%'},
+    3: {width: 372, height: 873, y: 1207, widthPer: '51.5%', heightPer: '68.2%', top: '5.7%'},
+    4: {width: 600, height: 222, y: 879, widthPer: '83.1%', heightPer: '17.4%', top: '31.2%'}
 }
 const buttons = [
     Bg.BgBtn1,
@@ -21,7 +21,7 @@ const buttons = [
 
 const Save = () => {
     const location = useLocation();
-    const { activeButton, capturedImage } = location.state;
+    const {activeButton, capturedImage} = location.state;
     const localImgsRef = useRef(null);
 
     const [saveImgs, setSaveImgs] = useState([]);
@@ -183,7 +183,7 @@ const Save = () => {
     const ImageSwap = (direction) => {
         const newIndex = direction === 'left' ? localImgNum - 1 : localImgNum + 1;
         if (newIndex >= 0 && newIndex < saveImgs.length) {
-            const { image, rect } = saveImgs.slice().reverse()[newIndex];
+            const {image, rect} = saveImgs.slice().reverse()[newIndex];
             setLocalImgNum(newIndex);
             imgClick(image, rect);
 
@@ -201,37 +201,39 @@ const Save = () => {
     return (
         <div className='save-page'>
             <Link className='home-btn decibel-save-btn' to="/">
-                <Home />
+                <Home/>
             </Link>
-            <div className='flex justify-between relative' style={{ height: '78.9%' }}>
-                <button className='swap-btn -scale-x-100 ' onClick={() => ImageSwap('left')}>
-                    <SwapArrow />
+            <div className='flex justify-between relative' style={{height: '78.9%'}}>
+                <button className='swap-btn -scale-x-100 ' onClick={() => ImageSwap('left')}
+                        style={{opacity: localImgNum === 0 ? '0.3' : '1'}}
+                >
+                    <SwapArrow/>
                 </button>
                 <div className='flex gap-x-16 justify-center'>
-                    <div style={{ width: '5.5%' }}>
+                    <div style={{width: '5.5%'}}>
                         {buttons.map((bgBtn, idx) => (
                             <button
                                 className='bg-btn'
                                 key={idx} onClick={() => {
-                                    setActiveBgImage(idx);
-                                    setQrVisible(false);
-                                }}>
-                                <img src={bgBtn} alt="" />
+                                setActiveBgImage(idx);
+                                setQrVisible(false);
+                            }}>
+                                <img src={bgBtn} alt=""/>
                                 {(activeBgImage === idx) &&
                                     <div className='overlay'>
-                                        <Check />
+                                        <Check/>
                                     </div>
                                 }
                             </button>
                         ))}
                     </div>
                     <div className='relative'>
-                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{ height: '100%' }} />
+                        <img src={Bg[`BgCapture${activeBgImage + 1}`]} alt="" style={{height: '100%'}}/>
                         <img className='capture-content' src={imgSrc} style={{
                             top: captureRectMap[rectNum + 1].top,
                             width: captureRectMap[rectNum + 1].widthPer,
                             height: captureRectMap[rectNum + 1].heightPer
-                        }} alt="" />
+                        }} alt=""/>
                     </div>
                 </div>
                 <div className='text-right'>
@@ -243,35 +245,37 @@ const Save = () => {
                     </button>
                     {qrVisible &&
                         <div className='qr-box'>
-                            <p>큐알을 찍으면 <br />모바일에서 이미지를<br />저장할 수 있어요</p>
-                            <img src={qrImg} alt="" />
+                            <p>큐알을 찍으면 <br/>모바일에서 이미지를<br/>저장할 수 있어요</p>
+                            <img src={qrImg} alt=""/>
                         </div>
                     }
                 </div>
-                <button className='swap-btn right-0' onClick={() => ImageSwap('right')}>
-                    <SwapArrow />
+                <button className='swap-btn right-0' onClick={() => ImageSwap('right')}
+                        style={{opacity: localImgNum === saveImgs.length-1 ? '0.3' : '1'}}
+                >
+                    <SwapArrow/>
                 </button>
             </div>
 
             <div className='local-imgs' ref={localImgsRef}>
                 {saveImgs.slice().reverse().map((data, idx) => {
-                    const { image, rect } = data;
-                    return <img key={idx} id={`localImg-${idx}`} src={image}
-                        onClick={() => {
-                            imgClick(image, rect);
-                            setLocalImgNum(idx);
-                        }} alt=""
-                        tabIndex={0}
-                        style={{
-                            cursor: 'pointer',
-                            border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white',
-                            height: idx === localImgNum ? '100%' : '64%'
-                        }}
-                    />
-                }
+                        const {image, rect} = data;
+                        return <img key={idx} id={`localImg-${idx}`} src={image}
+                                    onClick={() => {
+                                        imgClick(image, rect);
+                                        setLocalImgNum(idx);
+                                    }} alt=""
+                                    tabIndex={0}
+                                    style={{
+                                        cursor: 'pointer',
+                                        border: idx === localImgNum ? '2px solid #0800EE' : '2px solid white',
+                                        height: idx === localImgNum ? '100%' : '64%'
+                                    }}
+                        />
+                    }
                 )}
             </div>
-        </div >
+        </div>
     );
 };
 
