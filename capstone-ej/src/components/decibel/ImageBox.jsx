@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 import Draggable from 'react-draggable';
-import { ReactComponent as DragSizeIcon } from '../../images/DecibelImages/DragSizeIcon.svg';
+import {ReactComponent as DragSizeIcon} from '../../images/DecibelImages/DragSizeIcon.svg';
 import registMouseDownDrag from './registMouseDownDrag.js';
 
-const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => {
+const ImageBox = ({ImageSrc, id, setTrashVisible, setTrashId, captureRef}) => {
     console.log("ImageBox");
     const nodeRef = useRef(null);
     const [optionVisible, setOptionVisible] = useState(false);
-    const [{ x, y, w }, setConfig] = useState({ x: 0, y: 0, w: 200 });
+    const [{x, y, w, h}, setConfig] = useState({x: 0, y: 0, w: 200, h: 100});
     const [isResizing, setIsResizing] = useState(false);
     const [imageSrcWithTimestamp] = useState(`${ImageSrc}?timestamp=${Date.now()}`);
 
@@ -17,6 +17,7 @@ const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => 
         return v;
     };
     const MIN_W = 80;
+    const MIN_H = 50;
 
     const handleBlur = () => {
         setOptionVisible(false);
@@ -28,6 +29,7 @@ const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => 
             x: data.x,
             y: data.y,
             w,
+            h,
         });
     }
 
@@ -40,36 +42,42 @@ const ImageBox = ({ ImageSrc, id, setTrashVisible, setTrashId, captureRef }) => 
                 disabled={isResizing}
                 onStop={(e, data) => StopDrag(data)}
             >
-                <div className='text-box' ref={nodeRef} id={id} style={{ width: w }}
-                    tabIndex={0}
-                    onBlur={handleBlur}
-                    onClick={() => {
-                        setOptionVisible(true)
-                        setTrashVisible(true)
-                        setTrashId(id);
-                    }}
+                <div className='text-box' ref={nodeRef} id={id} style={{width: w, height: h}}
+                     tabIndex={0}
+                     onBlur={handleBlur}
+                     onClick={() => {
+                         setOptionVisible(true)
+                         setTrashVisible(true)
+                         setTrashId(id);
+                     }}
 
                 >
-                    <img crossOrigin="anonymous" className="w-full h-full" src={imageSrcWithTimestamp} alt="" style={{ border: optionVisible ? '1px solid #0800EE' : 'none', pointerEvents: 'none' }} />
+                    <img crossOrigin="anonymous" className="w-full h-full" src={imageSrcWithTimestamp} alt=""
+                         style={{border: optionVisible ? '1px solid #0800EE' : 'none', pointerEvents: 'none'}}/>
                     {optionVisible && (
                         <div className="drag-icon"
-                            onMouseEnter={() => { setIsResizing(true) }}
-                            onMouseLeave={() => { setIsResizing(false) }}
-                            {...registMouseDownDrag((deltaX, deltaY) => {
-                                const boundary = captureRef.current.getBoundingClientRect();
-                                setConfig({
-                                    x,
-                                    y,
-                                    w: inrange(w + deltaX, MIN_W, boundary.width - x),
-                                });
-                            })}
+                             onMouseEnter={() => {
+                                 setIsResizing(true)
+                             }}
+                             onMouseLeave={() => {
+                                 setIsResizing(false)
+                             }}
+                             {...registMouseDownDrag((deltaX, deltaY) => {
+                                 const boundary = captureRef.current.getBoundingClientRect();
+                                 setConfig({
+                                     x,
+                                     y,
+                                     w: inrange(w + deltaX, MIN_W, boundary.width - x),
+                                     h: inrange(h + deltaY, MIN_H, boundary.height - y),
+                                 });
+                             })}
                         >
-                            <DragSizeIcon />
+                            <DragSizeIcon/>
                         </div>
                     )}
 
                 </div>
-            </Draggable >
+            </Draggable>
         </>
     );
 };
