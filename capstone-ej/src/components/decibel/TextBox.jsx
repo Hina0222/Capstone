@@ -66,6 +66,7 @@ const TextBox = ({id, setTrashVisible, setTrashId, captureRef}) => {
                         color: '#0800EE',
                         outline: 'none',
                         border: optionVisible ? '1px solid #0800EE' : 'none',
+                        textAlign:'center',
                     }}
                        ref={textRef}
                        contentEditable

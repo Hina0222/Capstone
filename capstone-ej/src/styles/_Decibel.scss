@@ -114,14 +114,25 @@
                     display: inline-block;
                     padding: 16px 48px 8px 48px;
                     background-color: #FFFFFF;
-                    border-radius: 20px 20px 0px 0px;
+                    border-radius: 20px 20px 0 0;
                     position: relative;
-                    bottom: -1px;
+                    border-top: 2px solid #0800EE;
+                    border-left: 2px solid #0800EE;
+                    border-right: 2px solid #0800EE;
+                }
+                .option-title::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 100%;
+                    border-top: 5px solid white;
                 }
                 .option-content{
                     padding: 56px 48px 32px 48px;
                     background-color: #FFFFFF;
-                    border-radius: 0px 20px 20px 20px;
+                    border-radius: 0 20px 20px 20px;
+                    border: 2px solid #0800EE;
                 }
 
                 .decibel-btn{
