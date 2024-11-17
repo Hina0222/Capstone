@@ -16,7 +16,6 @@ const buttons = [
     Bg.BgBtn1,
     Bg.BgBtn2,
     Bg.BgBtn3,
-    Bg.BgBtn4,
 ];
 
 const Save = () => {
