@@ -242,7 +242,7 @@ const Save = () => {
                     <button className='qr-btn' onClick={QrLoad}>
                         SAVE IMAGE
                     </button>
-                    {!qrVisible &&
+                    {qrVisible &&
                         <div className='qr-box'>
                             <p>큐알을 찍으면 <br/>모바일에서 이미지를<br/>저장할 수 있어요</p>
                             <img src={qrImg} alt=""/>
