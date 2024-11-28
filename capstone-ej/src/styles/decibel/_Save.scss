@@ -5,10 +5,10 @@
     flex-direction: column;
     justify-content: space-between;
     gap:45px;
-    background-image: url("../../images/Background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    //background-image: url("../../images/Background.jpg");
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //background-position: center;
 
     .bg-btn{
         position: relative;
@@ -73,6 +73,12 @@
         gap: 22px;
         padding: 28px;
         text-align: center;
+
+        img {
+            min-width: 136px;
+            max-width: 136px;
+            height: 136px;
+        }
     }
 
     .capture-content{

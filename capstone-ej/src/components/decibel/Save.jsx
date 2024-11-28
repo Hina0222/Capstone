@@ -202,13 +202,13 @@ const Save = () => {
             <Link className='home-btn decibel-save-btn' to="/">
                 <Home/>
             </Link>
-            <div className='flex justify-between relative' style={{height: '78.9%'}}>
-                <button className='swap-btn -scale-x-100 ' onClick={() => ImageSwap('left')}
+            <div className='flex justify-end relative' style={{height: '78.9%'}}>
+                <button className='swap-btn -scale-x-100 left-0' onClick={() => ImageSwap('left')}
                         style={{opacity: localImgNum === 0 ? '0.3' : '1'}}
                 >
                     <SwapArrow/>
                 </button>
-                <div className='flex gap-x-16 justify-center'>
+                <div className='flex gap-x-20 justify-center ml-[220px]'>
                     <div style={{width: '5.5%'}}>
                         {buttons.map((bgBtn, idx) => (
                             <button
@@ -235,14 +235,14 @@ const Save = () => {
                         }} alt=""/>
                     </div>
                 </div>
-                <div className='text-right'>
+                <div className='text-right w-[19%]'>
                     <button className='print-btn' onClick={LocalPrint}>
                         PRINT
                     </button>
                     <button className='qr-btn' onClick={QrLoad}>
                         SAVE IMAGE
                     </button>
-                    {qrVisible &&
+                    {!qrVisible &&
                         <div className='qr-box'>
                             <p>큐알을 찍으면 <br/>모바일에서 이미지를<br/>저장할 수 있어요</p>
                             <img src={qrImg} alt=""/>

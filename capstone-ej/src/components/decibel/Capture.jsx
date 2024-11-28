@@ -61,6 +61,8 @@ const Capture = ({ captureRef, imgBoxes, setImgBoxes, setActiveButton, activeBut
                             onClick={() => {
                                 setCaptureResize(rect.size);
                                 setActiveButton(idx);
+                                setTextBoxes([]);
+                                setImgBoxes([]);
                             }}
                         >
                             {rect.component}
