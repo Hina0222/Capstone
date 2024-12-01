@@ -5,6 +5,7 @@ import axios from 'axios';
 import {ReactComponent as Home} from '../../images/AboutImages/Home.svg';
 import {ReactComponent as Check} from '../../images/DecibelImages/BgBtn/Check.svg';
 import {ReactComponent as SwapArrow} from '../../images/DecibelImages/SavePage/SwapArrow.svg';
+import Menu from "../Menu";
 
 const captureRectMap = {
     1: {width: 588, height: 837, y: 1208, widthPer: '81.5%', heightPer: '65.5%', top: '5.7%'},
@@ -199,9 +200,7 @@ const Save = () => {
 
     return (
         <div className='save-page'>
-            <Link className='home-btn decibel-save-btn' to="/">
-                <Home/>
-            </Link>
+            <Menu/>
             <div className='flex justify-end relative' style={{height: '78.9%'}}>
                 <button className='swap-btn -scale-x-100 left-0' onClick={() => ImageSwap('left')}
                         style={{opacity: localImgNum === 0 ? '0.3' : '1'}}

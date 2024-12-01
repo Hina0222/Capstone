@@ -1,16 +1,13 @@
-import {Link} from 'react-router-dom';
 import Block3 from '../images/AboutImages/Block3.png';
 import AboutTitle from '../images/AboutImages/AboutTitle.svg';
-import {ReactComponent as Home} from '../images/AboutImages/Home.svg';
+import Menu from '../components/Menu'
 
 const About = () => {
     return (
-        <div className='about-page min-h-screen flex flex-col items-center'>
-            <Link className='home-btn' to="/">
-                <Home/>
-            </Link>
-            <img className='mx-auto mt-11' src={AboutTitle} alt=""/>
-            <div className='relative mx-20 -mt-3 test'>
+        <div className='about-page min-h-screen flex flex-col'>
+            <Menu/>
+            <img className='mx-auto' src={AboutTitle} alt=""/>
+            <div className='relative -mt-3'>
                 <img src={Block3} alt=""/>
             </div>
             <p className='main-text'>

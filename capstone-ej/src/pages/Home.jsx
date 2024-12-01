@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import Title from '../images/HomeImages/Title.svg';
-import AboutBtn from '../images/HomeImages/AboutBtn.svg';
-import EntryBtn from '../images/HomeImages/EntryBtn.svg';
-import DecibelBtn from '../images/HomeImages/DecibelBtn.svg';
+import AboutBtn from '../images/AboutBtn.svg';
+import EntryBtn from '../images/EntryBtn.svg';
+import DecibelBtn from '../images/DecibelBtn.svg';
 import { useState } from 'react';
 import Popup from '../components/Popup';
 

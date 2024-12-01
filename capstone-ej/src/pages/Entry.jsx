@@ -5,7 +5,9 @@ import ImageContent from '../components/ImageContent.jsx';
 import Modal from '../components/Modal.jsx'
 import ProgressBar from '../components/ProgressBar.jsx';
 import { ReactComponent as Home } from '../images/AboutImages/Home.svg';
+import { ReactComponent as XIcon } from '../images/XIcon.svg';
 import Tape from '../images/EntryImages/Tape.js';
+import Menu from '../components/Menu'
 
 const Entry = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -133,10 +135,8 @@ const Entry = () => {
 
     return (
         <div className='entry-page'>
+            <Menu/>
             <div className='home-top'>
-                <Link className='home-btn' to="/" onClick={() => { sortContent("") }} style={{ position: 'static' }}>
-                    <Home />
-                </Link>
                 <div className='home-top-center'>
                     <div className='text-3xl font-medium'>
                         ARCHIVING
@@ -165,7 +165,7 @@ const Entry = () => {
                     <button className={`content-btn ${sortContentBtn === "주차" ? "active" : ""}`} onClick={() => { sortContent("주차") }}>주차</button>
                     <button className={`content-btn ${sortContentBtn === "배설물" ? "active" : ""}`} onClick={() => { sortContent("배설물") }}>배설물</button>
                     <button className={`content-btn ${sortContentBtn === "출입금지" ? "active" : ""}`} onClick={() => { sortContent("출입금지") }}>출입금지</button>
-                    <button className={`content-btn ${sortContentBtn === "" ? "invisible" : ""} absolute top-0 right-0`} onClick={() => { sortContent("") }}>X</button>
+                    <button className={`content-btn ${sortContentBtn === "" ? "invisible" : ""} absolute top-0 right-0`} onClick={() => { sortContent("") }}><XIcon className='mx-auto w-5'/></button>
                 </div>
             </div>
 

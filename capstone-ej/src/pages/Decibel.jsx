@@ -1,8 +1,9 @@
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import Capture from '../components/decibel/Capture';
 import {ReactComponent as Home} from '../images/AboutImages/Home.svg';
 import html2canvas from 'html2canvas';
+import Menu from "../components/Menu";
 
 const Decibel = () => {
     console.log("Decibel페이지")
@@ -50,10 +51,8 @@ const Decibel = () => {
 
     return (
         <div className='decibel-page'>
+            <Menu/>
             <div className='flex gap-10'>
-                <Link className='home-btn' to="/" style={{position: 'static'}}>
-                    <Home/>
-                </Link>
                 <div className='decibel-top'>
                     <div className='text-3xl font-medium'>DECIBEL</div>
                     <div className='overflow-hidden w-full'>

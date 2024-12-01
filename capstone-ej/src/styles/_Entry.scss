@@ -2,8 +2,6 @@
   padding: 44px 80px;
   overflow-x: hidden;
   min-height: 100vh;
-  //background-image: url("../images/Background.jpg");
-  //background-position: center;
 
   .home-top{
     display: flex;
@@ -20,6 +18,7 @@
       display: flex;
       gap:24px;
       align-items: center;
+      margin-left: 120px;
     }
 
     .home-top-flowing {

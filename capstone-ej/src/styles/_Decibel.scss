@@ -1,6 +1,6 @@
 .decibel-page{
     height: 100vh;
-    padding: 44px 80px 72px 64px;
+    padding: 44px 80px;
     //background-image: url("../images/Background.jpg");
     //background-repeat: no-repeat;
     //background-size: cover;
@@ -16,7 +16,8 @@
         display: flex;
         align-items: center;
         gap:24px;
-        width: calc(100% - 3.66vw - 2.5rem);
+        margin-left: 120px;
+        width: 100%;
 
         .decibel-top-flowing{
             @keyframes flowText1 {
