@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+## :fire: 프로젝트 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
 
-## Available Scripts
+[기간] 2024-12-04 ~ 2024-12-07
 
-In the project directory, you can run:
+http://alleyloss.click
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+이 프로젝트는 전시용으로 만들어졌습니다.
+<br>
+  <strong>
+    <br>
+주민 생활이 공존하는 골목을 재인식할 필요성을 시사하며,
+지역과 주민에 의한 공동체 관계에 중요한 역할을 담당하는 골목의 가치를 재해석하는 데 있다.
+  </strong>
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## :heavy_check_mark: 주제 선정
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+골목 내의 장치물은
+어느 골목에서나 똑같은 모습으로 주어지는 것이 아니라
+주민들의 생활수준이나 내용과도 깊은 관계를 갖게 되는 것으로서
+골목의 성격을 읽을 수 있는 중요한 척도가 되기도 한다.
 
-### `yarn build`
+도로변으로 개발이 옮겨가면서 골목이 외면받았을 당시,
+다시 골목길을 보존하고 골목 문화를 활성화 하자는 움직임이 나타나
+그 과정에서 ‘~단길’의 길이 만들어지면서 골목 상권이 다시 각광받기 시작하여
+주거민들끼리의 커뮤니티의 성격이 아닌 상권의 성격이 더 강해지게 되었다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+이 과정에서 주거민들끼리의 커뮤니티의 성격이 약해지면서
+실제 골목 거주민들의 생활공간으로서의 중요성, 주거지로서의 가치 향상까지는 미치지 못한
+골목 상실의 시대가 도래했다.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✨ 주요 기능
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `yarn eject`
+**three.js를 활용한 3D파일 출력**
+: three.js 라이브러리를 활용한 3D파일
+을 출력하고 해당 파일의 회전, 자동회전, 색상, 빛, 시야각을 설정하여 메인페 이지에서 골목길 벽을 형상화한 3D파일을 보여주었습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**수집된 경고문 이미지를 페이지에서 출력**
+: S3에 저장되어 있는 여러 가지 경
+고문 이미지파일들을 axios를 사용한 API통신으로 받아와 저장하고 골목길 벽을 형상화한 UI로 깨진 벽돌을 표현하며 경고문을 표시하였습니다
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**html2canvas를 활용한 캡처 및 커스텀 경고문 생성**
+: html2canvas라이브러리를 활용하여 캡처가 가능
+한 캔버스를 만들고 해당 이미지를 클릭 시 캔버스에 이미지가 생기고 이미지
+크기를 조절하고 해당 페이지에서 텍스트, 색상, 캔버스 크기 등을 변경하여
+나만의 경고문을 만들 수 있는 페이지를 구현하였습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**커스텀 경고문을 프린트 및 저장**
+: 전시동안 전시를 체험한 사용자들이 만든 경고문들을 한눈에 볼 수 있게 제작하였습니다. 또한 실제로 만든 경고문을 프린트할 수 있는 기능을 추가하였고 핸드폰에 저장할 수
+있게 이미지를 백엔드에 전송하여 QR이미지로 저장할 수 있는 기능을 구현하였습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br>
 
-## Learn More
+## :yellow_heart: UI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<details>
+  <summary><b>와이어프레임&디자인</b></summary>
+  <div markdown="1">
+  <div align="center">
+  </div>
+  </div>
+</details>
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
