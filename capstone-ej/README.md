@@ -64,9 +64,51 @@ http://alleyloss.click
 <br>
 
 <details>
-  <summary><b>와이어프레임&디자인</b></summary>
+  <summary><b>디자인</b></summary>
   <div markdown="1">
   <div align="center">
+    
+https://github.com/user-attachments/assets/8861f0ce-2e96-4a28-981e-812b81e30fef)](https://github.com/user-attachments/assets/8861f0ce-2e96-4a28-981e-812b81e30fef
+  
+  </div>
+  </div>
+    <summary><b>About 페이지</b></summary>
+  <div markdown="1">
+  <div align="center">
+    
+  ![abot](https://github.com/user-attachments/assets/ec02df9e-510a-47f2-9abe-50c3cab22baf)
+
+  </div>
+  </div>
+    <summary><b>ARCHIVING 페이지</b></summary>
+  <div markdown="1">
+  <div align="center">
+    
+https://github.com/user-attachments/assets/613bc758-e604-4f6a-a3e8-c8323e23152f
+
+  </div>
+  </div>
+  <summary><b>DECIBEL 페이지</b></summary>
+  <div markdown="1">
+  <div align="center">
+    
+
+https://github.com/user-attachments/assets/289415d8-e617-468c-9718-78ae7acd508a
+
+
+
+  </div>
+  </div>
+
+  <summary><b>SAVE 페이지</b></summary>
+  <div markdown="1">
+  <div align="center">
+   
+
+https://github.com/user-attachments/assets/5c5040e1-398c-4961-9fc4-f9c986ae4aa5
+
+ 
+
   </div>
   </div>
 </details>
