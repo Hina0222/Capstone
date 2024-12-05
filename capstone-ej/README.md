@@ -114,4 +114,16 @@ https://github.com/user-attachments/assets/5c5040e1-398c-4961-9fc4-f9c986ae4aa5
   </div>
 </details>
 
+<details>
+  <summary><b>전시</b></summary>
+  <div markdown="1">
+  <div align="center">
+
+  ![전시](https://github.com/user-attachments/assets/beb16ad2-ce79-454d-b06a-ac24df67f377)
+
+  </div>
+  </div>
+   
+</details>
+
 <br>
